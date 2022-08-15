@@ -6,13 +6,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Inicio', url: '/folder/Inicio', icon: 'home' },
+    { title: 'Casos', url: '/folder/Casos', icon: 'heart' },
+    { title: 'Quiénes somos', url: '/folder/Quiénes somos', icon: 'book' },
+    { title: 'Nuestro equipo', url: '/folder/Nuestro equipo', icon: 'people' },
+    { title: 'Galería', url: '/folder/Galería', icon: 'image' },
+    { title: 'Contáctanos', url: '/folder/Contáctanos', icon: 'mail' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  public labels = [
+    { label: 'Donaciones', url: '/folder/Donaciones', icon: 'wallet' },
+    { label: 'Apadrinamiento', url: '/folder/Apadrinamiento', icon: 'paw' },
+    { label: 'Unetenos', url: '/folder/Unetenos', icon: 'man' },
+  ];
+  constructor() { }
 }
