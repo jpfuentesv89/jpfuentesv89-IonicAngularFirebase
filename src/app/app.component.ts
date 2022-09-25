@@ -18,6 +18,7 @@ export class AppComponent {
     { label: 'Apadrinamiento', url: '/folder/Apadrinamiento', icon: 'paw' },
     { label: 'Unetenos', url: '/folder/Unetenos', icon: 'man' },
     { label: 'Cerrar sesión',url: '/auth/login', icon: 'exit' },
+    { label: 'Ajustes',url: '/admin/config', icon: 'cog' },
   ];
   constructor() { }
 }

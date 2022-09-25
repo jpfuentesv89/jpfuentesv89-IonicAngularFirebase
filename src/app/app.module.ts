@@ -10,10 +10,11 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFirestoreModule, AuthModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFirestoreModule, AuthModule,AdminModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
