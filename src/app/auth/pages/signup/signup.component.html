@@ -1,3 +1,44 @@
-<p>
-  signup works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button routerLink="/auth/login">[icon]="chevron-back-outline"</ion-back-button>
+      <ion-title>Regístrate</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
+  <div class="formato">
+    <ion-item lines="full">
+      <h2 class="titulo">Bizcocho</h2>
+      <ion-label class="formato" color="dark" position="floating"> Nombre de usuario</ion-label>
+      <ion-input type="text" formControlName="nombre" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label class="formato" color="dark" position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label class="formato" color="dark" position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label class="formato" color="dark" position="floating">Repetir Contraseña</ion-label>
+      <ion-input type="password" formControlName="password2" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-input class="formato" type="number" formControlName="numero" position="floating" value=""
+        placeholder="+56 9 ">Teléfono</ion-input>
+    </ion-item>
+    <div class="politicas">
+      <ion-checkbox align-items="column" color="warning"></ion-checkbox>
+      <h6 align-items="column">Acepto las <span class="politicas-color">Políticas</span> de <span
+          class="politicas-color">Privacidad</span></h6>
+    </div>
+    <ion-row>
+      <ion-col>
+        <ion-button class="main-btn" type="submit" expand="block">Registrarme</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</form>
