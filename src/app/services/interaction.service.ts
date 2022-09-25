@@ -1,21 +1,35 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InteractionService {
 
-  constructor(public toastController: ToastController) { }
+  loading : any;
 
-  async presentToast(position, message: string) {
+  constructor(public toastController: ToastController, private loadingCtrl: LoadingController) { }
+
+  async presentToast( message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2500,
-      position: position
+      position: 'bottom'
     });
 
     await toast.present();
+  }
+
+  async openLoading(message: string) {
+    this.loading = await this.loadingCtrl.create({
+      message: message,
+    });
+
+    await this.loading.present();
+  }
+
+  async closeLoading() {
+    await this.loading.dismiss();
   }
 
 }
