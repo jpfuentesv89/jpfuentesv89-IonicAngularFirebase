@@ -17,6 +17,7 @@ export class AppComponent {
     { label: 'Donaciones', url: '/folder/Donaciones', icon: 'wallet' },
     { label: 'Apadrinamiento', url: '/folder/Apadrinamiento', icon: 'paw' },
     { label: 'Unetenos', url: '/folder/Unetenos', icon: 'man' },
+    { label: 'Cerrar sesión',url: 'auth/login', icon: 'exit' },
   ];
   constructor() { }
 }

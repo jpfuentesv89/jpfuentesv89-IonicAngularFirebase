@@ -15,10 +15,12 @@
         </ion-list>
         <ion-list>
           <ion-list-header>Aporta</ion-list-header>
-          <ion-item *ngFor="let Aporta  of labels" lines="none">
+          <ion-menu-toggle auto-hide="false" *ngFor="let Aporta  of labels" lines="none">
+            <ion-item routerDirection="root" [routerLink]="[Aporta.url]" lines="none" detail="false" routerLinkActive="selected">
             <ion-icon slot="start" [ios]="Aporta.icon + '-outline'" [md]="Aporta.icon + '-sharp'"></ion-icon>
             <ion-label>{{ Aporta.label }}</ion-label>
           </ion-item>
+        </ion-menu-toggle>
         </ion-list>        
       </ion-content>
     </ion-menu>
