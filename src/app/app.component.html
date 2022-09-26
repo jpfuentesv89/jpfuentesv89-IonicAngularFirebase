@@ -27,6 +27,27 @@
             </ion-menu-toggle>
           </ion-list>
         </ion-menu-toggle>
+        <ion-menu-toggle *ngIf="login == false">
+        <ion-list id="inbox-list">         
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item *ngIf=" [p.title] == 'Inicio' " routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-menu-toggle>
+        <ion-list id="inbox-list">
+          <ion-list-header>Nosotros</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let Nosotros  of labels3" lines="none">
+            <ion-item routerDirection="root" [routerLink]="[Nosotros.url]" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="Nosotros.icon + '-outline'" [md]="Nosotros.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ Nosotros.label }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
         <ion-list id="inbox-list">
           <ion-list-header>Ajustes</ion-list-header>          
             <ion-menu-toggle auto-hide="false" *ngFor="let Ajustes  of labels2" lines="none">
