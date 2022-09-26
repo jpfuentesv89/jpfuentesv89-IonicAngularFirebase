@@ -28,4 +28,8 @@ export class FirestoreService {
     return collection.doc(id).delete();
   }  
 
+  getId() {
+    return this.afs.createId();
+  }
+
 }

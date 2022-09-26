@@ -1,11 +1,11 @@
-export interface Cliente {
+export interface Clientes {
     rut:       number;
     dv:        string;
     nombre:    string;
     apaterno:  string;
     amaterno:  string;
     direccion: string;
-    comuna:    number;
+    comuna:    string;
     correo:    string;
     telefono:  number;
 }

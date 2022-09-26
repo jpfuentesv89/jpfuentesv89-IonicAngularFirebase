@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ConfigComponent } from './pages/config/config.component';
 
@@ -11,7 +11,8 @@ import { ConfigComponent } from './pages/config/config.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }
