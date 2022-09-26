@@ -13,7 +13,7 @@
             </ion-item>           
           </ion-menu-toggle>         
         </ion-list>
-        <ion-list>
+        <ion-list id="inbox-list"> 
           <ion-list-header>Aporta</ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let Aporta  of labels" lines="none">
             <ion-item routerDirection="root" [routerLink]="[Aporta.url]" lines="none" detail="false" routerLinkActive="selected">
@@ -21,7 +21,16 @@
             <ion-label>{{ Aporta.label }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        </ion-list>        
+        </ion-list>  
+        <ion-list id="inbox-list">
+          <ion-list-header>Ajustes</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let Ajustes  of labels2" lines="none">
+            <ion-item routerDirection="root" [routerLink]="[Ajustes.url]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-icon slot="start" [ios]="Ajustes.icon + '-outline'" [md]="Ajustes.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ Ajustes.label }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        </ion-list>      
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

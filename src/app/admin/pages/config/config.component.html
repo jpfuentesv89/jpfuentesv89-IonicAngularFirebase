@@ -6,49 +6,44 @@
     </ion-buttons>
     <ion-title>Administrador</ion-title>
   </ion-toolbar>
-  <ion-card>
-    <ion-item>
-      <ion-label position="stacked">Rut</ion-label>
-      <ion-input type="number" [(ngModel)]="cliente.rut" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Dv</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.dv" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.nombre" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.apaterno" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.amaterno" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Direccion</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.direccion" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-select interface="action-sheet" placeholder="Select Comuna" [(ngModel)]="cliente.comuna"
-        (ionChange)="cliente.comuna" ngDefaultControl>
-        <ion-select-option [value]="Paine">Paine</ion-select-option>
-        <ion-select-option>Santiago</ion-select-option>
-        <ion-select-option>Buin</ion-select-option>
-        <ion-select-option>San Bernardo</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Correo</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.correo" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Telefono</ion-label>
-      <ion-input type="number" [(ngModel)]="cliente.telefono" ngDefaultControl></ion-input>
-    </ion-item>
-  </ion-card>
+  <ion-item>
+    <ion-label position="floating">Rut</ion-label>
+    <ion-input type="number" [(ngModel)]="cliente.rut" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Dv</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.dv" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.nombre" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apellido Paterno</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.apaterno" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apellido Materno</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.amaterno" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Direccion</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.direccion" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Comuna</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.comuna" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Correo</ion-label>
+    <ion-input type="text" [(ngModel)]="cliente.correo" ngDefaultControl></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telefono</ion-label>
+    <ion-input type="number" [(ngModel)]="cliente.telefono" ngDefaultControl></ion-input>
+  </ion-item>
   <ion-button (click)='agregarUser()'> Crear </ion-button>
-
+  <ion-button (click)='borraUser()'> Borrar </ion-button>
+  <ion-button (click)='updateUser()'> Actualizar </ion-button>
+  <ion-button (click)='getUser()'> Buscar </ion-button>
 </ion-header>

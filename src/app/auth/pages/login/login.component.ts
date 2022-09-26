@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent {
 
   public credentials: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService) {
+  constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private router: Router) {
     this.credentials = this.fb.group(
       {
         email: [null, [Validators.required, Validators.email]],
@@ -34,6 +35,7 @@ export class LoginComponent {
         console.log('Login successful');
         this.interaction.presentToast('Bienvenido '+ email);
         this.interaction.closeLoading();
+        this.router.navigateByUrl('/admin/config');
       }
     }
   }

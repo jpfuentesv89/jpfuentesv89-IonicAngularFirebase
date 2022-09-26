@@ -39,5 +39,46 @@ export class ConfigComponent implements OnInit {
     });
   }
 
-  
+  borraUser() {
+    this.interaction.openLoading('Borrando cliente...');
+    const id = this.cliente.rut.toString();
+    const path = 'clientes';
+    this.database.deleteDoc(path, id).then(() => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Cliente borrado');
+    }).catch(err => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Error al borrar cliente');
+    });
+  }
+
+  updateUser() {
+    this.interaction.openLoading('Actualizando cliente...');
+    const id = this.cliente.rut.toString();
+    const path = 'clientes';
+    this.database.updateDoc(this.cliente, path, id).then(() => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Cliente actualizado');
+    }).catch(err => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Error al actualizar cliente');
+    });
+  }
+
+  getUser() {
+    this.interaction.openLoading('Buscando cliente...');
+    const id = this.cliente.rut.toString();
+    const path = 'clientes';
+    this.database.getDoc<Clientes>(path, id).subscribe(res => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Cliente encontrado');
+      this.cliente = res;
+      console.log(res);
+    }, err => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Error al buscar cliente');
+    });
+  }
+
+
 }

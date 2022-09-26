@@ -15,4 +15,16 @@ export class AuthenticationService {
 
   }
 
+  logout() {
+
+    return this.authFirebase.signOut()
+
+  }
+
+  signup(email: string, password: string) {
+
+    return this.authFirebase.createUserWithEmailAndPassword(email, password)
+
+  }
+
 }
