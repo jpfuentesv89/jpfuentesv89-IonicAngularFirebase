@@ -1,6 +1,10 @@
 <ion-header>
-  <ion-toolbar>      
-      <ion-title>Regístrate</ion-title>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Regístrate</ion-title>
   </ion-toolbar>
   <form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
     <h2 class="titulo">Bizcocho</h2>
@@ -17,8 +21,8 @@
       <ion-input type="password" formControlName="password2" required></ion-input>
     </ion-item>
     <ion-col>
-      <ion-button class="main-btn" type="submit" expand="block">Registrarme</ion-button>
-      <ion-button routerLink="/auth/login" expand="block">Atras</ion-button>
+      <ion-button class="main-btn" type="submit">Registrarme</ion-button>
+      <ion-button routerLink="/auth/login">Atras</ion-button>
     </ion-col>
   </form>
 </ion-header>
