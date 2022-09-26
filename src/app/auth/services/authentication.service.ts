@@ -27,4 +27,10 @@ export class AuthenticationService {
 
   }
 
+  stateAuth() {
+
+    return this.authFirebase.authState
+
+  }
+
 }
