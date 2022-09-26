@@ -22,11 +22,11 @@ export class AppComponent {
     { label: 'Donaciones', url: '/folder/Donaciones', icon: 'wallet' },
     { label: 'Apadrinamiento', url: '/folder/Apadrinamiento', icon: 'paw' },
     { label: 'Unetenos', url: '/folder/Unetenos', icon: 'man' },
-    { label: 'Ajustes', url: '/admin/config', icon: 'cog' },
   ];
   public labels2 = [
     { label: 'Login', url: '/auth/login', icon: 'finger-print' },
-
+    { label: 'Ajustes', url: '/admin/config', icon: 'cog' },
+    { label: 'Logout', url: '', icon: 'exit' },
   ];
   constructor(private auth: AuthenticationService, private router: Router) {
     auth.stateAuth().subscribe(res => {

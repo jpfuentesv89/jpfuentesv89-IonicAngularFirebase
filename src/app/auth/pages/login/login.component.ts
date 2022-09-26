@@ -35,7 +35,7 @@ export class LoginComponent {
         console.log('Login successful');
         this.interaction.presentToast('Bienvenido '+ email);
         this.interaction.closeLoading();
-        this.router.navigateByUrl('/admin/config');
+        this.router.navigateByUrl('/folder/Inicio');
       }
     }
   }

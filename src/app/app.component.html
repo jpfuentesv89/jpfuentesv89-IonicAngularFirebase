@@ -2,10 +2,12 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
-        <ion-menu-toggle *ngIf="login == true">          
-            <ion-list-header>Bizcocho</ion-list-header>
-            <ion-note>¡Te invitamos a colaborar!</ion-note>
+        <ion-list id="inbox-list"> 
+        <ion-list-header>Bizcocho</ion-list-header>
+        <ion-note>¡Te invitamos a colaborar!</ion-note>
+        </ion-list>
+        <ion-menu-toggle *ngIf="login == true">
+          <ion-list id="inbox-list">         
             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
               <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
                 routerLinkActive="selected">
@@ -13,10 +15,8 @@
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
-        </ion-menu-toggle>
-        </ion-list>
-        <ion-list id="inbox-list">
-          <ion-menu-toggle *ngIf="login == true">
+          </ion-list>
+          <ion-list id="inbox-list">
             <ion-list-header>Aporta</ion-list-header>
             <ion-menu-toggle auto-hide="false" *ngFor="let Aporta  of labels" lines="none">
               <ion-item routerDirection="root" [routerLink]="[Aporta.url]" lines="none" detail="false"
@@ -25,24 +25,27 @@
                 <ion-label>{{ Aporta.label }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
-          </ion-menu-toggle>
-        </ion-list>
+          </ion-list>
+        </ion-menu-toggle>
         <ion-list id="inbox-list">
-          <ion-menu-toggle *ngIf="login == false">
-            <ion-list-header>Ajustes</ion-list-header>
+          <ion-list-header>Ajustes</ion-list-header>          
             <ion-menu-toggle auto-hide="false" *ngFor="let Ajustes  of labels2" lines="none">
-              <ion-item routerDirection="root" [routerLink]="[Ajustes.url]" lines="none" detail="false"
-                routerLinkActive="selected">
+              <ion-menu-toggle *ngIf="login == true">
+                <ion-item *ngIf=" [Ajustes.label] == 'Ajustes' " routerDirection="root" [routerLink]="[Ajustes.url]"  lines="none" detail="false">
+                  <ion-icon slot="start" [ios]="Ajustes.icon + '-outline'" [md]="Ajustes.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ Ajustes.label }}</ion-label>
+                </ion-item>
+                <ion-item *ngIf=" [Ajustes.label] == 'Logout' " routerDirection="root" [routerLink]="[Ajustes.url]" (click)="logout()" lines="none" detail="false">
+                  <ion-icon slot="start" [ios]="Ajustes.icon + '-outline'" [md]="Ajustes.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ Ajustes.label }}</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+              <ion-menu-toggle *ngIf="login == false">
+              <ion-item *ngIf=" [Ajustes.label] == 'Login'" routerDirection="root" [routerLink]="[Ajustes.url]" lines="none" detail="false">
                 <ion-icon slot="start" [ios]="Ajustes.icon + '-outline'" [md]="Ajustes.icon + '-sharp'"></ion-icon>
                 <ion-label>{{ Ajustes.label }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
-          </ion-menu-toggle>
-        </ion-list>
-        <ion-list id="inbox-list">
-          <ion-menu-toggle *ngIf="login == true">
-            <ion-list-header>Ajustes</ion-list-header>
-              <ion-button (click)="logout()">logout</ion-button>
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
