@@ -17,6 +17,7 @@ $RECYCLE.BIN/
 log.txt
 npm-debug.log*
 
+/.firebase
 /.angular
 /.idea
 /.ionic
@@ -30,3 +31,4 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+/public
