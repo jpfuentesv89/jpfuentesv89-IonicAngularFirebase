@@ -9,6 +9,10 @@
   <form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
     <h2 class="titulo">Bizcocho</h2>
     <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Nombre de usuario</ion-label>
+      <ion-input type="text" formControlName="userName" required></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label class="formato" color="dark" position="floating">Email</ion-label>
       <ion-input type="text" formControlName="email" required></ion-input>
     </ion-item>
@@ -20,9 +24,7 @@
       <ion-label class="formato" color="dark" position="floating">Repetir Contraseña</ion-label>
       <ion-input type="password" formControlName="password2" required></ion-input>
     </ion-item>
-    <ion-col>
-      <ion-button class="main-btn" type="submit">Registrarme</ion-button>
-      <ion-button routerLink="/auth/login">Atras</ion-button>
-    </ion-col>
+    <ion-button class="main-btn" type="submit">Registrarme</ion-button>
+    <ion-button routerLink="/auth/login">Atras</ion-button>
   </form>
 </ion-header>

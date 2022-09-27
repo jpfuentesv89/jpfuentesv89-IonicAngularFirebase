@@ -24,19 +24,21 @@ export class LoginComponent {
 
   ngOnInit() { }
 
-  async onSubmit(){
-    this.interaction.openLoading('Iniciando sesión...');
-    if(this.credentials.valid){
-      const { email, password } = this.credentials.value as {email: string; password: string};
-      const result = await this.auth.login(email,password).catch(err => console.log(err));
+  async onSubmit() {
+    if (this.credentials.valid) {
+      this.interaction.openLoading('Iniciando sesión...');
+      const { email, password } = this.credentials.value as { email: string; password: string };
+      const result = await this.auth.login(email, password).catch(err => console.log(err));
       this.interaction.presentToast('Usuario o Contraseña incorrectos');
       this.interaction.closeLoading();
-      if(result){
+      if (result) {
         console.log('Login successful');
-        this.interaction.presentToast('Bienvenido '+ email);
+        this.interaction.presentToast('Bienvenido ' + email);
         this.interaction.closeLoading();
         this.router.navigateByUrl('/folder/Inicio');
       }
+    } else {
+      this.interaction.presentToast('Ingrese un correo y contraseña válidos');
     }
   }
 }

@@ -6,6 +6,8 @@ export interface Clientes {
     amaterno:  string;
     direccion: string;
     comuna:    string;
-    correo:    string;
+    email:     string;
     telefono:  number;
+    username:  string;
+    uid:       string;
 }
