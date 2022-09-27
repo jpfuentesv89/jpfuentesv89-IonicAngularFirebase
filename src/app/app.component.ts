@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './auth/services/authentication.service';
+import { InteractionService } from './services/interaction.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -44,4 +45,5 @@ export class AppComponent {
     this.auth.logout();
     this.router.navigate(['/folder/Inicio']);
   }
+
 }

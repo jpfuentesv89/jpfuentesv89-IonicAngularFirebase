@@ -6,11 +6,11 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class InteractionService {
 
-  loading : any;
+  loading: any;
 
   constructor(public toastController: ToastController, private loadingCtrl: LoadingController) { }
 
-  async presentToast( message: string) {
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2500,
@@ -30,6 +30,10 @@ export class InteractionService {
 
   async closeLoading() {
     await this.loading.dismiss();
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
 }
