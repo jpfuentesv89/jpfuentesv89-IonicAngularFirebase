@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './auth/services/authentication.service';
-import { InteractionService } from './services/interaction.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -10,7 +9,7 @@ import { InteractionService } from './services/interaction.service';
 
 
 export class AppComponent {
-  login: boolean = false; 
+  login: boolean = false;
   public appPages = [
     { title: 'Inicio', url: '/folder/Inicio', icon: 'home' },
     { title: 'Casos', url: '/folder/Casos', icon: 'heart' },
@@ -39,9 +38,10 @@ export class AppComponent {
         console.log('usuario no logueado');
         this.login = false;
       }
-    });   
+    });
   }
-  logout = () => {
+
+  logout() {
     this.auth.logout();
     this.router.navigate(['/folder/Inicio']);
   }
