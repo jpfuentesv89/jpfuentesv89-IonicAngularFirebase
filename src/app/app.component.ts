@@ -14,6 +14,7 @@ export class AppComponent {
     { title: 'Inicio', url: '/folder/Inicio', icon: 'home' },
     { title: 'Casos', url: '/folder/Casos', icon: 'heart' },
     { title: 'Galería', url: '/folder/Galería', icon: 'image' },
+    { title: 'Tienda', url: '/pages/tienda', icon: 'cart' },
   ];
   public labels = [
     { label: 'Donaciones', url: '/folder/Donaciones', icon: 'wallet' },
@@ -22,6 +23,7 @@ export class AppComponent {
   public labels2 = [
     { label: 'Login', url: '/auth/login', icon: 'finger-print' },
     { label: 'Ajustes', url: '/admin/config', icon: 'cog' },
+    { label: 'Productos', url: '/admin/producto', icon: 'cart' },
     { label: 'Logout', url: '', icon: 'exit' },
   ];
   public labels3 = [

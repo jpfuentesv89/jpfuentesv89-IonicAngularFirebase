@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mantenedor Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list id="inbox-list">
+      <ion-item>
+        <ion-label position="floating">idProducto</ion-label>
+        <ion-input type="text" [(ngModel)]="producto.id" ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="producto.nombre" ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input type="number" [(ngModel)]="producto.precio" ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descripcion</ion-label>
+        <ion-input type="text" [(ngModel)]="producto.descripcion" ngDefaultControl></ion-input>
+      </ion-item>
+  </ion-list>
+  <ion-button expand="floating" (click)='agregarProducto()'> Agregar </ion-button>
+</ion-content>

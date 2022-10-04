@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Clientes } from 'src/app/interfaces/models';
+import { Clientes, Productos } from 'src/app/interfaces/models';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 

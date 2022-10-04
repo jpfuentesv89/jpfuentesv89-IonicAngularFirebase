@@ -11,3 +11,10 @@ export interface Clientes {
     username:  string;
     uid:       string;
 }
+
+export interface Productos {
+    id:             string;
+    nombre:         string;
+    precio:         number;
+    descripcion:    string;
+}
