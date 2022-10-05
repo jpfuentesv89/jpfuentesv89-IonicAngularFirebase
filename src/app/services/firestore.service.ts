@@ -27,6 +27,13 @@ export class FirestoreService {
     const collection = this.afs.collection(path);
     return collection.doc(id).delete();
   }
+
+  //listar documentos
+  getdocs<tipo>(path: string) {
+    const collection = this.afs.collection<tipo>(path);
+    return collection.valueChanges();
+  }
+
   /*
   //crear Id documento
   getId() {

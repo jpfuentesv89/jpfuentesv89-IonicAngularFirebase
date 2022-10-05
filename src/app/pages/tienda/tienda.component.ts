@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/auth/services/authentication.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-tienda',
@@ -7,8 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TiendaComponent implements OnInit {
 
-  constructor() { }
+  productos: any;
+
+  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService) {
+
+    auth.stateAuth().subscribe(res => {      
+      if (res && res.uid) {
+        console.log('usuario logueado');
+
+      } else {
+        this.interaction.presentToast('usuario no logueado');
+        console.log('usuario no logueado');
+      }
+    });
+
+  }
 
   ngOnInit() {}
+
+  listarProductos() {
+    this.interaction.openLoading('Cargando productos...');
+    const path = 'productos';
+    this.database.getdocs(path).subscribe(res => {
+      this.interaction.closeLoading();
+      this.productos = res;
+      console.log(res);
+    }, err => {
+      this.interaction.closeLoading();
+      console.log(err);
+    });
+  }
 
 }

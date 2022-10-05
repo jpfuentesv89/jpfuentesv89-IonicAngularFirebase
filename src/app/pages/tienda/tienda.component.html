@@ -1,3 +1,18 @@
-<p>
-  tienda works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mantenedor Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-list lines="full" *ngFor="let producto of productos;">
+  <ion-item>
+    <ion-label>{{producto.nombre}}</ion-label>
+    <ion-label>{{producto.precio}}</ion-label>
+    <ion-label>{{producto.descripcion}}</ion-label>
+  </ion-item>
+</ion-list>
+<ion-button expand="block" (click)="listarProductos()">listar Productos</ion-button>
+
