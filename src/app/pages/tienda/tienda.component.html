@@ -7,12 +7,21 @@
     <ion-title>Mantenedor Producto</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-list lines="full" *ngFor="let producto of productos;">
-  <ion-item>
-    <ion-label>{{producto.nombre}}</ion-label>
-    <ion-label>{{producto.precio}}</ion-label>
-    <ion-label>{{producto.descripcion}}</ion-label>
-  </ion-item>
-</ion-list>
-<ion-button expand="block" (click)="listarProductos()">listar Productos</ion-button>
 
+<body style="display: center ; right: 2.5%; top: 8%;">
+  <ion-content>
+    <ion-list *ngFor="let producto of productos;">
+      <ion-card style="margin-bottom: 0;">
+        <ion-card-header>
+          <img src="https://areajugones.sport.es/wp-content/uploads/2019/10/dr-stone-39428.jpg">
+          <ion-card-title>{{producto.nombre}}</ion-card-title>
+          <ion-card-subtitle>{{producto.descripcion}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>${{producto.precio}}</ion-card-content>
+        <ion-button expand="full"  (click)="borarProducto(producto.id)" color="primary">Eliminar
+        </ion-button>
+      </ion-card>
+    </ion-list>
+    <br><br><br><br>
+  </ion-content>
+</body>

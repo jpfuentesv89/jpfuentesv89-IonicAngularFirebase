@@ -26,9 +26,8 @@ export class TiendaComponent implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  listarProductos() {
     this.interaction.openLoading('Cargando productos...');
     const path = 'productos';
     this.database.getdocs(path).subscribe(res => {
@@ -37,6 +36,15 @@ export class TiendaComponent implements OnInit {
       console.log(res);
     }, err => {
       this.interaction.closeLoading();
+      console.log(err);
+    });
+
+  }
+
+  borarProducto(id: string) {
+    const path = 'productos';
+    this.database.deleteDoc(path, id).then(() => {
+    }).catch(err => {
       console.log(err);
     });
   }

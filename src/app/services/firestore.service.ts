@@ -34,10 +34,14 @@ export class FirestoreService {
     return collection.valueChanges();
   }
 
-  /*
+  upLoadImage(data: any, path: string, name: string) {
+    const filePath = path + `/` + name;
+    const collection = this.afs.collection(path);
+    return collection.doc(name).set(data);
+  }
+
   //crear Id documento
   getId() {
     return this.afs.createId();
   }
-  */
 }

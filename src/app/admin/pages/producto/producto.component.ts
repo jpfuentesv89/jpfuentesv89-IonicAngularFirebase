@@ -4,6 +4,8 @@ import { Productos } from 'src/app/interfaces/models';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
+import { getStorage, ref } from "firebase/storage";
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -15,12 +17,13 @@ export class ProductoComponent implements OnInit {
     id: '',
     nombre: '',
     precio: 0,
-    descripcion: ''
+    descripcion: '',
+    Foto: ''
   };
 
-  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService) { 
+  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService) {
 
-    auth.stateAuth().subscribe(res => {      
+    auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
         console.log('usuario logueado');
 
@@ -30,14 +33,16 @@ export class ProductoComponent implements OnInit {
       }
     });
 
-    
+
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   agregarProducto() {
     this.interaction.openLoading('Guardando producto...');
     const path = 'productos';
+    const id = this.database.getId();
+    this.producto.id = id;
     this.database.createDoc(this.producto, path, this.producto.id).then(() => {
       this.interaction.closeLoading();
       this.interaction.presentToast('Producto guardado');
@@ -46,5 +51,6 @@ export class ProductoComponent implements OnInit {
       this.interaction.presentToast('Error al guardar producto');
     });
   }
+
 
 }
