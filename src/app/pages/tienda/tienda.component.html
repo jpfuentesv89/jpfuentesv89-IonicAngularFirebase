@@ -13,8 +13,8 @@
     <ion-list *ngFor="let producto of productos;">
       <ion-card style="margin-bottom: 0;">
         <ion-card-header>
-          <img src="https://areajugones.sport.es/wp-content/uploads/2019/10/dr-stone-39428.jpg">
-          <ion-card-title>{{producto.nombre}}</ion-card-title>
+          <img src={{producto.foto}}>
+          <ion-card-title>{{producto.nombre}} </ion-card-title>
           <ion-card-subtitle>{{producto.descripcion}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>${{producto.precio}}</ion-card-content>

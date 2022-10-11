@@ -9,26 +9,31 @@
 </ion-header>
 <ion-content>
   <ion-list id="inbox-list">
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="producto.nombre" ngDefaultControl></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Precio</ion-label>
-        <ion-input type="number" [(ngModel)]="producto.precio" ngDefaultControl></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Descripcion</ion-label>
-        <ion-input type="text" [(ngModel)]="producto.descripcion" ngDefaultControl></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Foto:</ion-label> 
-        <ion-buttons slot="end">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="producto.nombre" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="producto.precio" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input type="text" [(ngModel)]="producto.descripcion" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Foto:</ion-label>
+      <ion-buttons slot="end">
         <ion-button>
-          <ion-icon name="images"></ion-icon>
+          <label for="file">
+            <ion-icon name="images"></ion-icon>
+          </label>
+          <input id="file" style="display: none;" type="file" accept="image/*" (change)="selectImagen($event)">
         </ion-button>
-        </ion-buttons>
-      </ion-item>
+      </ion-buttons>
+    </ion-item>
+    <img [src]="nuevaImagen">
   </ion-list>
   <ion-button expand="full" color="success" (click)='agregarProducto()'> Agregar </ion-button>
+  <br>
 </ion-content>
