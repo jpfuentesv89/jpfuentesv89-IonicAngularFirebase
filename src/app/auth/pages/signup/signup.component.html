@@ -6,12 +6,21 @@
     </ion-buttons>
     <ion-title>Regístrate</ion-title>
   </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fondo">
   <form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
-    <h2 class="titulo">Bizcocho</h2>
+    <ion-img class="img" src="\assets\img\perroygato.png" > </ion-img>
+    <h1 class="title">Veterinaria Chile</h1>
+    <br><br><br><br><br><br><br><br>
+   
+    <div class="cosas">
     <ion-item>
       <ion-label class="formato" color="dark" position="floating"> Nombre de usuario</ion-label>
       <ion-input type="text" formControlName="userName" required></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label class="formato" color="dark" position="floating">Email</ion-label>
       <ion-input type="text" formControlName="email" required></ion-input>
@@ -20,10 +29,15 @@
       <ion-label class="formato" color="dark" position="floating">Contraseña</ion-label>
       <ion-input type="password" formControlName="password" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label class="formato" color="dark" position="floating">Confirme Contraseña</ion-label>
-      <ion-input type="password" formControlName="password2" required></ion-input>
+    
+    <ion-item class="wea">
+      <ion-label class="formato" color="dark" position="floating">Confirme Contraseña</ion-label> 
+      <ion-input class="formato2" type="password" formControlName="password2" required></ion-input>
     </ion-item>
-    <ion-button expand="full" color="success" class="main-btn" type="submit">Registrarme</ion-button>
+  </div>
+  <br>
+    <ion-button color="primary" expand="block"  class="main-btn" type="submit">Registrarme</ion-button>
   </form>
-</ion-header>
+<br><br>
+</div>
+</ion-content>

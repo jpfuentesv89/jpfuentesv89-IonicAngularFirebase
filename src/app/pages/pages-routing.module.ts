@@ -7,6 +7,15 @@ const routes: Routes = [
     path: 'tienda',
     component: TiendaComponent
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'nuestroequipo',
+    loadChildren: () => import('./nuestroequipo/nuestroequipo.module').then( m => m.NuestroequipoPageModule)
+  },
+
+
 ];
 
 @NgModule({

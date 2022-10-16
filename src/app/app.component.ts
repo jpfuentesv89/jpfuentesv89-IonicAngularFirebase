@@ -11,7 +11,7 @@ import { AuthenticationService } from './auth/services/authentication.service';
 export class AppComponent {
   login: boolean = false;
   public appPages = [
-    { title: 'Inicio', url: '/folder/Inicio', icon: 'home' },
+    { title: 'Inicio', url: '/pages/home', icon: 'home' },
     { title: 'Casos', url: '/folder/Casos', icon: 'heart' },
     { title: 'Galería', url: '/folder/Galería', icon: 'image' },
     { title: 'Tienda', url: '/pages/tienda', icon: 'cart' },
@@ -28,7 +28,7 @@ export class AppComponent {
   ];
   public labels3 = [
     { label: 'Quiénes somos', url: '/folder/Quiénes somos', icon: 'book' },
-    { label: 'Nuestro equipo', url: '/folder/Nuestro equipo', icon: 'people' },
+    { label: 'Nuestro equipo', url: '/pages/nuestroequipo', icon: 'people' },
     { label: 'Contáctanos', url: '/folder/Contáctanos', icon: 'mail' },
   ];
   constructor(private auth: AuthenticationService, private router: Router) {
@@ -45,7 +45,7 @@ export class AppComponent {
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['/folder/Inicio']);
+    this.router.navigate(['/pages/home']);
   }
 
 }

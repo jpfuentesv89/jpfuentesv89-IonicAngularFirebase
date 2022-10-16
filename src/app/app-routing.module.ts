@@ -4,7 +4,7 @@ import { ConfigComponent } from './admin/pages/config/config.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'pages/home',
     pathMatch: 'full'
   },
   {

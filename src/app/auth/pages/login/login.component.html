@@ -6,22 +6,37 @@
     </ion-buttons>
     <ion-title>Login</ion-title>
   </ion-toolbar>
+</ion-header>
 
+<ion-content>
   <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
-    <h1 class="title">Bizcocho</h1>
-    <p>Ayudando a miles de animales abandonados cada día.</p>
-    <ion-item-group>
-      <ion-item>
+    <div class="fondo">
+      <ion-img class="img" src="\assets\img\perroygato.png" > </ion-img>
+      <br><br><br><br><br>
+    <h1 class="title">Veterinaria Chile</h1>
+    <br><br><br><br>
+    <ion-item-group class="cosas">
+      <ion-item class="datos">
         <ion-label position="floating">Usuario</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
-      <ion-item>
+
+      <ion-item class="datos">
         <ion-label position="floating">Contraseña</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-        <ion-button expand="full" class="main-btn" type="submit">Iniciar sesión</ion-button>
-        <ion-button expand="full" class="main-btn" routerLink="/auth/signup" routerDirection="root" routerLinkActive="selected"
+      <br>
+      <br>
+      <p class="recuperar">Recuperar Contraseña </p>
+      <br>
+        <ion-button  class="main-btn" expand="block" color="danger" type="submit">Iniciar sesión</ion-button>        
+        <ion-button  class="main-btn" expand="block" color="primary" routerLink="/auth/signup" routerDirection="root" routerLinkActive="selected"
           color="dark">Registrarse</ion-button>
     </ion-item-group>
+    <br><br>
+  </div>
   </form>
-</ion-header>
+
+
+
+</ion-content>

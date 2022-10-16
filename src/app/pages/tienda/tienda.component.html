@@ -8,20 +8,30 @@
   </ion-toolbar>
 </ion-header>
 
-<body style="display: center ; right: 2.5%; top: 8%;">
+
   <ion-content>
-    <ion-list *ngFor="let producto of productos;">
-      <ion-card style="margin-bottom: 0;">
+    
+    <div class="fondo"> 
+      <div class="titulo" >
+       
+        <h1 >Nuestros Productos </h1> 
+      </div>
+      <div class="card">
+
+    <ion-list style="background-color:transparent; " *ngFor="let producto of productos;">
+     
+      <ion-card >
         <ion-card-header>
-          <img src={{producto.foto}}>
-          <ion-card-title>{{producto.nombre}} </ion-card-title>
-          <ion-card-subtitle>{{producto.descripcion}}</ion-card-subtitle>
+          <img  class="card-img" src={{producto.foto}}>
+          <ion-card-title clas="nombre" color="primary" >{{producto.nombre}} </ion-card-title>
+          <ion-card-subtitle class="descripcion">{{producto.descripcion}}</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content>${{producto.precio}}</ion-card-content>
-        <ion-button expand="full"  (click)="borarProducto(producto.id)" color="primary">Eliminar
-        </ion-button>
+        <ion-card-content class="precio">${{producto.precio}}</ion-card-content>
       </ion-card>
     </ion-list>
     <br><br><br><br>
-  </ion-content>
-</body>
+  </div>
+</div>
+</ion-content>
+
+
