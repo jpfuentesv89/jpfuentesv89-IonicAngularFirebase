@@ -16,7 +16,6 @@ export class TiendaComponent implements OnInit {
 
     auth.stateAuth().subscribe(res => {      
       if (res && res.uid) {
-        console.log('usuario logueado');
 
       } else {
         this.interaction.presentToast('usuario no logueado');
@@ -33,7 +32,6 @@ export class TiendaComponent implements OnInit {
     this.database.getdocs(path).subscribe(res => {
       this.interaction.closeLoading();
       this.productos = res;
-      console.log(res);
     }, err => {
       this.interaction.closeLoading();
       console.log(err);

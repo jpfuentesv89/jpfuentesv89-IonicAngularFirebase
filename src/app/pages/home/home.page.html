@@ -17,15 +17,15 @@
     <hr>
 
     <ion-grid>
-      <ion-row>
+      <ion-row  *ngIf="login == false" >
         <ion-col align-self-center>
           <span class="divider line one-line">Registra tu cuenta y accede a los servicios de veterinaria chile</span>
           <br>
-          <ion-button routerLink="/auth/signup" color="primary">Registrar</ion-button>
+          <ion-button (click)="registro()" color="danger">Registrar</ion-button>
           <br>
           <span class="already">Estas registrado?</span>
           <br>
-          <ion-button [routerLink]="['/auth/login']" color="danger">Iniciar Sesion</ion-button>
+          <ion-button (click)="iniciar()" color="primary">Iniciar Sesion</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

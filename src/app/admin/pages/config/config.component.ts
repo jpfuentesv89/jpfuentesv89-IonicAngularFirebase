@@ -34,14 +34,12 @@ export class ConfigComponent implements OnInit {
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        console.log('usuario logueado');
         this.cliente.uid = res.uid;
         this.cliente.email = res.email;
         const id = this.cliente.uid;
         const path = 'clientes';
         this.database.getDoc<Clientes>(path, id).subscribe(res => {
           this.cliente = res;
-          console.log(res);
         }, err => {
           this.interaction.presentToast('Error al cargar datos');
         });

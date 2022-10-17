@@ -4,6 +4,7 @@ import { Productos } from 'src/app/interfaces/models';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { FirestorageService } from 'src/app/services/firestorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-producto',
@@ -23,11 +24,10 @@ export class ProductoComponent implements OnInit {
   nuevaImagen = '';
   newfile = '';
 
-  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private datastorage: FirestorageService) {
+  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private datastorage: FirestorageService, private router: Router) {
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        console.log('usuario logueado');
 
       } else {
         this.interaction.presentToast('usuario no logueado');
@@ -39,6 +39,12 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  navegar() {
+    this.router.navigate(['/admin/producto']);
+    this.interaction.refresh();
+  }
+
 
   async agregarProducto() {
     this.interaction.openLoading('Guardando producto...');
@@ -52,7 +58,7 @@ export class ProductoComponent implements OnInit {
         this.interaction.closeLoading();
         this.interaction.presentToast('Producto agregado');
         console.log('Producto agregado');
-        this.interaction.refresh();
+        this.navegar();
       }).catch(error => {
         this.interaction.closeLoading();
         this.interaction.presentToast('Producto no agregado');

@@ -32,7 +32,7 @@ export class LoginComponent {
       this.interaction.presentToast('Usuario o Contraseña incorrectos');
       this.interaction.closeLoading();
       if (result) {
-        console.log('Login successful');
+        console.log('inicio de sesión exitoso');
         this.interaction.presentToast('Bienvenido ' + email);
         this.interaction.closeLoading();
         this.router.navigateByUrl('/pages/home');

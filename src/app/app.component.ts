@@ -50,18 +50,15 @@ export class AppComponent {
     
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        console.log('usuario logueado');
         this.login = true; 
         const id = res.uid;
         const path = 'clientes';
         this.database.getDoc<Clientes>(path, id).subscribe(res => {
           this.cliente = res;
-          console.log(res);
         }, err => {
           console.log('Error al cargar datos');
         });
       } else {
-        console.log('usuario no logueado');
         this.login = false;
       }
     });
@@ -70,6 +67,7 @@ export class AppComponent {
 
   logout() {
     this.auth.logout();
+    console.log('Sesión cerrada');
     this.router.navigate(['/pages/home']);
   }
 
