@@ -24,6 +24,8 @@ export class ProductoComponent implements OnInit {
   nuevaImagen = '';
   newfile = '';
 
+  productos: any;
+
   constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private datastorage: FirestorageService, private router: Router) {
 
     auth.stateAuth().subscribe(res => {
@@ -35,40 +37,64 @@ export class ProductoComponent implements OnInit {
       }
     });
 
+    this.interaction.openLoading('Cargando productos...');
+    const path = 'productos';
+    this.database.getdocs(path).subscribe(res => {
+      this.interaction.closeLoading();
+      this.productos = res;
+    }, err => {
+      this.interaction.closeLoading();
+      console.log(err);
+    });
+
 
   }
 
   ngOnInit() { }
 
-  navegar() {
+  limpiarProducto() {
     this.router.navigate(['/admin/producto']);
     this.interaction.refresh();
   }
 
+  excisteProducto(id: string, nombre: string) {
+    let existe = false;
+    this.productos.forEach((producto: any) => {
+      if (producto.id === id || producto.nombre === nombre) {
+        existe = true;
+      }
+    });
+    return existe;
+  }
 
   async agregarProducto() {
-    this.interaction.openLoading('Guardando producto...');
-    const path = 'productos';
-    const id = this.database.getId();
-    this.producto.id = id;
-    await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
-      this.producto.foto = urlImage;
-      console.log('Imagen subida correctamente.');
-      this.database.createDoc(this.producto, path, id).then(() => {
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Producto agregado');
-        console.log('Producto agregado');
-        this.navegar();
+    if (this.excisteProducto(this.producto.id, this.producto.nombre)) { 
+      this.interaction.presentToast('El producto ya existe');
+    }
+    else {
+      this.interaction.openLoading('Guardando producto...');
+      const path = 'productos';
+      const id = this.database.getId();
+      this.producto.id = id;
+      await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
+        this.producto.foto = urlImage;
+        console.log('Imagen subida correctamente.');
+        this.database.createDoc(this.producto, path, id).then(() => {
+          this.interaction.closeLoading();
+          this.interaction.presentToast('Producto agregado');
+          console.log('Producto agregado');
+          this.limpiarProducto();
+        }).catch(error => {
+          this.interaction.closeLoading();
+          this.interaction.presentToast('Producto no agregado');
+          console.log(error);
+        });
       }).catch(error => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Producto no agregado');
+        this.interaction.presentToast('No logeado / producto no agregado');
         console.log(error);
       });
-    }).catch(error => {
-      this.interaction.closeLoading();
-      this.interaction.presentToast('Imagen no subida');
-      console.log(error);
-    });
+    }
   }
 
 
@@ -83,5 +109,48 @@ export class ProductoComponent implements OnInit {
     }
   }
 
+  eliminarProducto(id: string) {
+    const path = 'productos';
+    this.datastorage.deleteImage(path, id).subscribe(() => {
+      this.database.deleteDoc(path, id).then(() => {      
+        this.interaction.presentToast('Producto eliminado');
+        console.log('Producto eliminado');
+        this.limpiarProducto();
+      }).catch(error => {
+        this.interaction.presentToast('Error al eliminar producto');
+        console.log(error);
+      });
+    }, error => {
+      this.interaction.presentToast('Producto no eliminado');
+      console.log(error);
+    });
+  }
+
+  buscarProducto(id: string) {
+    this.interaction.openLoading('Buscando producto...');
+    const path = 'productos';
+    this.database.getDoc<Productos>(path, id).subscribe(res => {
+      this.interaction.closeLoading();
+      this.interaction.presentToast('Producto encontrado');
+      this.producto = res;
+      this.nuevaImagen = res.foto;
+    });
+  }
+
+  buscarProductoEvent(event) {
+    const id = event.target.value;
+    this.buscarProducto(id);
+  }
+
+  actualizarProducto() {
+    const path = 'productos';
+    this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
+      this.interaction.presentToast('Producto actualizado');
+      console.log('Producto actualizado');
+    }).catch(error => {
+      this.interaction.presentToast('Producto no actualizado');
+      console.log(error);
+    });
+  }
 
 }

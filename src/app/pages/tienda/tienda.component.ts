@@ -39,12 +39,4 @@ export class TiendaComponent implements OnInit {
 
   }
 
-  borarProducto(id: string) {
-    const path = 'productos';
-    this.database.deleteDoc(path, id).then(() => {
-    }).catch(err => {
-      console.log(err);
-    });
-  }
-
 }

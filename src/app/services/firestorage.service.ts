@@ -11,4 +11,8 @@ export class FirestorageService {
   uploadImage(image: string, path: string, name: string) {
     return this.storage.upload(`${path}/${name}`, image).then(snapshot => snapshot.ref.getDownloadURL());
   }
+
+  deleteImage(path: string, name: string) {
+    return this.storage.ref(`${path}/${name}`).delete();
+  }
 }

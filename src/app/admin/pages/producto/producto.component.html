@@ -10,19 +10,24 @@
 <ion-content>
   <ion-list id="inbox-list">
     <ion-item>
+      <ion-select interface="action-sheet" placeholder="Seleciona Producto" (ionChange)="buscarProductoEvent($event)">
+        <ion-select-option *ngFor="let produc of productos" value= {{produc.id}} >{{produc.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input type="text" [(ngModel)]="producto.nombre" ngDefaultControl></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Precio</ion-label>
-      <ion-input type="number" [(ngModel)]="producto.precio" ngDefaultControl></ion-input>
+      <ion-input type="number"  [(ngModel)]="producto.precio" ngDefaultControl ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Descripcion</ion-label>
       <ion-input type="text" [(ngModel)]="producto.descripcion" ngDefaultControl></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Foto:</ion-label>
+      <ion-label>Foto Producto:</ion-label>
       <ion-buttons slot="end">
         <ion-button>
           <label for="file">
@@ -35,5 +40,8 @@
     <img [src]="nuevaImagen">
   </ion-list>
   <ion-button expand="full" color="success" (click)='agregarProducto()'> Agregar </ion-button>
+  <ion-button expand="full" color="warning" (click)='actualizarProducto()'> Actualizar </ion-button>
+  <ion-button expand="full" color="danger" (click)='eliminarProducto(producto.id)'> Eliminar </ion-button>
+  <ion-button expand="full" color="primary" (click)='limpiarProducto()'> Limpiar </ion-button>
   <br>
 </ion-content>
