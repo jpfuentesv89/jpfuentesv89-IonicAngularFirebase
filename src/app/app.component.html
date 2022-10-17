@@ -5,7 +5,7 @@
         <ion-list id="inbox-list">
           <ion-list-header>Veterinaria</ion-list-header>
           <ion-note style="font-size: 14px;">¡Tu mascota es nuestra prioridad!</ion-note>
-          <ion-item>
+          <ion-item *ngIf="login == true">
             <ion-avatar slot="start">
               <img alt="Silhouette of a person's head" src={{cliente.foto}} />
             </ion-avatar>

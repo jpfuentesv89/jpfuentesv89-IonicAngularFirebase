@@ -1,27 +1,33 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
     <ion-title>Bienvenidos</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="auth-form">
   <div class="fondo">
     <h3 class="title">Veterinaria Chile</h3>
-    <ion-img class="img" src="\assets\img\catdog.png" ></ion-img>
+    <ion-img class="img" src="\assets\img\catdog.png"></ion-img>
     <p>La veterinaria preferida por tus mascotas</p>
-  
- <hr>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col align-self-center>
-        <span class="divider line one-line">Registra tu cuenta y accede a los servicios de veterinaria chile</span> <br>
-        <ion-button  routerLink="/auth/signup"  color="primary">Registrar</ion-button>
-        <br>
-        <span class="already">Estas registrado?</span>
-        <br>
-        <ion-button [routerLink]="['/auth/login']"  color="danger">Iniciar Sesion</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
+    <hr>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col align-self-center>
+          <span class="divider line one-line">Registra tu cuenta y accede a los servicios de veterinaria chile</span>
+          <br>
+          <ion-button routerLink="/auth/signup" color="primary">Registrar</ion-button>
+          <br>
+          <span class="already">Estas registrado?</span>
+          <br>
+          <ion-button [routerLink]="['/auth/login']" color="danger">Iniciar Sesion</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
