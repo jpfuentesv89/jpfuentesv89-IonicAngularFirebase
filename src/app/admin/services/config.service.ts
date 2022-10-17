@@ -20,6 +20,7 @@ export class ConfigService {
     telefono: null,
     username: '',
     uid: '',
+    foto: '',
   };
 
   constructor(private database: FirestoreService, private interaction: InteractionService) { }

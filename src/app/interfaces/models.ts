@@ -10,6 +10,7 @@ export interface Clientes {
     telefono:  number;
     username:  string;
     uid:       string;
+    foto:      string;
 }
 
 export interface Productos {

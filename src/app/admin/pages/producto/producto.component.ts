@@ -52,6 +52,7 @@ export class ProductoComponent implements OnInit {
         this.interaction.closeLoading();
         this.interaction.presentToast('Producto agregado');
         console.log('Producto agregado');
+        this.interaction.refresh();
       }).catch(error => {
         this.interaction.closeLoading();
         this.interaction.presentToast('Producto no agregado');

@@ -1,46 +1,71 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './auth/services/authentication.service';
+import { Clientes } from 'src/app/interfaces/models';
+import { FirestoreService } from './services/firestore.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 
-
 export class AppComponent {
+
+  cliente: Clientes = {
+    rut: null,
+    dv: '',
+    nombre: '',
+    apaterno: '',
+    amaterno: '',
+    direccion: '',
+    comuna: '',
+    email: '',
+    telefono: null,
+    username: '',
+    uid: '',
+    foto: '',
+  };
+
   login: boolean = false;
+
   public appPages = [
     { title: 'Inicio', url: '/pages/home', icon: 'home' },
-    { title: 'Casos', url: '/folder/Casos', icon: 'heart' },
-    { title: 'Galería', url: '/folder/Galería', icon: 'image' },
     { title: 'Tienda', url: '/pages/tienda', icon: 'cart' },
   ];
-  public labels = [
-    { label: 'Donaciones', url: '/folder/Donaciones', icon: 'wallet' },
-    { label: 'Apadrinamiento', url: '/folder/Apadrinamiento', icon: 'paw' },
-  ];
-  public labels2 = [
+  public admin = [
     { label: 'Login', url: '/auth/login', icon: 'finger-print' },
-    { label: 'Ajustes', url: '/admin/config', icon: 'cog' },
+    { label: 'Perfil', url: '/admin/config', icon: 'man' },
     { label: 'Productos', url: '/admin/producto', icon: 'cart' },
     { label: 'Logout', url: '', icon: 'exit' },
   ];
-  public labels3 = [
+  public comercial = [
     { label: 'Quiénes somos', url: '/folder/Quiénes somos', icon: 'book' },
     { label: 'Nuestro equipo', url: '/pages/nuestroequipo', icon: 'people' },
     { label: 'Contáctanos', url: '/folder/Contáctanos', icon: 'mail' },
   ];
-  constructor(private auth: AuthenticationService, private router: Router) {
+
+
+  constructor(private database: FirestoreService, private auth: AuthenticationService, private router: Router) {
+    
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
         console.log('usuario logueado');
-        this.login = true;
+        this.login = true; 
+        const id = res.uid;
+        const path = 'clientes';
+        this.database.getDoc<Clientes>(path, id).subscribe(res => {
+          this.cliente = res;
+          console.log(res);
+        }, err => {
+          console.log('Error al cargar datos');
+        });
       } else {
         console.log('usuario no logueado');
         this.login = false;
       }
     });
+
   }
 
   logout() {
