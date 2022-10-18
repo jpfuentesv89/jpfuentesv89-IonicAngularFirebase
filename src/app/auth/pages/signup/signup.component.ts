@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConfigService } from 'src/app/admin/services/config.service';
+import { FirestorageService } from 'src/app/services/firestorage.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -14,7 +15,7 @@ export class SignupComponent implements OnInit {
 
   public signup: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private router: Router, private config: ConfigService) {
+  constructor(private database: FirestoreService, private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private router: Router, private datastorage: FirestorageService) {
     this.signup = this.fb.group({
       userName: [null, Validators.required],
       email: [null, Validators.required],
@@ -32,19 +33,27 @@ export class SignupComponent implements OnInit {
         this.interaction.openLoading('Registrando usuario...');
         const result = await this.auth.signup(email, password).catch(err => console.log(err));
         this.interaction.closeLoading();
-        this.interaction.presentToast('Usuario existente');
         if (result) {
           console.log('Signup successful');
-          this.config.agregarUser(result.user.uid, userName, result.user.email);
-          this.interaction.closeLoading();
-          this.interaction.presentToast('Usuario registrado correctamente');
-          this.router.navigate(['/login']);
+          const path = 'clientes';
+          const data = {
+            username: userName,
+            email: email,
+            uid: result.user.uid,
+            foto: './assets/img/profile.gif',
+          };
+          this.database.createDoc(data, path, result.user.uid).then(res => {
+            this.interaction.presentToast('Usuario creado');
+            this.router.navigate(['/login']);
+          }).catch(err => {
+            this.interaction.presentToast('Error al crear usuario');
+          });
         }
       } else {
-        this.interaction.presentToast('Contraseñas no coinciden');
+        this.interaction.presentToast('Las contraseñas no coinciden');
       }
     } else {
-      this.interaction.presentToast('Llene todos los campos');
+      this.interaction.presentToast('Complete los campos');
     }
   }
 

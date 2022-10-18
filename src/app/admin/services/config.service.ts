@@ -25,21 +25,6 @@ export class ConfigService {
 
   constructor(private database: FirestoreService, private interaction: InteractionService) { }
 
-  agregarUser(id: string, userName: string, email: string) {
-    this.interaction.openLoading('Guardando cliente...');
-    const path = 'clientes';
-    this.cliente.email = email;
-    this.cliente.uid = id;
-    this.cliente.username = userName;
-    this.database.createDoc(this.cliente, path, id).then(() => {
-      this.interaction.closeLoading();
-      this.interaction.presentToast('Cliente guardado');
-    }).catch(err => {
-      this.interaction.closeLoading();
-      this.interaction.presentToast('Error al guardar cliente');
-    });
-  }
-
   borraUser() {
     this.interaction.openLoading('Borrando cliente...');
     const id = this.cliente.rut.toString();

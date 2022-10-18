@@ -9,35 +9,32 @@
 </ion-header>
 
 <ion-content>
-  <div >
-  <form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
-    <ion-img class="img" src="\assets\img\perroygato.png" > </ion-img>
-    <h1 class="title">Veterinaria Chile</h1>
-    <br><br><br><br><br><br><br><br>
-   
-    <div class="cosas">
-    <ion-item>
-      <ion-label class="formato" color="dark" position="floating"> Nombre de usuario</ion-label>
-      <ion-input type="text" formControlName="userName" required></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label class="formato" color="dark" position="floating">Email</ion-label>
-      <ion-input type="text" formControlName="email" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="formato" color="dark" position="floating">Contraseña</ion-label>
-      <ion-input type="password" formControlName="password" required></ion-input>
-    </ion-item>
-    
-    <ion-item class="wea">
-      <ion-label class="formato" color="dark" position="floating">Confirme Contraseña</ion-label> 
-      <ion-input class="formato2" type="password" formControlName="password2" required></ion-input>
-    </ion-item>
+  <div>
+    <form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
+      <ion-img class="img" src="\assets\img\perroygato.png"> </ion-img>
+      <h1 class="title">Veterinaria Chile</h1>
+      <br><br><br><br><br><br><br><br>
+      <div class="cosas">
+        <ion-item>
+          <ion-label class="formato" color="dark" position="floating"> Nombre de usuario</ion-label>
+          <ion-input type="text" formControlName="userName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="formato" color="dark" position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="formato" color="dark" position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password" required></ion-input>
+        </ion-item>
+        <ion-item class="wea">
+          <ion-label class="formato" color="dark" position="floating">Confirme Contraseña</ion-label>
+          <ion-input class="formato2" type="password" formControlName="password2" required></ion-input>
+        </ion-item>
+      </div>
+      <br>
+      <ion-button color="primary" expand="block" class="main-btn" type="submit">Registrarme</ion-button>
+    </form>
+    <br><br>
   </div>
-  <br>
-    <ion-button color="primary" expand="block"  class="main-btn" type="submit">Registrarme</ion-button>
-  </form>
-<br><br>
-</div>
 </ion-content>
