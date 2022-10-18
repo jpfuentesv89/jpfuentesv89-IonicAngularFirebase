@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'nuestroequipo',
     component: NuestroequipoPage
   },
+  {
+    path: 'nosotros',
+    loadChildren: () => import('./nosotros/nosotros.module').then( m => m.NosotrosPageModule)
+  },
 
 
 ];

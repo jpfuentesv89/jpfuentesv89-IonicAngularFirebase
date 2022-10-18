@@ -40,9 +40,8 @@ export class AppComponent {
     { label: 'Logout', url: '', icon: 'exit' },
   ];
   public comercial = [
-    { label: 'Quiénes somos', url: '/folder/Quiénes somos', icon: 'book' },
     { label: 'Nuestro equipo', url: '/pages/nuestroequipo', icon: 'people' },
-    { label: 'Contáctanos', url: '/folder/Contáctanos', icon: 'mail' },
+    { label: 'Nosotros', url: '/pages/nosotros', icon: 'book' },
   ];
 
 
