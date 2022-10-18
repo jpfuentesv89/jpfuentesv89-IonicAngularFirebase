@@ -1,23 +1,4 @@
-/*******TITULO*******/
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-.title {
-  color: #f1f8ff;
-  text-shadow: 0 20px 25px #222223, 0 40px 60px #222223;
-  font-size: 32px;
-  text-decoration: none;
-  margin: 0;
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  text-align: center;
-  font-family: 'Lobster', cursive;
-}
-
-
-/*******FIN TITULO*******/
 
 img {
   padding-top: 10px;
@@ -30,9 +11,4 @@ p {
 
 hr {
   background-color: rgba(75, 64, 64, 0.379);
-}
-
-.fondo {
-  background: rgb(28, 158, 159);
-  background: linear-gradient(59deg, rgba(28, 158, 159, 1) 0%, rgba(45, 112, 253, 1) 100%);
 }

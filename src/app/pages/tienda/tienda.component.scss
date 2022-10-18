@@ -17,22 +17,18 @@ ion-card{
     background: linear-gradient(-26deg, rgb(35, 134, 136), rgb(19, 30, 125));        
     max-width: 700px;
     max-height: 950px;
+    margin-right: 10%; 
+    margin-left: 10%;
 }
 
 .card-img{
-    max-width: 100%;
-    max-height: 100%;   
     
-    min-width: 200px;
-    min-height: 200px;
+    min-height: 150px;
+    min-width: 150px;
     align-items: center;
-    justify-content: center;
-    border-radius: 10%;
-}
-
-ion-toolbar{
-    background: -webkit-linear-gradient(89deg, rgb(72, 155, 229), rgb(26, 84, 142));
-background: linear-gradient(89deg, rgb(72, 155, 229), rgb(26, 84, 142));
+    border-radius: 25px;
+   
+   
 }
 
 .precio{
@@ -46,3 +42,5 @@ background: linear-gradient(89deg, rgb(72, 155, 229), rgb(26, 84, 142));
 
 .nombre{font-weight: bold;
 }
+
+

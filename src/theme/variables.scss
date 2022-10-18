@@ -162,7 +162,7 @@
    */
 
   .ios body {
-    --ion-background-color: #368bb3;
+    --ion-background-color:linear-gradient(59deg, rgba(28, 158, 159, 1) 0%, rgba(45, 112, 253, 1) 100%);
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #000000;
@@ -188,9 +188,9 @@
     --ion-color-step-900: #e6e6e6;
     --ion-color-step-950: #f2f2f2;
 
-    --ion-item-background:#76bed4;
+    --ion-item-background:#368bb3;
 
-    --ion-toolbar-background: #368bb3;
+    --ion-toolbar-background: linear-gradient(#1250e0, #368bb3);
 
     --ion-card-background: #1c1c1d;
   }
@@ -208,7 +208,7 @@
    */
 
   .md body {
-    --ion-background-color: #368bb3;
+    --ion-background-color: linear-gradient(59deg, rgba(28, 158, 159, 1) 0%, rgba(45, 112, 253, 1) 100%);
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #000000;
@@ -236,12 +236,56 @@
     --ion-color-step-900: #e7e7e7;
     --ion-color-step-950: #f3f3f3;
 
-    --ion-item-background: #76bed4;
+    --ion-item-background: #368bb3;
 
-    --ion-toolbar-background: #368bb3;
+    --ion-toolbar-background: linear-gradient(#1250e0, #368bb3);
 
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
   }
 }
+
+
+/*******TITULO*******/
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.title {
+  color: #f1f8ff;
+  text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
+  font-size: 32px;
+  text-decoration: none;
+  margin: 0;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  font-family: 'Lobster', cursive;
+}
+
+/*FIN TITULO*/
+
+/*********************FONDO PRINCIPAL********************/
+form {
+  background: rgb(28, 158, 159);
+  background: linear-gradient(59deg, rgba(28, 158, 159, 1) 0%, rgba(45, 112, 253, 1) 100%);
+}
+
+
+/*FIN FONDO PRINCIPAL*/
+
+/************TOOLBAL***********/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+ion-toolbar {
+  color:rgb(255, 255, 255);
+  font-family: 'Playfair Display', serif;
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+
+
+/*FIN TOOLBAL*/

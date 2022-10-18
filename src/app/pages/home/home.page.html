@@ -9,7 +9,7 @@
   </ion-header>
 
 <ion-content class="auth-form">
-  <div class="fondo">
+  <form >
     <h3 class="title">Veterinaria Chile</h3>
     <ion-img class="img" src="\assets\img\catdog.png"></ion-img>
     <p>La veterinaria preferida por tus mascotas</p>
@@ -21,14 +21,24 @@
         <ion-col align-self-center>
           <span class="divider line one-line">Registra tu cuenta y accede a los servicios de veterinaria chile</span>
           <br>
-          <ion-button (click)="registro()" color="danger">Registrar</ion-button>
+          <ion-button (click)="registro()" expand="block"  color="danger">Registrar</ion-button>
           <br>
           <span class="already">Estas registrado?</span>
           <br>
-          <ion-button (click)="iniciar()" color="primary">Iniciar Sesion</ion-button>
+          <ion-button (click)="iniciar()" expand="block"  color="primary">Iniciar Sesion</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+    <ion-grid>
+      <ion-row  *ngIf="login == true" >
+        <ion-col align-self-center>
+          <span >
+            Bienvenido <br> No dudes en contactarte con tu veterinario 
+            de confianza ante cualquier duda con tu mascota
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
 

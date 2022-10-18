@@ -18,7 +18,9 @@
 ion-card{
     border-radius: 30px;  
     background: -webkit-linear-gradient(-26deg, rgb(35, 134, 136), rgb(19, 30, 125));
-    background: linear-gradient(-26deg, rgb(35, 134, 136), rgb(19, 30, 125));        
+    background: linear-gradient(-26deg, rgb(35, 134, 136), rgb(19, 30, 125));      
+    margin-right: 10%; 
+    margin-left: 10%;
 }
 .mensaje{
     color: rgb(255, 255, 255);
@@ -32,17 +34,11 @@ ion-card{
 }
 
 .card-img{
-   filter: grayscale(50%);
+   filter: grayscale(30%);
    transition: filter 300ms;
 }
 .card-img:is(:hover, :focus){
    filter: grayscale(0%);
 
-}
-
-
-ion-toolbar{
-background: -webkit-linear-gradient(89deg, rgb(72, 155, 229), rgb(26, 84, 142));
-background: linear-gradient(89deg, rgb(72, 155, 229), rgb(26, 84, 142));
 }
 
