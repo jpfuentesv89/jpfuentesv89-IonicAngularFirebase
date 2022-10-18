@@ -143,14 +143,30 @@ export class ProductoComponent implements OnInit {
 
   actualizarProducto() {
     const path = 'productos';
-    this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
-      this.interaction.presentToast('Producto actualizado');
-      console.log('Producto actualizado');
-      this.limpiarProducto();
+    if (this.nuevaImagen === this.producto.foto) {
+      this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
+        this.interaction.presentToast('Producto actualizado');
+        console.log('Producto actualizado');
+        this.limpiarProducto();
+      }).catch(error => {
+        this.interaction.presentToast('Producto no actualizado');
+        console.log(error);
+      });
+  } else {
+    this.datastorage.uploadImage(this.newfile, path, this.producto.id).then(urlImage => {
+      this.producto.foto = urlImage;
+      console.log('Imagen subida correctamente.');
+      this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
+        this.interaction.presentToast('Producto actualizado');
+        console.log('Producto actualizado');
+        this.limpiarProducto();
+      }).catch(error => {
+        this.interaction.presentToast('Producto no actualizado');
+        console.log(error);
+      });
     }).catch(error => {
-      this.interaction.presentToast('Producto no actualizado');
+      console.log('Error al subir imagen');
       console.log(error);
     });
-  }
-
+  }}
 }
