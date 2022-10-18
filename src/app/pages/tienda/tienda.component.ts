@@ -27,13 +27,12 @@ export class TiendaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.interaction.openLoading('Cargando productos...');
     const path = 'productos';
     this.database.getdocs(path).subscribe(res => {
-      this.interaction.closeLoading();
+      this.interaction.presentToast('Productos listados');
       this.productos = res;
     }, err => {
-      this.interaction.closeLoading();
+      this.interaction.presentToast('Error al listar productos');
       console.log(err);
     });
 

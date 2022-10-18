@@ -37,13 +37,12 @@ export class ProductoComponent implements OnInit {
       }
     });
 
-    this.interaction.openLoading('Cargando productos...');
     const path = 'productos';
     this.database.getdocs(path).subscribe(res => {
-      this.interaction.closeLoading();
+      this.interaction.presentToast('Productos listados');
       this.productos = res;
     }, err => {
-      this.interaction.closeLoading();
+      this.interaction.presentToast('Error al listar productos');
       console.log(err);
     });
 
@@ -147,6 +146,7 @@ export class ProductoComponent implements OnInit {
     this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
       this.interaction.presentToast('Producto actualizado');
       console.log('Producto actualizado');
+      this.limpiarProducto();
     }).catch(error => {
       this.interaction.presentToast('Producto no actualizado');
       console.log(error);

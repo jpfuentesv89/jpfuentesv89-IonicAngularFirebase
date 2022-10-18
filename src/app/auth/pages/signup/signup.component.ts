@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
     this.signup = this.fb.group({
       userName: [null, Validators.required],
       email: [null, Validators.required],
-      password: [null, [Validators.required, Validators.minLength(8)]],
+      password: [null, [Validators.required]],
       password2: [null, [Validators.required]]
     });
   }
@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit {
   async onSubmit() {
     if (this.signup.valid) {
       const { userName, email, password, password2 } = this.signup.value as { userName: string; email: string; password: string; password2: string };
+      if (password.length >= 8 ){
       if (password === password2) {
         this.interaction.openLoading('Registrando usuario...');
         const result = await this.auth.signup(email, password).catch(err => console.log(err));
@@ -51,6 +52,9 @@ export class SignupComponent implements OnInit {
         }
       } else {
         this.interaction.presentToast('Las contraseñas no coinciden');
+      }
+    } else {
+      this.interaction.presentToast('La contraseña debe tener al menos 8 caracteres');
       }
     } else {
       this.interaction.presentToast('Complete los campos');
