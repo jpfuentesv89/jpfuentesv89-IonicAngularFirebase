@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'app.web.veteriapps',
   appName: 'veteriApps',
   webDir: 'www',
   bundledWebRuntime: false

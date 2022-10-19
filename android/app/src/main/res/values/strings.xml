@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">veteriApps</string>
+    <string name="title_activity_main">veteriApps</string>
+    <string name="package_name">app.web.veteriapps</string>
+    <string name="custom_url_scheme">app.web.veteriapps</string>
+</resources>
