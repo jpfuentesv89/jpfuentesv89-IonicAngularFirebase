@@ -29,6 +29,7 @@ import { GeneroComponent } from './mantenedores/usuarios/genero/genero.component
 import { ClienteComponentRecepcionista } from './mantenedores/usuarios/recepcionista/cliente/cliente.component';
 import { RecepcionistaComponent } from './mantenedores/usuarios/recepcionista/recepcionista/recepcionista.component';
 import { RegionComponent } from './mantenedores/usuarios/region/region.component';
+import { PersonaComponent } from './mantenedores/persona/persona.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { RegionComponent } from './mantenedores/usuarios/region/region.component
     ClienteComponentRecepcionista,
     RecepcionistaComponent,
     RegionComponent,
+    PersonaComponent,
 
 
   ],
