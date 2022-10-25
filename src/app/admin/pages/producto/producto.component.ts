@@ -130,7 +130,6 @@ export class ProductoComponent implements OnInit {
     const path = 'productos';
     this.database.getDoc<Productos>(path, id).subscribe(res => {
       this.interaction.closeLoading();
-      this.interaction.presentToast('Producto encontrado');
       this.producto = res;
       this.nuevaImagen = res.foto;
     });
