@@ -39,10 +39,10 @@ export class ProductoComponent implements OnInit {
 
     const path = 'productos';
     this.database.getdocs(path).subscribe(res => {
-      this.interaction.presentToast('Productos listados');
+      this.interaction.presentToast('Productos Cargados');
       this.productos = res;
     }, err => {
-      this.interaction.presentToast('Error al listar productos');
+      this.interaction.presentToast('Error al cargar productos');
       console.log(err);
     });
 
