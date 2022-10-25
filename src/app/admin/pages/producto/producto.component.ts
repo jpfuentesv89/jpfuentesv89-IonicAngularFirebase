@@ -39,10 +39,10 @@ export class ProductoComponent implements OnInit {
 
     const path = 'productos';
     this.database.getdocs(path).subscribe(res => {
-      this.interaction.presentToast('Productos Cargados');
+      this.interaction.presentToast('Productos listados');
       this.productos = res;
     }, err => {
-      this.interaction.presentToast('Error al cargar productos');
+      this.interaction.presentToast('Error al listar productos');
       console.log(err);
     });
 
@@ -130,6 +130,7 @@ export class ProductoComponent implements OnInit {
     const path = 'productos';
     this.database.getDoc<Productos>(path, id).subscribe(res => {
       this.interaction.closeLoading();
+      this.interaction.presentToast('Producto encontrado');
       this.producto = res;
       this.nuevaImagen = res.foto;
     });
@@ -142,15 +143,12 @@ export class ProductoComponent implements OnInit {
 
   actualizarProducto() {
     const path = 'productos';
-    this.interaction.openLoading('Actualizando producto...');
     if (this.nuevaImagen === this.producto.foto) {
       this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
-        this.interaction.closeLoading();
         this.interaction.presentToast('Producto actualizado');
         console.log('Producto actualizado');
         this.limpiarProducto();
       }).catch(error => {
-        this.interaction.closeLoading();
         this.interaction.presentToast('Producto no actualizado');
         console.log(error);
       });
