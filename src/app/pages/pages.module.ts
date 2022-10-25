@@ -6,6 +6,8 @@ import { TiendaComponent } from './tienda/tienda.component';
 import { NuestroequipoPage } from './nuestroequipo/nuestroequipo.page';
 import { HomePage } from './home/home.page';
 import { NosotrosPage } from './nosotros/nosotros.page';
+import { PerfilPage } from './administrador/perfil/perfil.page';
+import { PerfilPageBodega } from './bodega/perfil/perfil.page';
 
 
 @NgModule({
@@ -14,6 +16,9 @@ import { NosotrosPage } from './nosotros/nosotros.page';
     HomePage,
     NuestroequipoPage,
     NosotrosPage,
+    PerfilPage,
+    PerfilPageBodega,
+    
   ],
   imports: [
     CommonModule,
