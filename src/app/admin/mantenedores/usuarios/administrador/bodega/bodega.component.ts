@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './bodega.component.html',
   styleUrls: ['./bodega.component.scss'],
 })
-export class BodegaComponent implements OnInit {
+export class BodegaComponentAdministrador implements OnInit {
 
   constructor() { }
 

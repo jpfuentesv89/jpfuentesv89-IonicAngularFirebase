@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './historial-cambios.component.html',
   styleUrls: ['./historial-cambios.component.scss'],
 })
-export class HistorialCambiosComponent implements OnInit {
+export class HistorialCambiosComponentAdmin implements OnInit {
 
   constructor() { }
 
