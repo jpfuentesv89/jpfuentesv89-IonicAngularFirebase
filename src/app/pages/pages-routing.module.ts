@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home/home.page';
+import { NosotrosPage } from './nosotros/nosotros.page';
 import { NuestroequipoPage } from './nuestroequipo/nuestroequipo.page';
 import { TiendaComponent } from './tienda/tienda.component';
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'nosotros',
-    loadChildren: () => import('./nosotros/nosotros.module').then( m => m.NosotrosPageModule)
+    component: NosotrosPage
   },
 
 

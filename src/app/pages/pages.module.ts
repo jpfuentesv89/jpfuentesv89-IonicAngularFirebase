@@ -5,6 +5,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { TiendaComponent } from './tienda/tienda.component';
 import { NuestroequipoPage } from './nuestroequipo/nuestroequipo.page';
 import { HomePage } from './home/home.page';
+import { NosotrosPage } from './nosotros/nosotros.page';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { HomePage } from './home/home.page';
     TiendaComponent,
     HomePage,
     NuestroequipoPage,
+    NosotrosPage,
   ],
   imports: [
     CommonModule,
