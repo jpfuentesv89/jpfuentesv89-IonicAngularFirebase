@@ -143,12 +143,15 @@ export class ProductoComponent implements OnInit {
 
   actualizarProducto() {
     const path = 'productos';
+    this.interaction.openLoading('Actualizando producto...');
     if (this.nuevaImagen === this.producto.foto) {
       this.database.updateDoc(this.producto, path, this.producto.id).then(() => {
+        this.interaction.closeLoading();
         this.interaction.presentToast('Producto actualizado');
         console.log('Producto actualizado');
         this.limpiarProducto();
       }).catch(error => {
+        this.interaction.closeLoading();
         this.interaction.presentToast('Producto no actualizado');
         console.log(error);
       });
