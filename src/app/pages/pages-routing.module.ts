@@ -14,7 +14,20 @@ import { AtencionPagePeluquero } from './peluquero/atencion/atencion.page';
 import { DatosPacientePagePeluquero } from './peluquero/datos-paciente/datos-paciente.page';
 import { HistorialAtencionesPagePeluquero } from './peluquero/historial-atenciones/historial-atenciones.page';
 import { PefilPagePeluquero} from './peluquero/peril/peril.page';
+import { AgendarAtencionesPage } from './recepcionista/agendar-atenciones/agendar-atenciones.page';
+import { CobrosPage } from './recepcionista/cobros/cobros.page';
+import { CrearClientePageRecepcionista } from './recepcionista/crear-cliente/crear-cliente.page';
+import { CrearMascotaPageRecepcionista } from './recepcionista/crear-mascota/crear-mascota.page';
+import { HistorialAtencionesPageRecepcionista } from './recepcionista/historial-atenciones/historial-atenciones.page';
+import { PerfilPageRecepcionista } from './recepcionista/perfil/perfil.page';
+import { ClientePageTienda } from './tienda/cliente/cliente.page';
+import { RecepcionistaPageTienda } from './tienda/recepcionista/recepcionista.page';
 import { TiendaComponent } from './tienda/tienda.component';
+import { VeterinarioPageTienda } from './tienda/veterinario/veterinario.page';
+import { AtencionPageVeterinario } from './veterinario/atencion/atencion.page';
+import { DatosPacientePageVeterinario } from './veterinario/datos-paciente/datos-paciente.page';
+import { HistorialAtencionesPageVeterinario } from './veterinario/historial-atenciones/historial-atenciones.page';
+import { PefilPageVeterinario } from './veterinario/peril/peril.page';
 
 const routes: Routes = [
   {
@@ -77,10 +90,65 @@ const routes: Routes = [
     path: 'perfilpeluquero',
     component: PefilPagePeluquero
   },
+  {
+    path: 'agendaratencion',
+    component: AgendarAtencionesPage
+  },
+  {
+    path: 'cobros',
+    component: CobrosPage
+  },
+  {
+    path: 'crearclienterecepcionista',
+    component: CrearClientePageRecepcionista
+  },
+  {
+    path: 'crearmascotarecepcionista',
+    component: CrearMascotaPageRecepcionista
+  },
+  {
+    path: 'historialatencionrecepcionista',
+    component: HistorialAtencionesPageRecepcionista
+  },
+  {
+    path: 'perfilrecepcionista',
+    component: PerfilPageRecepcionista
+  },
+  {
+    path: 'tiendacliente',
+    component: ClientePageTienda
+  },
+  {
+    path: 'tiendarecepcionista',
+    component: RecepcionistaPageTienda
+  },
 
-
-
+  {
+    path: 'tiendaveterinario',
+    component: VeterinarioPageTienda
+  },
+  {
+    path: 'atencionverterinario',
+    component: AtencionPageVeterinario
+  },
+  {
+    path: 'datospacienteveterinario',
+    component: DatosPacientePageVeterinario
+  },
   
+  {
+    path: 'historialatencionveterinario',
+    component: HistorialAtencionesPageVeterinario
+  },
+  {
+    path: 'perfilveterinario',
+    component: PefilPageVeterinario
+  },
+  
+  
+  
+  
+
 ];
 
 @NgModule({

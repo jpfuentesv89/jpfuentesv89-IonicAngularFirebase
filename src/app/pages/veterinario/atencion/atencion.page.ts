@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './atencion.page.html',
   styleUrls: ['./atencion.page.scss'],
 })
-export class AtencionPage implements OnInit {
+export class AtencionPageVeterinario implements OnInit {
 
   constructor() { }
 
