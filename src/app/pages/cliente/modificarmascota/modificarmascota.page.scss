@@ -1,0 +1,26 @@
+img{
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.245);
+    max-width: 150px;
+    min-width: 150px;
+    margin-top: 5px;
+    margin-left: 25px;
+    box-shadow: 0 15px 20px #2e2e31, 0 30px 50px #2e2e31;;
+
+}
+
+ion-card-title{
+    text-align: center;
+    color: rgb(59, 59, 59);
+}
+
+ion-card{
+    background-image: radial-gradient(circle at 29.43% 14.38%, #a1ecff 0, #3cb5f2 50%, #0080cb 100%);
+    border-radius: 9px;
+    width:210px ;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 15px 20px #2e2e31, 0 30px 50px #2e2e31;;
+}
+span{color: #000;}
