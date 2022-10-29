@@ -33,6 +33,16 @@
         </ion-list>
 
         <ion-list id="inbox-list">
+          <ion-list-header>DEMO</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let demo  of DEMO" lines="none">
+            <ion-item routerDirection="root" [routerLink]="[demo.url]" lines="none" detail="false">
+              <ion-icon slot="start" [ios]="demo.icon + '-outline'" [md]="demo.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ demo.label }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="inbox-list">
           <ion-list-header>Ajustes</ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let Ajustes  of admin" lines="none">
             <ion-item *ngIf=" login == true && [Ajustes.label] != 'Login' && [Ajustes.label] != 'Logout' "

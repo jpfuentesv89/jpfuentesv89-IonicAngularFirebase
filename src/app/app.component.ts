@@ -33,6 +33,11 @@ export class AppComponent {
     { title: 'Inicio', url: '/pages/home', icon: 'home' },
     { title: 'Tienda', url: '/pages/tienda', icon: 'cart' },
   ];
+
+public DEMO = [
+  { label: 'perfil administrador', url: 'pages/perfiladmin', icon: 'man' },
+];
+
   public admin = [
     { label: 'Login', url: '/auth/login', icon: 'finger-print' },
     { label: 'Perfil', url: '/admin/config', icon: 'man' },
