@@ -35,7 +35,9 @@ export class AppComponent {
   ];
 
 public DEMO = [
-  { label: 'perfil administrador', url: 'pages/perfiladmin', icon: 'man' },
+  { label: 'perfil Administrador', url: 'pages/perfiladmin', icon: 'man' },
+  { label: 'perfil Bodeguero', url: 'pages/perfilbodega', icon: 'man' },
+  { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
 ];
 
   public admin = [
