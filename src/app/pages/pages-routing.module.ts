@@ -5,6 +5,8 @@ import { PerfilPageBodega } from './bodega/perfil/perfil.page';
 import { ComprasPage } from './cliente/compras/compras.page';
 import { DiagnosticoPage } from './cliente/mascotas/diagnostico/diagnostico.page';
 import { MascotasPage } from './cliente/mascotas/mascotas/mascotas.page';
+import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
+import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
 import { PerfilPageCliente } from './cliente/perfil/perfil.page';
 import { SolicitarAtencionPage } from './cliente/solicitar-atencion/solicitar-atencion.page';
 import { HomePage } from './home/home.page';
@@ -65,6 +67,15 @@ const routes: Routes = [
   {
     path: 'mascota',
     component: MascotasPage
+  },
+  {
+    path: 'modificarmascota',
+    component: ModificarmascotaPage
+  },
+  {
+    path: 'modificarcliente',
+    component: ModificarperfilPageCliente
+
   },
   {
     path: 'perfilcliente',
@@ -144,6 +155,7 @@ const routes: Routes = [
     path: 'perfilveterinario',
     component: PefilPageVeterinario
   },
+ 
   
   
   

@@ -29,6 +29,9 @@ import { AtencionPageVeterinario } from './veterinario/atencion/atencion.page';
 import { DatosPacientePageVeterinario } from './veterinario/datos-paciente/datos-paciente.page';
 import { HistorialAtencionesPageVeterinario } from './veterinario/historial-atenciones/historial-atenciones.page';
 import { PefilPageVeterinario } from './veterinario/peril/peril.page';
+import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
+import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
+
 
 
 @NgModule({
@@ -42,6 +45,8 @@ import { PefilPageVeterinario } from './veterinario/peril/peril.page';
     ComprasPage,
     DiagnosticoPage,
     MascotasPage,
+    ModificarmascotaPage,
+    ModificarperfilPageCliente,
     SolicitarAtencionPage,
     AtencionPagePeluquero,
     DatosPacientePagePeluquero,

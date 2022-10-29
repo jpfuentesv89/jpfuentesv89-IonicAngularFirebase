@@ -38,6 +38,10 @@ public DEMO = [
   { label: 'perfil Administrador', url: 'pages/perfiladmin', icon: 'man' },
   { label: 'perfil Bodeguero', url: 'pages/perfilbodega', icon: 'man' },
   { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
+  { label: 'modificar cliente', url: 'pages/modificarcliente', icon: 'man' },
+  { label: 'agregar mascota', url: 'pages/mascota', icon: 'man' },
+  
+  
 ];
 
   public admin = [
