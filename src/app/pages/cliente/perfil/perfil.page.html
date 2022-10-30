@@ -23,7 +23,20 @@
     <ion-img class="logo3" src="\assets\img\perfil.png"></ion-img>
   </ion-label>
 
- 
+  <ion-list id="inbox-list">
+    <ion-item>
+      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.username" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input disabled="true" type="text" [(ngModel)]="cliente.email" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Telefono</ion-label>
+      <ion-input type="number" [(ngModel)]="cliente.telefono" ngDefaultControl></ion-input>
+    </ion-item>
+  </ion-list>
   <ion-button expand="full" color="primary" href='pages/mascota' > mascotas </ion-button>
   <ion-button expand="full" color="primary" href='pages/listadecompras' > Mis compras </ion-button>
   <ion-button expand="full" color="secondary" href='pages/modificarcliente'>Ver / Actualizar mis datos</ion-button>
