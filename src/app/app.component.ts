@@ -39,6 +39,8 @@ public DEMO = [
   { label: 'perfil Bodeguero', url: 'pages/perfilbodega', icon: 'man' },
   { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
   { label: 'agregar mascota', url: 'pages/mascota', icon: 'man' },
+  { label: 'compras cliente', url: 'pages/compras', icon: 'cart' },
+  
   
   
 ];
