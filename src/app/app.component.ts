@@ -39,10 +39,7 @@ public DEMO = [
   { label: 'perfil Bodeguero', url: 'pages/perfilbodega', icon: 'man' },
   { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
   { label: 'agregar mascota', url: 'pages/mascota', icon: 'man' },
-  { label: 'compras cliente', url: 'pages/compras', icon: 'cart' },
-  
-  
-  
+  { label: 'compras cliente', url: 'pages/compras', icon: 'cart' }, 
 ];
 
   public admin = [
@@ -51,6 +48,7 @@ public DEMO = [
     { label: 'Productos', url: '/admin/producto', icon: 'cart' },
     { label: 'Logout', url: '', icon: 'exit' },
   ];
+
   public comercial = [
     { label: 'Nuestro equipo', url: '/pages/nuestroequipo', icon: 'people' },
     { label: 'Nosotros', url: '/pages/nosotros', icon: 'book' },

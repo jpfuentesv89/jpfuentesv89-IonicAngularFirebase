@@ -33,6 +33,7 @@ import { HistorialAtencionesPageVeterinario } from './veterinario/historial-aten
 import { PefilPageVeterinario } from './veterinario/peril/peril.page';
 
 const routes: Routes = [
+  
   {
     path: 'tienda',
     component: TiendaComponent
@@ -73,7 +74,6 @@ const routes: Routes = [
     path: 'crearmascotacliente',
     component: CrearmascotaPageCliente
   },
-  
   {
     path: 'modificarmascota',
     component: ModificarmascotaPage
@@ -81,7 +81,6 @@ const routes: Routes = [
   {
     path: 'modificarcliente',
     component: ModificarperfilPageCliente
-
   },
   {
     path: 'perfilcliente',
@@ -139,7 +138,6 @@ const routes: Routes = [
     path: 'tiendarecepcionista',
     component: RecepcionistaPageTienda
   },
-
   {
     path: 'tiendaveterinario',
     component: VeterinarioPageTienda
@@ -151,8 +149,7 @@ const routes: Routes = [
   {
     path: 'datospacienteveterinario',
     component: DatosPacientePageVeterinario
-  },
-  
+  }, 
   {
     path: 'historialatencionveterinario',
     component: HistorialAtencionesPageVeterinario
@@ -161,11 +158,6 @@ const routes: Routes = [
     path: 'perfilveterinario',
     component: PefilPageVeterinario
   },
-  
-  
-  
-  
-  
 
 ];
 

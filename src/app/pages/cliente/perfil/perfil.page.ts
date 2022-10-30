@@ -11,7 +11,6 @@ import { InteractionService } from 'src/app/services/interaction.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPageCliente implements OnInit {
-
   
   cliente: Clientes = {
     rut: null,

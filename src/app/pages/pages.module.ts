@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PagesRoutingModule } from './pages-routing.module';
 import { TiendaComponent } from './tienda/tienda.component';
 import { NuestroequipoPage } from './nuestroequipo/nuestroequipo.page';
@@ -32,6 +31,7 @@ import { PefilPageVeterinario } from './veterinario/peril/peril.page';
 import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
 import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
 import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.page';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -68,11 +68,11 @@ import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.pag
     HistorialAtencionesPageVeterinario,
     PefilPageVeterinario,
     
-    
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    FormsModule
   ]
 })
 export class PagesModule { }
