@@ -31,6 +31,7 @@ import { HistorialAtencionesPageVeterinario } from './veterinario/historial-aten
 import { PefilPageVeterinario } from './veterinario/peril/peril.page';
 import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
 import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
+import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.page';
 
 
 
@@ -46,6 +47,7 @@ import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarp
     DiagnosticoPage,
     MascotasPage,
     ModificarmascotaPage,
+    CrearmascotaPageCliente,
     ModificarperfilPageCliente,
     SolicitarAtencionPage,
     AtencionPagePeluquero,

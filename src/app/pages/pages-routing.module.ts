@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PerfilPageAdmin } from './administrador/perfil/perfil.page';
 import { PerfilPageBodega } from './bodega/perfil/perfil.page';
 import { ComprasPage } from './cliente/compras/compras.page';
+import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.page';
 import { DiagnosticoPage } from './cliente/mascotas/diagnostico/diagnostico.page';
 import { MascotasPage } from './cliente/mascotas/mascotas/mascotas.page';
 import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
@@ -68,6 +69,11 @@ const routes: Routes = [
     path: 'mascota',
     component: MascotasPage
   },
+  {
+    path: 'crearmascotacliente',
+    component: CrearmascotaPageCliente
+  },
+  
   {
     path: 'modificarmascota',
     component: ModificarmascotaPage
@@ -155,7 +161,7 @@ const routes: Routes = [
     path: 'perfilveterinario',
     component: PefilPageVeterinario
   },
- 
+  
   
   
   
