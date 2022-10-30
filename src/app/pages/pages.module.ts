@@ -31,6 +31,7 @@ import { PefilPageVeterinario } from './veterinario/peril/peril.page';
 import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
 import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
 import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.page';
+import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
 
 
 
@@ -71,8 +72,8 @@ import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.pag
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule,
-    FormsModule
+    PagesRoutingModule
   ]
 })
 export class PagesModule { }
+
