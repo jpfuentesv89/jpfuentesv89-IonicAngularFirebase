@@ -33,6 +33,7 @@ import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascot
 import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
 import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.page';
 import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -74,7 +75,9 @@ import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.pag
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    FormsModule
   ]
 })
 export class PagesModule { }
+
