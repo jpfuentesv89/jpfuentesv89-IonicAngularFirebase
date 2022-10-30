@@ -40,8 +40,6 @@ public DEMO = [
   { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
   { label: 'agregar mascota', url: 'pages/mascota', icon: 'man' },
   { label: 'compras cliente', url: 'pages/compras', icon: 'cart' },
-  { label: 'lista de compras del weas', url: 'pages/listadecompras', icon: 'cart' },
-  
   
   
   
@@ -53,6 +51,7 @@ public DEMO = [
     { label: 'Productos', url: '/admin/producto', icon: 'cart' },
     { label: 'Logout', url: '', icon: 'exit' },
   ];
+
   public comercial = [
     { label: 'Nuestro equipo', url: '/pages/nuestroequipo', icon: 'people' },
     { label: 'Nosotros', url: '/pages/nosotros', icon: 'book' },
