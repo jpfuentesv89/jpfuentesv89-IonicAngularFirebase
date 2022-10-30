@@ -40,6 +40,8 @@ public DEMO = [
   { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
   { label: 'agregar mascota', url: 'pages/mascota', icon: 'man' },
   { label: 'compras cliente', url: 'pages/compras', icon: 'cart' },
+  { label: 'lista de compras del weas', url: 'pages/listadecompras', icon: 'cart' },
+  
   
   
   
