@@ -19,6 +19,7 @@ import { AgendarAtencionesPage } from './recepcionista/agendar-atenciones/agenda
 import { CobrosPage } from './recepcionista/cobros/cobros.page';
 import { HistorialAtencionesPageRecepcionista } from './recepcionista/historial-atenciones/historial-atenciones.page';
 import { PerfilPageRecepcionista } from './recepcionista/perfil/perfil.page';
+import { CarritoPageCliente } from './tienda/carrito/carrito.page';
 import { ClientePageTienda } from './tienda/cliente/cliente.page';
 import { RecepcionistaPageTienda } from './tienda/recepcionista/recepcionista.page';
 import { VeterinarioPageTienda } from './tienda/veterinario/veterinario.page';
@@ -133,6 +134,13 @@ const routes: Routes = [
     path: 'perfilveterinario',
     component: PerfilPageVeterinario
   },
+  {
+    path: 'clientecarrito',
+    component: CarritoPageCliente
+  },
+  
+  
+
 
 ];
 
