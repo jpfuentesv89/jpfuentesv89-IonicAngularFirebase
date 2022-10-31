@@ -4,6 +4,7 @@ import { Clientes } from 'src/app/interfaces/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -109,5 +110,10 @@ export class PerfilPageCliente implements OnInit {
       file.readAsDataURL(event.target.files[0]);
     }
   }
+  
 
-}
+
+}  
+
+
+

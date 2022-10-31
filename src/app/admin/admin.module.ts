@@ -28,6 +28,7 @@ import { ClienteComponentRecepcionista } from './mantenedores/usuarios/recepcion
 import { RecepcionistaComponent } from './mantenedores/usuarios/recepcionista/recepcionista/recepcionista.component';
 import { RegionComponent } from './mantenedores/usuarios/region/region.component';
 import { PersonaComponent } from './mantenedores/persona/persona.component';
+import { ModificarmascotaComponent } from './mantenedores/mascotas/modificarmascota/modificarmascota.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { PersonaComponent } from './mantenedores/persona/persona.component';
     RecepcionistaComponent,
     RegionComponent,
     PersonaComponent,
+    ModificarmascotaComponent,
 
 
   ],

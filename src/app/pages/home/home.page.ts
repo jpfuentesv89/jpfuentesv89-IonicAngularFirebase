@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   }
 
   registro() {
-    this.router.navigate(['./auth/signup']);
+    this.router.navigate(['./auth/registrocliente']);
   }
 
 }
