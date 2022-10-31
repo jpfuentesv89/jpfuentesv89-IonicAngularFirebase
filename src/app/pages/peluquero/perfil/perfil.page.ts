@@ -6,12 +6,13 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
-  selector: 'app-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.scss'],
+  selector: 'app-perfil',
+  templateUrl: './perfil.page.html',
+  styleUrls: ['./perfil.page.scss'],
 })
-export class ConfigComponent implements OnInit {
+export class PerfilPagePeluquero implements OnInit {
 
+  
   cliente: Clientes = {
     rut: null,
     dv: '',

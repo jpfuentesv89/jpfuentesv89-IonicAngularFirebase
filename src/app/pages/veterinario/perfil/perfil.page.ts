@@ -1,15 +1,17 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 import { Clientes } from 'src/app/interfaces/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+
 @Component({
-  selector: 'app-modificarmascota',
-  templateUrl: './modificarmascota.page.html',
-  styleUrls: ['./modificarmascota.page.scss'],
+  selector: 'app-perfil',
+  templateUrl: './perfil.page.html',
+  styleUrls: ['./perfil.page.scss'],
 })
-export class ModificarmascotaPage implements OnInit {
+export class PerfilPageVeterinario implements OnInit {
 
   
   cliente: Clientes = {

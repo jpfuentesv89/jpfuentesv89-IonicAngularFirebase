@@ -31,24 +31,22 @@ export class AppComponent {
 
   public appPages = [
     { title: 'Inicio', url: '/pages/home', icon: 'home' },
-    { title: 'Tienda', url: '/pages/tienda', icon: 'cart' },
   ];
 
 public DEMO = [
   { label: 'perfil Administrador', url: 'pages/perfiladmin', icon: 'man' },
   { label: 'perfil Bodeguero', url: 'pages/perfilbodega', icon: 'man' },
   { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
-  { label: 'agregar mascota', url: 'pages/mascota', icon: 'man' },
-  { label: 'compras cliente', url: 'pages/compras', icon: 'cart' },
-  
-  
+  { label: 'perfil Veterinario', url: 'pages/perfilveterinario', icon: 'man' },
+  { label: 'perfil Peluquero', url: 'pages/perfilpeluquero', icon: 'man' },
+  { label: 'perfil Recepcionista', url: 'pages/perfilrecepcionista', icon: 'man' },
+  { label: 'mascota', url: 'pages/mascota', icon: 'man' },
+  { label: 'compras cliente', url: 'pages/compras', icon: 'cart' }, 
   
 ];
 
   public admin = [
     { label: 'Login', url: '/auth/login', icon: 'finger-print' },
-    { label: 'Perfil', url: '/admin/config', icon: 'man' },
-    { label: 'Productos', url: '/admin/producto', icon: 'cart' },
     { label: 'Logout', url: '', icon: 'exit' },
   ];
 

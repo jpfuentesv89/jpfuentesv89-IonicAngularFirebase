@@ -26,18 +26,8 @@ import { GeneroComponent } from './mantenedores/usuarios/genero/genero.component
 import { ClienteComponentRecepcionista } from './mantenedores/usuarios/recepcionista/cliente/cliente.component';
 import { RecepcionistaComponent } from './mantenedores/usuarios/recepcionista/recepcionista/recepcionista.component';
 import { RegionComponent } from './mantenedores/usuarios/region/region.component';
-import { ConfigComponent } from './pages/config/config.component';
-import { ProductoComponent } from './pages/producto/producto.component';
 
 const routes: Routes = [
-  {
-    path: 'config',
-    component: ConfigComponent
-  },
-  {
-    path: 'producto',
-    component: ProductoComponent
-  },
   {
     path: 'mascotacliente',
     component: ClienteComponentMascota
