@@ -7,7 +7,6 @@ import { PelajeComponent } from './mantenedores/mascotas/pelaje/pelaje.component
 import { RazasComponent } from './mantenedores/mascotas/razas/razas.component';
 import { RecepcionistaComponentMascota } from './mantenedores/mascotas/recepcionista/recepcionista.component';
 import { TipoaTencionComponent } from './mantenedores/mascotas/tipoa-tencion/tipoa-tencion.component';
-import { PersonaComponent } from './mantenedores/persona/persona.component';
 import { HistorialCambiosComponentAdmin } from './mantenedores/productos/administrador/historial-cambios/historial-cambios.component';
 import { ListadoProductoComponentAdmin } from './mantenedores/productos/administrador/listado-producto/listado-producto.component';
 import { ProductoComponentAdmin } from './mantenedores/productos/administrador/producto/producto.component';
@@ -128,12 +127,6 @@ const routes: Routes = [
     path: 'region',
     component: RegionComponent
   },
-  {
-    path: 'persona',
-    component: PersonaComponent
-  },
-
-  
   
 
 ];
