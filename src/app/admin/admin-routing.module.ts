@@ -105,7 +105,7 @@ const routes: Routes = [
     component: VeterinarioComponentAdministrador
   },
   {
-    path: 'crearclientecliente',
+    path: 'modificarcliente',
     component: ClienteComponentCliente
   },
   {
