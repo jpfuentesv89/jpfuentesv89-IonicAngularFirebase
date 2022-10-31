@@ -28,10 +28,10 @@ import { AtencionPageVeterinario } from './veterinario/atencion/atencion.page';
 import { DatosPacientePageVeterinario } from './veterinario/datos-paciente/datos-paciente.page';
 import { HistorialAtencionesPageVeterinario } from './veterinario/historial-atenciones/historial-atenciones.page';
 import { PefilPageVeterinario } from './veterinario/peril/peril.page';
-import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
-import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
 import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.page';
 import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
+import { PerfilPageCliente } from './cliente/perfil/perfil.page';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -47,9 +47,8 @@ import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.pag
     ListacomprasPageCliente,
     DiagnosticoPage,
     MascotasPage,
-    ModificarmascotaPage,
     CrearmascotaPageCliente,
-    ModificarperfilPageCliente,
+    PerfilPageCliente,
     SolicitarAtencionPage,
     AtencionPagePeluquero,
     DatosPacientePagePeluquero,
@@ -72,7 +71,8 @@ import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.pag
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

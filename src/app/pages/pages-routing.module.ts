@@ -7,8 +7,6 @@ import { CrearmascotaPageCliente } from './cliente/crearmascota/crearmascota.pag
 import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
 import { DiagnosticoPage } from './cliente/mascotas/diagnostico/diagnostico.page';
 import { MascotasPage } from './cliente/mascotas/mascotas/mascotas.page';
-import { ModificarmascotaPage } from './cliente/modificarmascota/modificarmascota.page';
-import { ModificarperfilPageCliente } from './cliente/modificarperfil/modificarperfil.page';
 import { PerfilPageCliente } from './cliente/perfil/perfil.page';
 import { SolicitarAtencionPage } from './cliente/solicitar-atencion/solicitar-atencion.page';
 import { HomePage } from './home/home.page';
@@ -79,14 +77,6 @@ const routes: Routes = [
   {
     path: 'crearmascotacliente',
     component: CrearmascotaPageCliente
-  },
-  {
-    path: 'modificarmascota',
-    component: ModificarmascotaPage
-  },
-  {
-    path: 'modificarcliente',
-    component: ModificarperfilPageCliente
   },
   {
     path: 'perfilcliente',
