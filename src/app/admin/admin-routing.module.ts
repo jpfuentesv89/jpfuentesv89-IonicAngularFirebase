@@ -128,10 +128,6 @@ const routes: Routes = [
     path: 'region',
     component: RegionComponent
   },
-  {
-    path: 'persona',
-    component: PersonaComponent
-  },
 
   
   
