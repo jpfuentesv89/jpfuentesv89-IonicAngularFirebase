@@ -42,6 +42,11 @@ public DEMO = [
   { label: 'perfil Recepcionista', url: 'pages/perfilrecepcionista', icon: 'man' },
   { label: 'mascota', url: 'pages/mascota', icon: 'man' },
   { label: 'compras cliente', url: 'pages/compras', icon: 'cart' }, 
+  { label: 'tienda', url: 'pages/tiendacliente', icon: 'cart' }, 
+  { label: 'Productos Administrador', url: 'admin/productoadmin', icon: 'cart' }, 
+
+  
+  
   
 ];
 

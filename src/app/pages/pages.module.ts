@@ -28,6 +28,7 @@ import { PerfilPageVeterinario } from './veterinario/perfil/perfil.page';
 import { PerfilPageCliente } from './cliente/perfil/perfil.page';
 import { FormsModule } from '@angular/forms';
 import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
+import { CarritoPageCliente } from './tienda/carrito/carrito.page';
 
 
 
@@ -59,6 +60,7 @@ import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.pag
     DatosPacientePageVeterinario,
     HistorialAtencionesPageVeterinario,
     PerfilPageVeterinario,
+    CarritoPageCliente,
     
   ],
   imports: [

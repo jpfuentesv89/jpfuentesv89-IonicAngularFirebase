@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cliente</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Nuestros Producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="fondo">
+    <div class="titulo">
+      <h1>Nuestros Productos </h1>
+    </div>
+    <h5>Total carrito:</h5>
 
+    <ion-button class="carrito" href='pages/clientecarrito'>Ver Carrito</ion-button>
+  
+    <div class="card">
+      <ion-list style="background-color:transparent; " *ngFor="let producto of productos;">
+        <ion-card style="margin-right: 11%;">
+          <ion-card-header>
+            <img class="card-img" src={{producto.foto}}>
+            <ion-card-title clas="nombre" color="primary">{{producto.nombre}} </ion-card-title>
+            <ion-card-subtitle class="descripcion">{{producto.descripcion}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content class="precio">${{producto.precio}}</ion-card-content>
+          <ion-button  href='admin/modificarmasacotacliente'> Agregar producto </ion-button><br><br>
+        </ion-card>
+        
+      </ion-list>
+      <br><br><br><br>
+    </div>
+  </div>
 </ion-content>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponentMascota } from './mantenedores/mascotas/cliente/cliente.component';
 import { DiagnosticoComponentMascota } from './mantenedores/mascotas/diagnostico/diagnostico.component';
 import { EspecieComponent } from './mantenedores/mascotas/especie/especie.component';
+import { ModificarmascotaComponent } from './mantenedores/mascotas/modificarmascota/modificarmascota.component';
 import { PelajeComponent } from './mantenedores/mascotas/pelaje/pelaje.component';
 import { RazasComponent } from './mantenedores/mascotas/razas/razas.component';
 import { RecepcionistaComponentMascota } from './mantenedores/mascotas/recepcionista/recepcionista.component';
@@ -104,7 +105,7 @@ const routes: Routes = [
     component: VeterinarioComponentAdministrador
   },
   {
-    path: 'crearclientecliente',
+    path: 'modificarcliente',
     component: ClienteComponentCliente
   },
   {
@@ -127,6 +128,12 @@ const routes: Routes = [
     path: 'region',
     component: RegionComponent
   },
+  {
+    path: 'persona',
+    component: PersonaComponent
+  },
+
+  
   
 
 ];
