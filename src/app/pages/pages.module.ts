@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PagesRoutingModule } from './pages-routing.module';
 import { TiendaComponent } from './tienda/tienda.component';
 import { NuestroequipoPage } from './nuestroequipo/nuestroequipo.page';
@@ -70,7 +69,6 @@ import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.pag
     HistorialAtencionesPageVeterinario,
     PefilPageVeterinario,
     
-    
   ],
   imports: [
     CommonModule,
@@ -78,3 +76,4 @@ import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.pag
   ]
 })
 export class PagesModule { }
+
