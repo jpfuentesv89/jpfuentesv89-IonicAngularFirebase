@@ -5,14 +5,14 @@ import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
-
 @Component({
-  selector: 'app-bodega',
-  templateUrl: './bodega.component.html',
-  styleUrls: ['./bodega.component.scss'],
+  selector: 'app-peluquero',
+  templateUrl: './peluquero.component.html',
+  styleUrls: ['./peluquero.component.scss'],
 })
-export class BodegaComponentSignup implements OnInit {
-  
+export class PeluqueroComponentSignup implements OnInit {
+
+
   cliente: Clientes = {
     rut: null,
     dv: '',

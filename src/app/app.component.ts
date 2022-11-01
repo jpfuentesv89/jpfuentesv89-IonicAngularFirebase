@@ -44,9 +44,11 @@ public DEMO = [
   { label: 'compras cliente', url: 'pages/compras', icon: 'cart' }, 
   { label: 'tienda', url: 'pages/tiendacliente', icon: 'cart' }, 
   { label: 'Productos Administrador', url: 'admin/productoadmin', icon: 'cart' }, 
-
-  
-  
+  { label: 'registrar bodega', url: '/auth/registrobodega', icon: 'finger-print' }, 
+  { label: 'registrar administrador', url: '/auth/registroadministrador', icon: 'finger-print' }, 
+  { label: 'registrar recepcionista', url: '/auth/registrorecepcionista', icon: 'finger-print' }, 
+  { label: 'registrar veterinario', url: '/auth/registroveterinario', icon: 'finger-print' }, 
+  { label: 'registrar peluquero', url: '/auth/registropeluquero', icon: 'finger-print' }, 
   
 ];
 

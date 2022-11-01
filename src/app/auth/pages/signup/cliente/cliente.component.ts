@@ -12,7 +12,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
   templateUrl: './cliente.component.html',
   styleUrls: ['./cliente.component.scss'],
 })
-export class ClienteComponent implements OnInit {
+export class ClienteComponentSignup implements OnInit {
 
 
   public signup: FormGroup;
