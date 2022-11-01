@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './auth/services/authentication.service';
-import { Clientes } from 'src/app/interfaces/models';
+import { Usuario } from 'src/app/interfaces/models';
 import { FirestoreService } from './services/firestore.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { FirestoreService } from './services/firestore.service';
 
 export class AppComponent {
 
-  cliente: Clientes = {
+  usuario: Usuario = {
     rut: null,
     dv: '',
     nombre: '',
@@ -25,6 +25,7 @@ export class AppComponent {
     username: '',
     uid: '',
     foto: '',
+    tipo: '',
   };
 
   login: boolean = false;
@@ -36,13 +37,13 @@ export class AppComponent {
 public DEMO = [
   { label: 'perfil Administrador', url: 'pages/perfiladmin', icon: 'man' },
   { label: 'perfil Bodeguero', url: 'pages/perfilbodega', icon: 'man' },
-  { label: 'perfil Cliente', url: 'pages/perfilcliente', icon: 'man' },
+  { label: 'perfil usuario', url: 'pages/perfilusuario', icon: 'man' },
   { label: 'perfil Veterinario', url: 'pages/perfilveterinario', icon: 'man' },
   { label: 'perfil Peluquero', url: 'pages/perfilpeluquero', icon: 'man' },
   { label: 'perfil Recepcionista', url: 'pages/perfilrecepcionista', icon: 'man' },
   { label: 'mascota', url: 'pages/mascota', icon: 'man' },
-  { label: 'compras cliente', url: 'pages/compras', icon: 'cart' }, 
-  { label: 'tienda', url: 'pages/tiendacliente', icon: 'cart' }, 
+  { label: 'compras usuario', url: 'pages/compras', icon: 'cart' }, 
+  { label: 'tienda', url: 'pages/tiendausuario', icon: 'cart' }, 
   { label: 'Productos Administrador', url: 'admin/productoadmin', icon: 'cart' }, 
   { label: 'registrar bodega', url: '/auth/registrobodega', icon: 'finger-print' }, 
   { label: 'registrar administrador', url: '/auth/registroadministrador', icon: 'finger-print' }, 
@@ -69,9 +70,9 @@ public DEMO = [
       if (res && res.uid) {
         this.login = true; 
         const id = res.uid;
-        const path = 'clientes';
-        this.database.getDoc<Clientes>(path, id).subscribe(res => {
-          this.cliente = res;
+        const path = 'Usuario';
+        this.database.getDoc<Usuario>(path, id).subscribe(res => {
+          this.usuario = res;
         }, err => {
           console.log('Error al cargar datos');
         });

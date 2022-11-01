@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { Clientes } from 'src/app/interfaces/models';
+import { Usuario } from 'src/app/interfaces/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PerfilPageCliente implements OnInit {
   
-  cliente: Clientes = {
+  cliente: Usuario = {
     rut: null,
     dv: '',
     nombre: '',
@@ -26,6 +26,7 @@ export class PerfilPageCliente implements OnInit {
     username: '',
     uid: '',
     foto: '',
+    tipo: 'cliente'
   };
 
   nuevaImagen = '';
@@ -38,8 +39,8 @@ export class PerfilPageCliente implements OnInit {
         this.cliente.uid = res.uid;
         this.cliente.email = res.email;
         const id = this.cliente.uid;
-        const path = 'clientes';
-        this.database.getDoc<Clientes>(path, id).subscribe(res => {
+        const path = 'Usuario';
+        this.database.getDoc<Usuario>(path, id).subscribe(res => {
           this.cliente = res;
         }, err => {
           this.interaction.presentToast('Error al cargar datos');
@@ -61,7 +62,7 @@ export class PerfilPageCliente implements OnInit {
     if (this.cliente.uid != '') {
       this.interaction.openLoading('Borrando cliente...');
       const id = this.cliente.uid;
-      const path = 'clientes';
+      const path = 'Usuario';
       this.database.deleteDoc(path, id).then(() => {
         this.interaction.closeLoading();
         this.interaction.presentToast('Cliente borrado');
@@ -78,7 +79,7 @@ export class PerfilPageCliente implements OnInit {
     if (this.cliente.uid != '') {
       this.interaction.openLoading('Actualizando cliente...' + '\ ' + this.cliente.email);
       const id = this.cliente.uid;
-      const path = 'clientes';
+      const path = 'Usuario';
       await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
         this.cliente.foto = urlImage;
         console.log('Imagen subida correctamente.');

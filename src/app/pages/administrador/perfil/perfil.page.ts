@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { Clientes } from 'src/app/interfaces/models';
+import { Usuario } from 'src/app/interfaces/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -12,8 +12,8 @@ import { InteractionService } from 'src/app/services/interaction.service';
 })
 export class PerfilPageAdmin implements OnInit {
 
-  
-  cliente: Clientes = {
+
+  administrador: Usuario = {
     rut: null,
     dv: '',
     nombre: '',
@@ -26,6 +26,7 @@ export class PerfilPageAdmin implements OnInit {
     username: '',
     uid: '',
     foto: '',
+    tipo: 'administrador',
   };
 
   nuevaImagen = '';
@@ -35,12 +36,12 @@ export class PerfilPageAdmin implements OnInit {
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        this.cliente.uid = res.uid;
-        this.cliente.email = res.email;
-        const id = this.cliente.uid;
-        const path = 'clientes';
-        this.database.getDoc<Clientes>(path, id).subscribe(res => {
-          this.cliente = res;
+        this.administrador.uid = res.uid;
+        this.administrador.email = res.email;
+        const id = this.administrador.uid;
+        const path = 'Usuario';
+        this.database.getDoc<Usuario>(path, id).subscribe(res => {
+          this.administrador = res;
         }, err => {
           this.interaction.presentToast('Error al cargar datos');
         });
@@ -58,16 +59,16 @@ export class PerfilPageAdmin implements OnInit {
 
 
   borraUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Borrando cliente...');
-      const id = this.cliente.uid;
-      const path = 'clientes';
+    if (this.administrador.uid != '') {
+      this.interaction.openLoading('Borrando administrador...');
+      const id = this.administrador.uid;
+      const path = 'Usuario';
       this.database.deleteDoc(path, id).then(() => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Cliente borrado');
+        this.interaction.presentToast('administrador borrado');
       }).catch(err => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Error al borrar cliente');
+        this.interaction.presentToast('Error al borrar administrador');
       });
     } else {
       this.interaction.presentToast('usuario no logueado');
@@ -75,20 +76,20 @@ export class PerfilPageAdmin implements OnInit {
   }
 
   async updateUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Actualizando cliente...' + '\ ' + this.cliente.email);
-      const id = this.cliente.uid;
-      const path = 'clientes';
+    if (this.administrador.uid != '') {
+      this.interaction.openLoading('Actualizando administrador...' + '\ ' + this.administrador.email);
+      const id = this.administrador.uid;
+      const path = 'Usuario';
       await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
-        this.cliente.foto = urlImage;
+        this.administrador.foto = urlImage;
         console.log('Imagen subida correctamente.');
-        this.database.updateDoc(this.cliente, path, id).then(() => {
+        this.database.updateDoc(this.administrador, path, id).then(() => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Cliente actualizado');
+          this.interaction.presentToast('administrador actualizado');
           this.interaction.refresh();
         }).catch(err => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Error al actualizar cliente');
+          this.interaction.presentToast('Error al actualizar administrador');
         });
       }).catch(error => {
         this.interaction.closeLoading();

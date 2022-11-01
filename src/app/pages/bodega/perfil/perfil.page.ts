@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { Clientes } from 'src/app/interfaces/models';
+import { Usuario } from 'src/app/interfaces/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -12,8 +12,8 @@ import { InteractionService } from 'src/app/services/interaction.service';
 })
 export class PerfilPageBodega implements OnInit {
 
-  
-  cliente: Clientes = {
+
+  bodega: Usuario = {
     rut: null,
     dv: '',
     nombre: '',
@@ -26,6 +26,7 @@ export class PerfilPageBodega implements OnInit {
     username: '',
     uid: '',
     foto: '',
+    tipo: 'bodega'
   };
 
   nuevaImagen = '';
@@ -35,12 +36,12 @@ export class PerfilPageBodega implements OnInit {
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        this.cliente.uid = res.uid;
-        this.cliente.email = res.email;
-        const id = this.cliente.uid;
-        const path = 'clientes';
-        this.database.getDoc<Clientes>(path, id).subscribe(res => {
-          this.cliente = res;
+        this.bodega.uid = res.uid;
+        this.bodega.email = res.email;
+        const id = this.bodega.uid;
+        const path = 'Usuario';
+        this.database.getDoc<Usuario>(path, id).subscribe(res => {
+          this.bodega = res;
         }, err => {
           this.interaction.presentToast('Error al cargar datos');
         });
@@ -58,16 +59,16 @@ export class PerfilPageBodega implements OnInit {
 
 
   borraUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Borrando cliente...');
-      const id = this.cliente.uid;
-      const path = 'clientes';
+    if (this.bodega.uid != '') {
+      this.interaction.openLoading('Borrando bodega...');
+      const id = this.bodega.uid;
+      const path = 'Usuario';
       this.database.deleteDoc(path, id).then(() => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Cliente borrado');
+        this.interaction.presentToast('bodega borrado');
       }).catch(err => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Error al borrar cliente');
+        this.interaction.presentToast('Error al borrar bodega');
       });
     } else {
       this.interaction.presentToast('usuario no logueado');
@@ -75,20 +76,20 @@ export class PerfilPageBodega implements OnInit {
   }
 
   async updateUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Actualizando cliente...' + '\ ' + this.cliente.email);
-      const id = this.cliente.uid;
-      const path = 'clientes';
+    if (this.bodega.uid != '') {
+      this.interaction.openLoading('Actualizando bodega...' + '\ ' + this.bodega.email);
+      const id = this.bodega.uid;
+      const path = 'Usuario';
       await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
-        this.cliente.foto = urlImage;
+        this.bodega.foto = urlImage;
         console.log('Imagen subida correctamente.');
-        this.database.updateDoc(this.cliente, path, id).then(() => {
+        this.database.updateDoc(this.bodega, path, id).then(() => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Cliente actualizado');
+          this.interaction.presentToast('bodega actualizado');
           this.interaction.refresh();
         }).catch(err => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Error al actualizar cliente');
+          this.interaction.presentToast('Error al actualizar bodega');
         });
       }).catch(error => {
         this.interaction.closeLoading();

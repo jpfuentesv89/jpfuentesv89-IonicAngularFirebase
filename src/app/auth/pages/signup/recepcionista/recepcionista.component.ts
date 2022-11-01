@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { Clientes } from 'src/app/interfaces/models';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { AuthenticationService } from '../../../services/authentication.service';
+
 
 @Component({
   selector: 'app-recepcionista',
@@ -13,103 +15,54 @@ import { InteractionService } from 'src/app/services/interaction.service';
 export class RecepcionistaComponentSignup implements OnInit {
 
 
-  cliente: Clientes = {
-    rut: null,
-    dv: '',
-    nombre: '',
-    apaterno: '',
-    amaterno: '',
-    direccion: '',
-    comuna: '',
-    email: '',
-    telefono: null,
-    username: '',
-    uid: '',
-    foto: '',
-  };
+  public signup: FormGroup;
 
-  nuevaImagen = '';
-  newfile = '';
-
-  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private datastorage: FirestorageService) {
-
-    auth.stateAuth().subscribe(res => {
-      if (res && res.uid) {
-        this.cliente.uid = res.uid;
-        this.cliente.email = res.email;
-        const id = this.cliente.uid;
-        const path = 'clientes';
-        this.database.getDoc<Clientes>(path, id).subscribe(res => {
-          this.cliente = res;
-        }, err => {
-          this.interaction.presentToast('Error al cargar datos');
-        });
-
-      } else {
-        this.interaction.presentToast('usuario no logueado');
-        console.log('usuario no logueado');
-      }
+  constructor(private database: FirestoreService, private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private router: Router, private datastorage: FirestorageService) {
+    this.signup = this.fb.group({
+      userName: [null, Validators.required],
+      email: [null, Validators.required],
+      password: [null, [Validators.required]],
+      password2: [null, [Validators.required]]
     });
-
+  }
+  ngOnInit(): void {
   }
 
-  ngOnInit() { }
-
-
-
-  borraUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Borrando cliente...');
-      const id = this.cliente.uid;
-      const path = 'clientes';
-      this.database.deleteDoc(path, id).then(() => {
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Cliente borrado');
-      }).catch(err => {
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Error al borrar cliente');
-      });
-    } else {
-      this.interaction.presentToast('usuario no logueado');
-    }
-  }
-
-  async updateUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Actualizando cliente...' + '\ ' + this.cliente.email);
-      const id = this.cliente.uid;
-      const path = 'clientes';
-      await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
-        this.cliente.foto = urlImage;
-        console.log('Imagen subida correctamente.');
-        this.database.updateDoc(this.cliente, path, id).then(() => {
+  async onSubmit() {
+    if (this.signup.valid) {
+      const { userName, email, password, password2 } = this.signup.value as { userName: string; email: string; password: string; password2: string };
+      if (password.length >= 8) {
+        if (password === password2) {
+          this.interaction.openLoading('Registrando usuario...');
+          const result = await this.auth.signup(email, password).catch(err => console.log(err));
           this.interaction.closeLoading();
-          this.interaction.presentToast('Cliente actualizado');
-          this.interaction.refresh();
-/*DESPUES DE MODIFICAR LOS DATOS REDIRIGIR AL PERFIL*/ 
-        }).catch(err => {
-          this.interaction.closeLoading();
-          this.interaction.presentToast('Error al actualizar cliente');
-        });
-      }).catch(error => {
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Imagen no subida');
-        console.log(error);
-      });
+          if (result) {
+            console.log('Signup successful');
+            const path = 'Usuario';
+            const data = {
+              username: userName,
+              email: email,
+              uid: result.user.uid,
+              foto: './assets/img/profile.gif',
+              tipo: 'recepcionista'
+            };
+            this.database.createDoc(data, path, result.user.uid).then(res => {
+              this.interaction.presentToast('Usuario creado');
+              this.router.navigate(['/login']);
+            }).catch(err => {
+              this.interaction.presentToast('Error al crear usuario');
+            });
+          }
+        } else {
+          this.interaction.presentToast('Las contraseñas no coinciden');
+        }
+      } else {
+        this.interaction.presentToast('La contraseña debe tener al menos 8 caracteres');
+      }
     } else {
-      this.interaction.presentToast('usuario no logueado');
-    }
-  }
-
-  async selectImagen(event) {
-    if (event.target.files && event.target.files[0]) {
-      this.newfile = event.target.files[0];
-      const file = new FileReader();
-      file.onload = (e) => {
-        this.nuevaImagen = file.result as string;
-      };
-      file.readAsDataURL(event.target.files[0]);
+      this.interaction.presentToast('Complete los campos');
     }
   }
 
 }
+

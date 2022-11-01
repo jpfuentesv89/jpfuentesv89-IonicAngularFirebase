@@ -4,64 +4,37 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>Agregar Bodeguero</ion-title>
+    <ion-title>Regístrate</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <ion-list id="inbox-list">
-    <h1>Agregar Trabajador Area Bodega</h1>
-    <ion-avatar >
-      <img src={{cliente.foto}} />
-    </ion-avatar>
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.nombre" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Apellido Paterno</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.apaterno" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Apellido Materno</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.amaterno" ngDefaultControl></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">rut</ion-label>
-      <ion-input type="number" [(ngModel)]="cliente.rut" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Dv</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.dv" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Direccion</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.direccion" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Comuna</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.comuna" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input disabled="true" type="text" [(ngModel)]="cliente.email" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Telefono</ion-label>
-      <ion-input type="number" [(ngModel)]="cliente.telefono" ngDefaultControl></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Foto Perfil:</ion-label>
-      <ion-buttons slot="end">
-        <ion-button>
-          <label for="file">
-            <ion-icon name="images"></ion-icon>
-          </label>
-          <input id="file" style="display: none;" type="file" accept="image/*" (change)="selectImagen($event)">
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
-    <img [src]="nuevaImagen">
-  </ion-list>
-  <ion-button expand="full" color="tertiary" (click)='updateUser()'> Actualizar </ion-button>
+  <div>
+    <form [formGroup]="signup" class="contenido" (ngSubmit)="onSubmit()">
+      <ion-img class="img" src="\assets\img\perroygato.png"> </ion-img>
+      <h1 class="title">Veterinaria Chile</h1>
+      <br><br><br><br><br><br><br><br>
+      <div class="cosas">
+        <ion-item>
+          <ion-label class="formato" color="dark" position="floating"> Nombre de usuario</ion-label>
+          <ion-input type="text" formControlName="userName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="formato" color="dark" position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="formato" color="dark" position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password" required></ion-input>
+        </ion-item>
+        <ion-item class="wea">
+          <ion-label class="formato" color="dark" position="floating">Confirme Contraseña</ion-label>
+          <ion-input class="formato2" type="password" formControlName="password2" required></ion-input>
+        </ion-item>
+      </div>
+      <br>
+      <ion-button color="primary" expand="block" class="main-btn" type="submit">Registrarme</ion-button>
+    </form>
+    <br><br>
+  </div>
 </ion-content>

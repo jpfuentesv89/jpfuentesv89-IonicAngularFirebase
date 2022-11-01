@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { Clientes } from 'src/app/interfaces/models';
+import { Usuario } from 'src/app/interfaces/models';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -13,7 +13,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
 export class PerfilPagePeluquero implements OnInit {
 
   
-  cliente: Clientes = {
+  peluquero: Usuario = {
     rut: null,
     dv: '',
     nombre: '',
@@ -26,6 +26,7 @@ export class PerfilPagePeluquero implements OnInit {
     username: '',
     uid: '',
     foto: '',
+    tipo: 'peluquero',
   };
 
   nuevaImagen = '';
@@ -35,12 +36,12 @@ export class PerfilPagePeluquero implements OnInit {
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        this.cliente.uid = res.uid;
-        this.cliente.email = res.email;
-        const id = this.cliente.uid;
-        const path = 'clientes';
-        this.database.getDoc<Clientes>(path, id).subscribe(res => {
-          this.cliente = res;
+        this.peluquero.uid = res.uid;
+        this.peluquero.email = res.email;
+        const id = this.peluquero.uid;
+        const path = 'Usuario';
+        this.database.getDoc<Usuario>(path, id).subscribe(res => {
+          this.peluquero = res;
         }, err => {
           this.interaction.presentToast('Error al cargar datos');
         });
@@ -58,16 +59,16 @@ export class PerfilPagePeluquero implements OnInit {
 
 
   borraUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Borrando cliente...');
-      const id = this.cliente.uid;
-      const path = 'clientes';
+    if (this.peluquero.uid != '') {
+      this.interaction.openLoading('Borrando peluquero...');
+      const id = this.peluquero.uid;
+      const path = 'Usuario';
       this.database.deleteDoc(path, id).then(() => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Cliente borrado');
+        this.interaction.presentToast('peluquero borrado');
       }).catch(err => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Error al borrar cliente');
+        this.interaction.presentToast('Error al borrar peluquero');
       });
     } else {
       this.interaction.presentToast('usuario no logueado');
@@ -75,20 +76,20 @@ export class PerfilPagePeluquero implements OnInit {
   }
 
   async updateUser() {
-    if (this.cliente.uid != '') {
-      this.interaction.openLoading('Actualizando cliente...' + '\ ' + this.cliente.email);
-      const id = this.cliente.uid;
-      const path = 'clientes';
+    if (this.peluquero.uid != '') {
+      this.interaction.openLoading('Actualizando peluquero...' + '\ ' + this.peluquero.email);
+      const id = this.peluquero.uid;
+      const path = 'Usuario';
       await this.datastorage.uploadImage(this.newfile, path, id).then(urlImage => {
-        this.cliente.foto = urlImage;
+        this.peluquero.foto = urlImage;
         console.log('Imagen subida correctamente.');
-        this.database.updateDoc(this.cliente, path, id).then(() => {
+        this.database.updateDoc(this.peluquero, path, id).then(() => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Cliente actualizado');
+          this.interaction.presentToast('peluquero actualizado');
           this.interaction.refresh();
         }).catch(err => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Error al actualizar cliente');
+          this.interaction.presentToast('Error al actualizar peluquero');
         });
       }).catch(error => {
         this.interaction.closeLoading();
