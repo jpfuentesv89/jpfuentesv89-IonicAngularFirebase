@@ -4,30 +4,47 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>Perfil Cliente</ion-title>
+    <ion-title>Perfil cliente</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>  
-
-  <ion-list id="inbox-list">   
-    <ion-label class="datos">
-      <ion-avatar >
-        <img src={{cliente.foto}} />
-      </ion-avatar>
-    <a    href="pages/listadecompras"> <h1>Mis compras</h1>
-      <img class="logo" src="\assets\img\carro.png" > </a><br><br><br>
-    <a  href="pages/mascota"><h1>Mascotas</h1>
-      <img class="logo" src="\assets\img\casa.png"></a><br><br><br>
-    <a  href="admin/modificarcliente"> <h1>Mis datos</h1>
-      <img class="logo" src="\assets\img\perfil.png"></a>
-  </ion-label> 
-  <br><br><br><br><br><br>
+<ion-content>
+  <h1>Datos de Cliente</h1>
+  <ion-list id="inbox-list">
+    <ion-avatar>
+      <img src={{cliente.foto}} />
+    </ion-avatar>
     <ion-item>
       <ion-label position="floating">Nombre de Usuario</ion-label>
       <ion-input type="text" [(ngModel)]="cliente.username" ngDefaultControl></ion-input>
     </ion-item>
-    
+    <ion-item>
+      <ion-label position="floating">rut</ion-label>
+      <ion-input type="number" [(ngModel)]="cliente.rut" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Dv</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.dv" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.nombre" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido Paterno</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.apaterno" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido Materno</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.amaterno" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Direccion</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.direccion" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Comuna</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.comuna" ngDefaultControl></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label position="floating">Correo</ion-label>
       <ion-input disabled="true" type="text" [(ngModel)]="cliente.email" ngDefaultControl></ion-input>
@@ -36,7 +53,18 @@
       <ion-label position="floating">Telefono</ion-label>
       <ion-input type="number" [(ngModel)]="cliente.telefono" ngDefaultControl></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Foto Perfil:</ion-label>
+      <ion-buttons slot="end">
+        <ion-button>
+          <label for="file">
+            <ion-icon name="images"></ion-icon>
+          </label>
+          <input id="file" style="display: none;" type="file" accept="image/*" (change)="selectImagen($event)">
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+    <img [src]="nuevaImagen">
   </ion-list>
-
+  <ion-button expand="full" color="tertiary" (click)='updateUser()'> Actualizar </ion-button>
 </ion-content>
-
