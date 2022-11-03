@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './auth/services/authentication.service';
+import { AuthenticationService } from './auth/service/authentication.service';
 import { Usuario } from 'src/app/interfaces/models';
 import { FirestoreService } from './services/firestore.service';
 

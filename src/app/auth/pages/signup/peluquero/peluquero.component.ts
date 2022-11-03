@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { AuthenticationService } from '../../../services/authentication.service';
+import { AuthenticationService } from '../../../service/authentication.service';
 
 
 @Component({

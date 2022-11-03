@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/auth/services/authentication.service';
+import { AuthenticationService } from 'src/app/auth/service/authentication.service';
 import { Productos } from 'src/app/interfaces/models';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
