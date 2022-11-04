@@ -50,7 +50,7 @@ export class AppComponent {
   ];
 
   public cliente = [
-    { label: 'Perfil', url: 'pages/perfilcliente', icon: 'man' },
+    { label: 'Perfil', url: 'pages/perfilcliente', icon: 'man' }, 
     { label: 'Mascotas', url: 'pages/mascota', icon: 'paw' },
     { label: 'Solicitar atencion', url: 'pages/solicitaratencioncliente', icon: 'calendar' },
     { label: 'Tienda', url: 'pages/tiendacliente', icon: 'cart' },

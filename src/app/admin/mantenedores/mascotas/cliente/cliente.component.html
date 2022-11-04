@@ -17,22 +17,31 @@
 
     <ion-item>
       <span position="floating">Especie</span>
- 
-    </ion-item>
-    <ion-item>
-      <span position="floating">Nombre de mascota</span>
     </ion-item>
 
     <ion-item>
-      <span position="floating">Sexo</span>
+      <ion-label class="formato" color="dark" position="floating"> Nombre de mascota</ion-label>
+      <ion-input type="text" required ></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label class="formato" color="dark" position="floating"> Sexo Mascota</ion-label>
+        <ion-select interface="action-sheet" placeholder="Sexo Mascota">
+          <ion-select-option value="si">Si</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Edad</ion-label>
+      <ion-input type="number" min="0" max="20" required ></ion-input>
     </ion-item>
 
     <ion-item>
-      <span position="floating">Edad</span>
-    </ion-item>
-
-    <ion-item>
-      <span position="floating">Peso</span>
+      <ion-label class="formato" color="dark" position="floating"> Peso</ion-label>
+      <ion-input type="decimal" required ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -43,16 +52,24 @@
       <span position="floating">Pelaje</span>
     </ion-item>
 
+    <ion-list>
+      <ion-item>
+        <ion-label class="formato" color="dark" position="floating"> ¿Castatrado / Esterilizada?</ion-label>
+        <ion-select interface="action-sheet" placeholder="¿Se opero?">
+          <ion-select-option value="Macho">Macho</ion-select-option>
+          <ion-select-option value="Hembra">Hembra</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
     <ion-item>
-      <span position="floating">Esta castrado?</span> 
+      <ion-label class="formato" color="dark" position="floating"> Cantidad de vacunas</ion-label>
+      <ion-input type="number" min="0" required></ion-input>
     </ion-item>
 
     <ion-item>
-      <span position="floating">Cantidad de vacunas</span>
-    </ion-item>
-
-    <ion-item>
-      <span >Dato extra</span>
+      <ion-label class="formato" color="dark" position="floating"> Informacion extra</ion-label>
+      <ion-input type="text"  ></ion-input>
     </ion-item>
     
     <ion-item>
