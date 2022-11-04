@@ -37,27 +37,51 @@ export class AppComponent {
     { label: 'Registro Recepcionista', url: '/auth/registrorecepcionista', icon: 'finger-print' },
     { label: 'Registro Veterinario', url: '/auth/registroveterinario', icon: 'finger-print' },
     { label: 'Registro Peluquero', url: '/auth/registropeluquero', icon: 'finger-print' },
+
+
   ];
 
   public bodega = [
     { label: 'Perfil', url: 'pages/perfilbodega', icon: 'man' },
+    { label: 'Agregar Producto', url: 'admin/productosbodega', icon: 'bag' },
+    { label: 'Agregar tipo de producto', url: 'admin/tipoproducto', icon: 'layers' },
+    { label: 'Lista de productos', url: 'admin/listadoproductosbodega', icon: 'bag-check' },
+    { label: 'Historial de cambios', url: 'admin/historialcambiosproductobodega', icon: 'file-tray' },
   ];
 
   public cliente = [
     { label: 'Perfil', url: 'pages/perfilcliente', icon: 'man' },
+    { label: 'Mascotas', url: 'pages/mascota', icon: 'paw' },
+    { label: 'Solicitar atencion', url: 'pages/solicitaratencioncliente', icon: 'calendar' },
     { label: 'Tienda', url: 'pages/tiendacliente', icon: 'cart' },
+    { label: 'Historial de compras', url: 'pages/listadecompras', icon: 'create' },
+    
   ];
 
   public peluquero = [
     { label: 'Perfil', url: 'pages/perfilpeluquero', icon: 'man' },
+    { label: 'atencion peluquero', url: 'pages/atencionpeluquero', icon: 'cut' },
+    { label: 'Datos Cliente', url: 'pages/datosclientepeluquero', icon: 'create' },
+    { label: 'Historial de atenciones', url: 'pages/historialclientepeluquero', icon: 'calendar' },
+    { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },    
   ];
 
   public recepcionista = [
     { label: 'Perfil', url: 'pages/perfilrecepcionista', icon: 'man' },
+    { label: 'Agregar Cliente', url: '/auth/registrocliente', icon: 'finger-print' },
+    { label: 'Agregar Mascota', url: '/admin/mascotarecepcionista', icon: 'paw'},
+    { label: 'Historial Atencion', url: '/pages/historialatencionrecepcionista', icon: 'calendar'},
+    { label: 'Tienda', url: '/pages/tiendarecepcionista', icon: 'cart'},
+
   ];
 
   public veterinario = [
     { label: 'Perfil', url: 'pages/perfilveterinario', icon: 'man' },
+    { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },
+    { label: 'Atencion', url: 'pages/atencionverterinario', icon: 'paw' },
+    { label: 'Pacientes', url: 'pages/datospacienteveterinario', icon: 'paw' },
+    { label: 'Historial atenciones', url: 'pages/historialatencionveterinario', icon: 'calendar' },
+    
   ];
 
   public appPages = [
