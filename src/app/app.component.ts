@@ -62,7 +62,7 @@ export class AppComponent {
     { label: 'Perfil', url: 'pages/perfilpeluquero', icon: 'man' },
     { label: 'atencion peluquero', url: 'pages/atencionpeluquero', icon: 'cut' },
     { label: 'Datos Cliente', url: 'pages/datosclientepeluquero', icon: 'create' },
-    { label: 'Historial de atenciones', url: 'pages/historialclientepeluquero', icon: 'calendar' },
+    { label: 'Historial atenciones', url: 'pages/historialclientepeluquero', icon: 'calendar' },
     { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },    
   ];
 
@@ -70,7 +70,7 @@ export class AppComponent {
     { label: 'Perfil', url: 'pages/perfilrecepcionista', icon: 'man' },
     { label: 'Agregar Cliente', url: '/auth/registrocliente', icon: 'finger-print' },
     { label: 'Agregar Mascota', url: '/admin/mascotarecepcionista', icon: 'paw'},
-    { label: 'Historial Atencion', url: '/pages/historialatencionrecepcionista', icon: 'calendar'},
+    { label: 'Historial Atenciones', url: '/pages/historialatencionrecepcionista', icon: 'calendar'},
     { label: 'Tienda', url: '/pages/tiendarecepcionista', icon: 'cart'},
 
   ];
@@ -96,6 +96,7 @@ export class AppComponent {
   public comercial = [
     { label: 'Nuestro equipo', url: '/pages/nuestroequipo', icon: 'people' },
     { label: 'Nosotros', url: '/pages/nosotros', icon: 'book' },
+
   ];
 
 
