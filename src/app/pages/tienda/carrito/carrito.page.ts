@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
-import { CarritoService, Product } from 'src/app/services/carrito.service';
+import { CarritoService } from 'src/app/services/carrito.service';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.page.html',
@@ -8,7 +8,7 @@ import { CarritoService, Product } from 'src/app/services/carrito.service';
 })
 export class CarritoPageCliente implements OnInit {
 
-  cart: Product[] = [];
+  cart: any;
 
   constructor(private carritoService: CarritoService, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
 
@@ -29,7 +29,7 @@ export class CarritoPageCliente implements OnInit {
   }
 
   getTotal() {
-    return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+    return this.cart.reduce((i, j) => i + j.precio * j.cantidad, 0);
   }
 
   close() {
@@ -40,8 +40,8 @@ export class CarritoPageCliente implements OnInit {
     // Perfom PayPal or Stripe checkout process
 
     let alert = await this.alertCtrl.create({
-      header: 'Thanks for your Order!',
-      message: 'We will deliver your food as soon as possible',
+      header: 'Gracias Por tu Pedido!',
+      message: 'Te entregaremos tu pedido lo antes posible',
       buttons: ['OK']
     });
     alert.present().then(() => {

@@ -18,7 +18,9 @@ export class ProductoComponentAdmin implements OnInit {
     nombre: '',
     precio: 0,
     descripcion: '',
-    foto: ''
+    foto: '',
+    stock: 0,
+    cantidad: 0
   };
 
   nuevaImagen = '';

@@ -1,30 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  amount: number;
-}
 @Injectable({
   providedIn: 'root'
 })
-export class CarritoService {
-  data: Product[] = [
-    { id: 0, name: 'Pizza Salami', price: 8.99, amount: 0 },
-    { id: 1, name: 'Pizza Classic', price: 5.49, amount: 0 },
-    { id: 2, name: 'Sliced Bread', price: 4.99, amount: 0 },
-    { id: 3, name: 'Salad', price: 6.99, amount: 0 }
-  ];
 
+export class CarritoService  {
+  
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
 
-  constructor() {}
+  constructor() { 
 
-  getProducts() {
-    return this.data;
   }
 
   getCart() {
@@ -39,13 +26,13 @@ export class CarritoService {
     let added = false;
     for (let p of this.cart) {
       if (p.id === product.id) {
-        p.amount += 1;
+        p.cantidad += 1;
         added = true;
         break;
       }
     }
     if (!added) {
-      product.amount = 1;
+      product.cantidad = 1;
       this.cart.push(product);
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
@@ -54,8 +41,8 @@ export class CarritoService {
   decreaseProduct(product) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
-        p.amount -= 1;
-        if (p.amount == 0) {
+        p.cantidad -= 1;
+        if (p.cantidad == 0) {
           this.cart.splice(index, 1);
         }
       }
@@ -66,21 +53,9 @@ export class CarritoService {
   removeProduct(product) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
-        this.cartItemCount.next(this.cartItemCount.value - p.amount);
+        this.cartItemCount.next(this.cartItemCount.value - p.cantidad);
         this.cart.splice(index, 1);
       }
     }
   }
 }
-
-/**
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CarritoService {
-
-  constructor() { }
-}
-*/

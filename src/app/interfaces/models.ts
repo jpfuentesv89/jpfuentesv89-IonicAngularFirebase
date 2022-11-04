@@ -20,4 +20,6 @@ export interface Productos {
     precio:         number;
     descripcion:    string;
     foto:           string;
+    stock:          number;
+    cantidad:       number;
 }
