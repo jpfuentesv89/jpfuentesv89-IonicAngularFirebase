@@ -15,9 +15,15 @@
       <img src="https://w7.pngwing.com/pngs/1020/59/png-transparent-dog-logo-pet-food-cat-pet-food-food-animals-cat-like-mammal-thumbnail.png" />
     </ion-avatar>
 
-    <ion-item>
-      <span position="floating">Especie</span>
-    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label class="formato" color="dark" position="floating"> Especie</ion-label>
+        <ion-select interface="action-sheet" placeholder="Especie">
+          <ion-select-option value="perro">Perro</ion-select-option>
+          <ion-select-option value="gato">Gato</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
     <ion-item>
       <ion-label class="formato" color="dark" position="floating"> Nombre de mascota</ion-label>
@@ -28,15 +34,15 @@
       <ion-item>
         <ion-label class="formato" color="dark" position="floating"> Sexo Mascota</ion-label>
         <ion-select interface="action-sheet" placeholder="Sexo Mascota">
-          <ion-select-option value="si">Si</ion-select-option>
-          <ion-select-option value="no">No</ion-select-option>
+          <ion-select-option value="macho">Macho</ion-select-option>
+          <ion-select-option value="hembra">Hembra</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-item>
       <ion-label class="formato" color="dark" position="floating"> Edad</ion-label>
-      <ion-input type="number" min="0" max="20" required ></ion-input>
+      <ion-input type="number" min="0" max="25" required ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -48,16 +54,22 @@
       <span position="floating">Raza</span> 
     </ion-item>
 
-    <ion-item>
-      <span position="floating">Pelaje</span>
-    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label class="formato" color="dark" position="floating"> Pelaje</ion-label>
+        <ion-select interface="action-sheet" placeholder="Especie">
+          <ion-select-option value="largo">Largo</ion-select-option>
+          <ion-select-option value="corto">Corto</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label class="formato" color="dark" position="floating"> ¿Castatrado / Esterilizada?</ion-label>
         <ion-select interface="action-sheet" placeholder="¿Se opero?">
-          <ion-select-option value="Macho">Macho</ion-select-option>
-          <ion-select-option value="Hembra">Hembra</ion-select-option>
+          <ion-select-option value="si">Si</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
@@ -69,8 +81,8 @@
 
     <ion-item>
       <ion-label class="formato" color="dark" position="floating"> Informacion extra</ion-label>
-      <ion-input type="text"  ></ion-input>
-    </ion-item>
+      <ion-textarea name="comentario" rows="5" cols="50"></ion-textarea>
+    </ion-item >
     
     <ion-item>
       <span position="floating">Foto Mascota</span>
