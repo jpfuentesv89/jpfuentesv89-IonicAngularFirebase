@@ -25,13 +25,11 @@
       <ion-card-content>
         <ion-row class="ion-align-items-center">
           <ion-col size="8">
-            <ion-label color="secondary">
-              <b>$ {{producto.precio}}</b>
-            </ion-label>
+            <ion-label color="secondary">$ {{producto.precio}}</ion-label>
           </ion-col>
           <ion-col size="4" class="ion-text-right">
             <ion-button fill="clear" (click)="addToCart(producto)">
-              <ion-icon name="add"></ion-icon>
+              <ion-icon slot="icon-only" name="add-circle"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
