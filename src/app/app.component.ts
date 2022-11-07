@@ -121,7 +121,7 @@ export class AppComponent {
   constructor(private database: FirestoreService, private auth: AuthenticationService, private router: Router, private platform: Platform, private actionSheetCtrl: ActionSheetController) {
 
     this.platform.backButton.subscribeWithPriority(10, () => {
-      this.bottonAtrasAndroid();
+      this.salir();
     });
 
     auth.stateAuth().subscribe(res => {
@@ -147,13 +147,13 @@ export class AppComponent {
     this.router.navigate(['/pages/home']);
   }
 
-  bottonAtrasAndroid() {
-    this.actionSheetCtrl.create({
+  async salir() {
+    const actionSheet = await this.actionSheetCtrl.create({
       header: 'Quieres salir?',
       subHeader: 'Confirma presionando una de las opciones',
       buttons: [
         {
-          text: 'Si',
+          text: 'Salir',
           role: 'destructive',
           icon: 'exit',
           handler: () => {
@@ -162,7 +162,7 @@ export class AppComponent {
           }
         },
         {
-          text: 'No',
+          text: 'Quedarme',
           icon: 'close',
           role: 'cancel',
           handler: () => {
@@ -171,6 +171,8 @@ export class AppComponent {
         }
       ],
     });
+    actionSheet.present();
   }
+
 
 }
