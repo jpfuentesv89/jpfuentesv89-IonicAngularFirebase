@@ -4,17 +4,19 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>Nuestros Producto</ion-title>
+    <ion-col size="12">
+      <div>
+        <ion-title>Nuestros Producto</ion-title>
+        <ion-buttons slot="end" (click)="openCart()">
+          <ion-icon slot="icon-only" name="basket" style="position: fixed; right: 25px; top: -26px;"></ion-icon>
+          <ion-badge color="danger" style="position: fixed; right: 15px; top: -30px;">{{ cartItemCount | async }}</ion-badge>
+        </ion-buttons>
+      </div>
+    </ion-col>
+
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openCart()" #cart>
-      <div class="cart-length">{{ cartItemCount | async }}</div>
-      <ion-icon name="cart" class="cart-icon"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
   <ion-list>
     <ion-card *ngFor="let producto of productos;">
       <ion-card-header>
@@ -29,7 +31,7 @@
           </ion-col>
           <ion-col size="4" class="ion-text-right">
             <ion-button fill="clear" (click)="addToCart(producto)">
-              <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+              <ion-icon slot="icon-only" name="basket"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>

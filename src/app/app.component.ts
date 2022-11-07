@@ -136,6 +136,11 @@ export class AppComponent {
 
   }
 
+  onKeyDow(event) {
+    alert('Quiere salir?');
+  }
+
+
   logout() {
     this.auth.logout();
     console.log('Sesión cerrada');

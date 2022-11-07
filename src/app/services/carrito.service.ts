@@ -6,8 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class CarritoService  {
-  
+
   private cart = [];
+
   private cartItemCount = new BehaviorSubject(0);
 
   constructor() { 
@@ -58,4 +59,5 @@ export class CarritoService  {
       }
     }
   }
+  
 }

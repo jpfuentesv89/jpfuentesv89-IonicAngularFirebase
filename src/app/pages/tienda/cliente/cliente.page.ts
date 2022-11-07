@@ -18,7 +18,9 @@ export class ClientePageTienda implements OnInit {
 
   @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
 
-  constructor(private database: FirestoreService, private interaction: InteractionService, private carritoService: CarritoService, private modalCtrl: ModalController) {}
+  constructor(private database: FirestoreService, private interaction: InteractionService, private carritoService: CarritoService, private modalCtrl: ModalController) {
+
+  }
 
   ngOnInit() {
     const path = 'productos';
@@ -29,41 +31,25 @@ export class ClientePageTienda implements OnInit {
       this.interaction.presentToast('Error al listar productos');
       console.log(err);
     });
-
     this.carrito = this.carritoService.getCart();
     this.cartItemCount = this.carritoService.getCartItemCount();
-  }  
+  }
 
   addToCart(product) {
     this.carritoService.addProduct(product);
-    this.animateCSS('tada');
+    this.interaction.presentToast('Producto agregado al carrito');
   }
 
   async openCart() {
-    this.animateCSS('bounceOutLeft', true);
-
-    let modal = await this.modalCtrl.create({
-      component: CarritoPageCliente,
-      cssClass: 'cart-modal'
-    });
-    modal.onWillDismiss().then(() => {
-      this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft')
-      this.animateCSS('bounceInLeft');
-    });
-    modal.present();
-  }
-
-  animateCSS(animationName, keepAnimated = false) {
-    const node = this.fab.nativeElement;
-    node.classList.add('animated', animationName)
-
-    //https://github.com/daneden/animate.css
-    function handleAnimationEnd() {
-      if (!keepAnimated) {
-        node.classList.remove('animated', animationName);
-      }
-      node.removeEventListener('animationend', handleAnimationEnd)
+    if
+    (this.carrito.length > 0) {
+      let modal = await this.modalCtrl.create({
+        component: CarritoPageCliente,
+        cssClass: 'cart-modal'
+      });
+      modal.present();
+    } else {
+      this.interaction.presentToast('No hay productos en el carrito');
     }
-    node.addEventListener('animationend', handleAnimationEnd)
   }
 }
