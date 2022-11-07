@@ -137,7 +137,9 @@ export class AppComponent {
   }
 
   onKeyDow(event) {
-    alert('Quiere salir?');
+    if (event.key === "Enter") {
+      alert('Quiere salir?');
+    }
   }
 
 
