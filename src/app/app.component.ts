@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './auth/service/authentication.service';
 import { Usuario } from 'src/app/interfaces/models';
 import { FirestoreService } from './services/firestore.service';
+import { ActionSheetController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -50,12 +51,12 @@ export class AppComponent {
   ];
 
   public cliente = [
-    { label: 'Perfil', url: 'pages/perfilcliente', icon: 'man' }, 
+    { label: 'Perfil', url: 'pages/perfilcliente', icon: 'man' },
     { label: 'Mascotas', url: 'pages/mascota', icon: 'paw' },
     { label: 'Solicitar atencion', url: 'pages/solicitaratencioncliente', icon: 'calendar' },
     { label: 'Tienda', url: 'pages/tiendacliente', icon: 'cart' },
     { label: 'Historial de compras', url: 'pages/listadecompras', icon: 'create' },
-    
+
   ];
 
   public peluquero = [
@@ -63,15 +64,15 @@ export class AppComponent {
     { label: 'atencion peluquero', url: 'pages/atencionpeluquero', icon: 'cut' },
     { label: 'Datos Cliente', url: 'pages/datosclientepeluquero', icon: 'create' },
     { label: 'Historial atenciones', url: 'pages/historialclientepeluquero', icon: 'calendar' },
-    { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },    
+    { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },
   ];
 
   public recepcionista = [
     { label: 'Perfil', url: 'pages/perfilrecepcionista', icon: 'man' },
     { label: 'Agregar Cliente', url: '/auth/registrocliente', icon: 'finger-print' },
-    { label: 'Agregar Mascota', url: '/admin/mascotarecepcionista', icon: 'paw'},
-    { label: 'Historial Atenciones', url: '/pages/historialatencionrecepcionista', icon: 'calendar'},
-    { label: 'Tienda', url: '/pages/tiendarecepcionista', icon: 'cart'},
+    { label: 'Agregar Mascota', url: '/admin/mascotarecepcionista', icon: 'paw' },
+    { label: 'Historial Atenciones', url: '/pages/historialatencionrecepcionista', icon: 'calendar' },
+    { label: 'Tienda', url: '/pages/tiendarecepcionista', icon: 'cart' },
 
   ];
 
@@ -81,7 +82,7 @@ export class AppComponent {
     { label: 'Atencion', url: 'pages/atencionverterinario', icon: 'paw' },
     { label: 'Pacientes', url: 'pages/datospacienteveterinario', icon: 'paw' },
     { label: 'Historial atenciones', url: 'pages/historialatencionveterinario', icon: 'calendar' },
-    
+
   ];
 
   public appPages = [
@@ -117,7 +118,11 @@ export class AppComponent {
     }
   }
 
-  constructor(private database: FirestoreService, private auth: AuthenticationService, private router: Router) {
+  constructor(private database: FirestoreService, private auth: AuthenticationService, private router: Router, private platform: Platform, private actionSheetCtrl: ActionSheetController) {
+
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.bottonAtrasAndroid();
+    });
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
@@ -136,17 +141,36 @@ export class AppComponent {
 
   }
 
-  onKeyDow(event) {
-    if (event.key === "Enter") {
-      alert('Quiere salir?');
-    }
-  }
-
-
   logout() {
     this.auth.logout();
     console.log('Sesión cerrada');
     this.router.navigate(['/pages/home']);
+  }
+
+  bottonAtrasAndroid() {
+    this.actionSheetCtrl.create({
+      header: 'Quieres salir?',
+      subHeader: 'Confirma presionando una de las opciones',
+      buttons: [
+        {
+          text: 'Si',
+          role: 'destructive',
+          icon: 'exit',
+          handler: () => {
+            this.logout();
+            navigator['app'].exitApp();
+          }
+        },
+        {
+          text: 'No',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ],
+    });
   }
 
 }
