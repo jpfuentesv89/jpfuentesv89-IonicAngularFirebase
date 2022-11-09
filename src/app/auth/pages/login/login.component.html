@@ -25,6 +25,10 @@
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
+        <ion-item class="datos">
+          <ion-label position="start">Guardar Credenciales</ion-label>
+          <ion-checkbox color="primary" formControlName="check"></ion-checkbox>
+        </ion-item>        
         <br>
         <ion-button class="main-btn" expand="block" color="danger" type="submit">Iniciar sesión</ion-button>
         <ion-button class="main-btn" expand="block" color="primary" routerLink="/auth/registrocliente"

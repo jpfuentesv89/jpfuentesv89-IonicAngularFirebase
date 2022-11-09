@@ -23,3 +23,9 @@ export interface Productos {
     stock:          number;
     cantidad:       number;
 }
+
+export interface credentialsBiometric {
+    email:    string;
+    password: string;
+    check:    boolean;
+}
