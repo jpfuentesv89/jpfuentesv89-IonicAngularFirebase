@@ -4,6 +4,7 @@ import { AuthenticationService } from './auth/service/authentication.service';
 import { Usuario } from 'src/app/interfaces/models';
 import { FirestoreService } from './services/firestore.service';
 import { ActionSheetController, Platform } from '@ionic/angular';
+import { InteractionService } from './services/interaction.service';
 
 @Component({
   selector: 'app-root',
@@ -118,11 +119,13 @@ export class AppComponent {
     }
   }
 
-  constructor(private database: FirestoreService, private auth: AuthenticationService, private router: Router, private platform: Platform, private actionSheetCtrl: ActionSheetController) {
+  constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private router: Router, private platform: Platform, private actionSheetCtrl: ActionSheetController) {
 
-    this.platform.backButton.subscribeWithPriority(10, () => {
+    this.platform.backButton.subscribeWithPriority(5, () => {
+      this.interaction.presentToast('Presione nuevamente para salir');
       this.salir();
     });
+
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
