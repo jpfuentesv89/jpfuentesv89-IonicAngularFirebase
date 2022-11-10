@@ -1,9 +1,68 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>solicitarAtencion</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Solicitar atencion</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Atencion para </ion-label>
+      <ion-select interface="action-sheet" placeholder="Especie">
+        <ion-select-option value="perro">Perro</ion-select-option>
+        <ion-select-option value="gato">Gato</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Para quien es la atención </ion-label>
+      <ion-select interface="action-sheet" placeholder="Mascota">
+        <ion-select-option  value="Mascota">Mascota 1  </ion-select-option>
+        <ion-select-option value="Mascota">Mascota 2</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Veterinario </ion-label>
+      <ion-select interface="action-sheet" placeholder="Veterinario">
+        <ion-select-option  value="veterinario">Veterinario 1  </ion-select-option>
+        <ion-select-option value="veterionario">Veterinario 2</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- SI ELIGE UN VETERINARIO x ENTONCES SALE UN CALENDARIO CON SUS RESPECTIVAS HORAS DISPONIBLES-->
+  </ion-list>
+
+  
+<ion-list>
+  <ion-label>
+   <h3>Fechas de atencion: </h3>
+   <br>
+    <ion-datetime
+    minuteValues="0,15,30,45"
+    dayValues="5,10,15,20,25,30"
+>   </ion-datetime>
+  </ion-label>
+
+  <ion-list>
+    <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Motivo de la atencion</ion-label><br>
+      <ion-textarea name="comentario" rows="5" cols="50"></ion-textarea>
+    </ion-item >
+  </ion-list>
+</ion-list>
+
+
+
 
 </ion-content>
