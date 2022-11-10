@@ -10,31 +10,31 @@
 
 <ion-content>
   <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
-    <div >
-      <ion-img class="img" src="\assets\img\perroygato.png" > </ion-img>
-      <br><br><br><br><br>
-    <h1 class="title">Veterinaria Chile</h1>
-    <br><br><br><br>
-    <ion-item-group class="cosas">
-      <ion-item class="datos">
-        <ion-label position="floating">E-mail</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-      </ion-item>
-
-      <ion-item class="datos">
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
-      <br>
-      <br>
-      <p class="recuperar">Recuperar Contraseña</p>
-      <br>
-        <ion-button  class="main-btn" expand="block" color="danger" type="submit">Iniciar sesión</ion-button>        
-        <ion-button  class="main-btn" expand="block" color="primary" routerLink="/auth/registrocliente" routerDirection="root" routerLinkActive="selected"
-          color="dark">Registrarse</ion-button>
-    </ion-item-group>
-    <br><br>
-  </div>
+    <div>
+      <ion-img class="img" src="\assets\img\perroygato.png"> </ion-img>
+      <h1 class="title">Veterinaria Chile </h1>
+      <ion-button fill="clear" (click)="authenticatebiometric()" style="margin: 35% 20%; zoom:4.5; color: rgb(11, 89, 235);">
+        <ion-icon slot="icon-only" name="finger-print"></ion-icon>
+      </ion-button>
+      <ion-item-group class="cosas">
+        <ion-item class="datos">
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item class="datos">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item class="datos">
+          <ion-label position="start">Guardar Credenciales</ion-label>
+          <ion-checkbox color="primary" formControlName="check"></ion-checkbox>
+        </ion-item>        
+        <br>
+        <ion-button class="main-btn" expand="block" color="danger" type="submit">Iniciar sesión</ion-button>
+        <ion-button class="main-btn" expand="block" color="primary" routerLink="/auth/registrocliente"
+          routerDirection="root" routerLinkActive="selected" color="dark">Registrarse</ion-button>
+      </ion-item-group>
+      <br><br>
+    </div>
   </form>
-
 </ion-content>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './auth/service/authentication.service';
 import { Usuario } from 'src/app/interfaces/models';
 import { FirestoreService } from './services/firestore.service';
-import { ActionSheetController, Platform } from '@ionic/angular';
+import { ActionSheetController, Platform, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -118,11 +118,17 @@ export class AppComponent {
     }
   }
 
-  constructor(private database: FirestoreService, private auth: AuthenticationService, private router: Router, private platform: Platform, private actionSheetCtrl: ActionSheetController) {
+  constructor(private database: FirestoreService, private navControlelr: NavController, private auth: AuthenticationService, private router: Router, private platform: Platform, private actionSheetCtrl: ActionSheetController) {
 
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      this.salir();
+    this.platform.backButton.subscribeWithPriority(10, async () => {
+      const currentUrl = this.router.url;
+      if (currentUrl === "/pages/home") {
+        this.salir();
+      } else {
+        this.navControlelr.back();
+      }
     });
+
 
     auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
