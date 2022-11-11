@@ -8,11 +8,10 @@
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content>
-
   <ion-list>
+  <ion-img class="logo" src="\assets\img\calendario.png"></ion-img>
+  <br>
     <ion-item>
       <ion-label class="formato" color="dark" position="floating"> Atencion para </ion-label>
       <ion-select interface="action-sheet" placeholder="Especie">
@@ -26,18 +25,29 @@
     <ion-item>
       <ion-label class="formato" color="dark" position="floating"> Para quien es la atención </ion-label>
       <ion-select interface="action-sheet" placeholder="Mascota">
-        <ion-select-option  value="Mascota">Mascota 1  </ion-select-option>
-        <ion-select-option value="Mascota">Mascota 2</ion-select-option>
+        <ion-select-option  value="Mascota1">Mascota 1  </ion-select-option>
+        <ion-select-option value="Mascota2">Mascota 2</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Tipo de atención </ion-label>
+      <ion-select interface="action-sheet" placeholder="atencion">
+        <ion-select-option  value="veterinaria">veterinaria  </ion-select-option>
+        <ion-select-option value="peluqueria">peluqueria</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
+
+
   <ion-list>
     <ion-item>
-      <ion-label class="formato" color="dark" position="floating"> Veterinario </ion-label>
-      <ion-select interface="action-sheet" placeholder="Veterinario">
-        <ion-select-option  value="veterinario">Veterinario 1  </ion-select-option>
-        <ion-select-option value="veterionario">Veterinario 2</ion-select-option>
+      <ion-label class="formato" color="dark" position="floating"> Profesional </ion-label>
+      <ion-select interface="action-sheet" placeholder="Profesional">
+        <ion-select-option  value="veterinario1">veterinario 1 </ion-select-option>
+        <ion-select-option value="peluquero1">peluquero 1 </ion-select-option>
       </ion-select>
     </ion-item>
     <!-- SI ELIGE UN VETERINARIO x ENTONCES SALE UN CALENDARIO CON SUS RESPECTIVAS HORAS DISPONIBLES-->
@@ -75,12 +85,6 @@
     <!-- SI ELIGE UN VETERINARIO x ENTONCES SALE UN CALENDARIO CON SUS RESPECTIVAS HORAS DISPONIBLES-->
   </ion-list>
 
-
-
-
-
-
-
 <ion-list>
   <ion-label>
    <h3>Fechas de atencion: </h3>
@@ -99,7 +103,7 @@
   </ion-list>
 </ion-list>
 
-
+<ion-button>Solicitar atencion</ion-button>
 
 
 </ion-content>
