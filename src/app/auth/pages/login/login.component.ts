@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { AuthenticationService } from '../../service/authentication.service';
-import { AvailableResult, NativeBiometric } from "capacitor-native-biometric";
+import { NativeBiometric } from "capacitor-native-biometric";
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { credentialsBiometric } from 'src/app/interfaces/models';
 
@@ -15,12 +15,6 @@ import { credentialsBiometric } from 'src/app/interfaces/models';
 export class LoginComponent {
 
   public credentials: FormGroup;
-
-  credenciales: credentialsBiometric = {
-    email: '',
-    password: '',
-    check: false
-  };
 
   constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private database: FirestoreService, private router: Router) {
     this.credentials = this.fb.group(
@@ -37,7 +31,7 @@ export class LoginComponent {
   async onSubmit() {
     if (this.credentials.valid) {
       this.interaction.openLoading('Iniciando sesión...');
-      const { email, password, check } = this.credentials.value as { email: string; password: string; check: boolean } || this.credenciales;
+      const { email, password, check } = this.credentials.value as { email: string; password: string; check: boolean };
       const result = await this.auth.login(email, password).catch(err => console.log(err));
       this.interaction.presentToast('Usuario o Contraseña incorrectos');
       this.interaction.closeLoading();
@@ -58,7 +52,7 @@ export class LoginComponent {
               }).catch(err => {
                 this.interaction.presentToast('Error al desactivar Autenticación Biométrica');
               });
-            }else{
+            } else {
               this.interaction.presentToast('Autenticación Biométrica Desactivada');
             }
           }
@@ -83,8 +77,12 @@ export class LoginComponent {
       });
       this.database.getDoc<credentialsBiometric>(result.userId, 'Biometric').subscribe(res => {
         if (res) {
-          this.credenciales = res;
-          this.onSubmit();
+          this.auth.login(res.email, res.password).then(res => {
+            this.interaction.presentToast('Bienvenido ' + res.user.email);
+            this.router.navigateByUrl('/pages/home');
+          }).catch(err => {
+            this.interaction.presentToast('Error al iniciar sesión');
+          });
         } else {
           this.interaction.presentToast('No se encontraron datos biométricos');
         }
