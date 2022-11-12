@@ -60,4 +60,9 @@ export class CarritoService  {
     }
   }
   
+  clearCart() {
+    this.cart = [];
+    this.cartItemCount.next(0);
+  }
+
 }
