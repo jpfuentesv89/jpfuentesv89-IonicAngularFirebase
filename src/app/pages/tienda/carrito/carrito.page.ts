@@ -16,11 +16,15 @@ export class CarritoPageCliente implements OnInit {
   cart: any;
   totalCart: any;
   uid: string;
+  uidComprador: string;
 
   constructor(private carritoService: CarritoService, private modalCtrl: ModalController, private auth: AuthenticationService, private alertCtrl: AlertController, private database: FirestoreService, private interaction: InteractionService,) { }
 
   ngOnInit() {
     this.cart = this.carritoService.getCart();
+    this.auth.stateAuth().subscribe(user => {
+      this.uidComprador = user.uid;
+    })
   }
 
   decreaseCartItem(product) {
@@ -48,18 +52,18 @@ export class CarritoPageCliente implements OnInit {
     this.totalCart = {
       Date: new Date(),
       Total: this.getTotal(),
-      uidComprador: this.auth.stateAuth().subscribe(user => {
-        return user.uid;
-      }),
-    }
-    this.database.createDoc(this.totalCart, 'compras', this.uid).then(() => {
-    this.database.createDoc(this.cart, 'detalleCompra', this.uid).then(() => {
-      this.interaction.presentToast('Compra realizada con éxito');
-      this.modalCtrl.dismiss();
+      uidComprador: this.uidComprador,
+    };
+    this.database.createDoc(this.totalCart, 'ventas', this.uid).then(() => {
+      this.database.createDoc(this.cart, 'detalleCompra', this.database.getId()).then(() => {
+        this.interaction.presentToast('Venta Generada');
+        this.close();
+      }).catch(err => {
+        this.interaction.presentToast('Error al generar detalle venta');
+      });
     }).catch(err => {
-      this.interaction.presentToast('Error al realizar la compra');
+      this.interaction.presentToast('Error al generar venta');
     });
-  });
   }
 
   async checkout() {
