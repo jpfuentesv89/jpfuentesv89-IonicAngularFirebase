@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>datosPaciente</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pacientes</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-list>
+    <ion-img class="logo" src="\assets\img\vett.png"></ion-img>
+  <ion-label>  <h1 class="title">Pacientes</h1></ion-label><br><br><br>
+    
+     <ion-label class="datosboleta">
+      <h6> Fecha de atencion:</h6>
+      <h3>10-11-2022</h3>
+    </ion-label><br>
+     
+  <ion-item >
+    <ion-avatar slot="start">
+      <img src="assets\img\cachupin18kg.png" alt="">
+    </ion-avatar>
+    <ion-label class="producto">
+      <h6>hora de atencion:</h6>
+      <p>13:00 HRS</p>
+      <h6>Nombre mascota:</h6>
+      <p>Cachupín</p>
+      <h6>Especcie:</h6>
+      <p>Perro</p>
+    </ion-label> 
+    <ion-button expand="block" color="primary"  [routerLink]="['/pages/atencionverterinario']" >Atender</ion-button>
+  </ion-item>
+ 
+</ion-list>
 </ion-content>
+

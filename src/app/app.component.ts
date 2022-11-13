@@ -73,10 +73,8 @@ export class AppComponent {
   public veterinario = [
     { label: 'Perfil', url: 'pages/perfilveterinario', icon: 'man' },
     { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },
-    { label: 'Atencion', url: 'pages/atencionverterinario', icon: 'paw' },
     { label: 'Pacientes', url: 'pages/datospacienteveterinario', icon: 'paw' },
     { label: 'Historial atenciones', url: 'pages/historialatencionveterinario', icon: 'calendar' },
-
   ];
 
   public appPages = [
