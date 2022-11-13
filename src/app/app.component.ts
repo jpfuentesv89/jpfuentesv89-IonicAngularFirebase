@@ -34,11 +34,12 @@ export class AppComponent {
   public administrador = [
     { label: 'Perfil', url: 'pages/perfiladmin', icon: 'man' },
     { label: 'Registrar cuentas', url: '/pages/registar', icon: 'finger-print' },
+    { label: 'Agregar Producto', url: 'admin/productoadmin', icon: 'bag' },
   ];
 
   public bodega = [
     { label: 'Perfil', url: 'pages/perfilbodega', icon: 'man' },
-    { label: 'Agregar Producto', url: 'admin/productosbodega', icon: 'bag' },
+    { label: 'Agregar Producto', url: 'admin/productoadmin', icon: 'bag' },
     { label: 'Agregar tipo de producto', url: 'admin/tipoproducto', icon: 'layers' },
     { label: 'Lista de productos', url: 'admin/listadoproductosbodega', icon: 'bag-check' },
     { label: 'Historial de cambios', url: 'admin/historialcambiosproductobodega', icon: 'file-tray' },
