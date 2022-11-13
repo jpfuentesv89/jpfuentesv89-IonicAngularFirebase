@@ -128,7 +128,10 @@ const routes: Routes = [
     path: 'region',
     component: RegionComponent
   },
-
+  {
+    path: 'modificarmascotacliente',
+    component: ModificarmascotaComponent
+  },
   
   
 
