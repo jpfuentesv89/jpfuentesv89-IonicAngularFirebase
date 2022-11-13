@@ -1,9 +1,60 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>atencion</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Atencion</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <h1>Datos Atencion</h1>
+    <ion-label class="formato" color="dark" position="floating">  Fecha:</ion-label>
+    <ion-input placeholder="Fecha" type="date" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Numero de atencion:</ion-label>
+    <ion-input placeholder="Numero de atencion" type="number" required ></ion-input>
+  </ion-list>
 
-</ion-content>
+
+  <ion-list>
+  <h1>Informacion del veterinario</h1>
+    <ion-label class="formato" color="dark" position="floating"> Nombre del veterinario:</ion-label>
+    <ion-input placeholder="Nombre del veterinario" type="text" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Correo:</ion-label>
+    <ion-input placeholder="correo" type="text" required ></ion-input>
+</ion-list>
+
+  <ion-list>
+    <h1>Informacion del paciente</h1>
+    <ion-label class="formato" color="dark" position="floating"> Nombre del paciente:</ion-label>
+    <ion-input placeholder="Nombre" type="text" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Especie:</ion-label>
+    <ion-input placeholder="Especie" type="text" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Sexo:</ion-label>
+    <ion-input placeholder="Sexo" type="text" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Edad:</ion-label>
+    <ion-input placeholder="Edad" type="number" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Peso:</ion-label>
+    <ion-input placeholder="peso" type="float" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Raza:</ion-label>
+    <ion-input placeholder="raza" type="text" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Castrato / Esterilizado?</ion-label>
+    <ion-input placeholder="Castrato / Esterilizado?" type="text" required ></ion-input>
+    <ion-label class="formato" color="dark" position="floating"> Informacion extra</ion-label>
+    <ion-textarea name="comentario" rows="5" cols="50" required></ion-textarea>
+  
+  </ion-list>
+  <ion-list>
+    <h1>Informacion de la atencion</h1>
+      <ion-label class="formato" color="dark" position="floating"> Condicion actual</ion-label>
+      <ion-textarea placeholder="comentario condicion" name="comentario" rows="5" cols="50" required></ion-textarea>
+
+      <ion-label class="formato" color="dark" position="floating"> Tratamiento medico</ion-label>
+      <ion-textarea placeholder="Comentario tratamiento" name="comentario" rows="5" cols="50" required></ion-textarea>
+
+      <ion-label class="formato" color="dark" position="floating"> Observaciones</ion-label>
+      <ion-textarea placeholder="Comentario Observacion" name="comentario" rows="5" cols="50" required></ion-textarea>
+    </ion-list>
+  </ion-content>
