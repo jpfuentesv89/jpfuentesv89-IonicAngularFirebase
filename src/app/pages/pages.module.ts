@@ -29,6 +29,8 @@ import { PerfilPageCliente } from './cliente/perfil/perfil.page';
 import { FormsModule } from '@angular/forms';
 import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
 import { CarritoPageCliente } from './tienda/carrito/carrito.page';
+import { RegistroPageadminn } from './administrador/registro/registro.page';
+
 
 
 
@@ -61,6 +63,7 @@ import { CarritoPageCliente } from './tienda/carrito/carrito.page';
     HistorialAtencionesPageVeterinario,
     PerfilPageVeterinario,
     CarritoPageCliente,
+    RegistroPageadminn,
     
   ],
   imports: [

@@ -33,13 +33,7 @@ export class AppComponent {
 
   public administrador = [
     { label: 'Perfil', url: 'pages/perfiladmin', icon: 'man' },
-    { label: 'Registro Bodeguero', url: '/auth/registrobodega', icon: 'finger-print' },
-    { label: 'Registro Administrador', url: '/auth/registroadministrador', icon: 'finger-print' },
-    { label: 'Registro Recepcionista', url: '/auth/registrorecepcionista', icon: 'finger-print' },
-    { label: 'Registro Veterinario', url: '/auth/registroveterinario', icon: 'finger-print' },
-    { label: 'Registro Peluquero', url: '/auth/registropeluquero', icon: 'finger-print' },
-
-
+    { label: 'Registrar cuentas', url: '/pages/registar', icon: 'finger-print' },
   ];
 
   public bodega = [
