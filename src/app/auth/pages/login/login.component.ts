@@ -7,6 +7,7 @@ import { NativeBiometric } from "capacitor-native-biometric";
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { credentialsBiometric } from 'src/app/interfaces/models';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { exit } from 'process';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent {
   public credentials: FormGroup;
 
   qrimage: any;
+  qrdata: any;
 
   constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private database: FirestoreService, private router: Router, private barcodeScanner: BarcodeScanner) {
     this.credentials = this.fb.group(
@@ -34,6 +36,7 @@ export class LoginComponent {
 
   async onSubmit() {
     if (this.auth.stateAuth()) {
+      this.interaction.openLoading('Iniciando sesión...');
       if (this.credentials.valid) {
         const { email, password, check } = this.credentials.value as { email: string; password: string; check: boolean };
         const result = await this.auth.login(email, password).catch(err => console.log(err));
@@ -59,7 +62,12 @@ export class LoginComponent {
               this.interaction.presentToast('Error al desactivar Autenticación Biométrica');
             });
           }
+          this.interaction.closeLoading();
+          this.credentials.reset();
+          this.qrdata = null;
+          localStorage.setItem('firstReload', 'true');
           this.router.navigateByUrl('/pages/home');
+          this.interaction.presentToast('Bienvenido ' + result.user.email);
         }
       } else {
         this.interaction.presentToast('Ingrese un correo y contraseña válidos');
@@ -104,7 +112,8 @@ export class LoginComponent {
 
   scanQR() {
     this.barcodeScanner.scan().then(barcodeData => {
-      this.database.getDoc<credentialsBiometric>('Biometric', barcodeData.text).subscribe(res => {
+      this.qrdata = barcodeData.text;
+      this.database.getDoc<credentialsBiometric>('Biometric', this.qrdata).subscribe(res => {
         if (res) {
           this.credentials.setValue({
             email: res.email,
@@ -116,7 +125,7 @@ export class LoginComponent {
           this.interaction.presentToast('No se encontraron datos biométricos');
         }
       });
-      console.log('Barcode data', barcodeData.text);
+      console.log('Barcode data', this.qrdata);
     }).catch(err => {
       console.log('Error', err);
     });
