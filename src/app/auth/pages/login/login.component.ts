@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../service/authentication.service';
 import { NativeBiometric } from "capacitor-native-biometric";
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { credentialsBiometric } from 'src/app/interfaces/models';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-login',
@@ -16,80 +17,120 @@ export class LoginComponent {
 
   public credentials: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private database: FirestoreService, private router: Router) {
+  qrimage: any;
+
+  constructor(private fb: FormBuilder, private auth: AuthenticationService, private interaction: InteractionService, private database: FirestoreService, private router: Router, private barcodeScanner: BarcodeScanner) {
     this.credentials = this.fb.group(
       {
         email: [null, [Validators.required, Validators.email]],
         password: [null, [Validators.required]],
-        check: [null]
+        check: [false]
       }
     );
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   async onSubmit() {
-    if (this.credentials.valid) {
-      this.interaction.openLoading('Iniciando sesión...');
-      const { email, password, check } = this.credentials.value as { email: string; password: string; check: boolean };
-      const result = await this.auth.login(email, password).catch(err => console.log(err));
-      this.interaction.presentToast('Usuario o Contraseña incorrectos');
-      this.interaction.closeLoading();
-      if (result) {
-        console.log('inicio de sesión exitoso');
-        if (check) {
-          this.interaction.presentToast('Autenticación Biométrica Activada');
-          this.database.createDoc({ email: email, password: password, check: check }, 'Biometric', result.user.uid).then(res => {
-            this.interaction.presentToast('Datos guardados');
-          }).catch(err => {
-            this.interaction.presentToast('Error al guardar datos');
-          });
-        } else {
-          this.database.getDoc<credentialsBiometric>(result.user.uid, 'Biometric').subscribe(res => {
-            if (res) {
-              this.database.deleteDoc(result.user.uid, 'Biometric').then(res => {
-                this.interaction.presentToast('Autenticación Biométrica Desactivada');
-              }).catch(err => {
-                this.interaction.presentToast('Error al desactivar Autenticación Biométrica');
-              });
-            } else {
-              this.interaction.presentToast('Autenticación Biométrica Desactivada');
-            }
-          }
-          );
-        }
-        this.interaction.presentToast('Bienvenido ' + email);
+    if (this.auth.stateAuth()) {
+      if (this.credentials.valid) {
+        const { email, password, check } = this.credentials.value as { email: string; password: string; check: boolean };
+        const result = await this.auth.login(email, password).catch(err => console.log(err));
+        this.interaction.presentToast('Usuario o Contraseña incorrectos');
         this.interaction.closeLoading();
-        this.router.navigateByUrl('/pages/home');
+        if (result) {
+          console.log('inicio de sesión exitoso');
+          if (check) {
+            console.log('se activo el inicio de sesión biométrico');
+            localStorage.setItem('uid', result.user.uid);
+            this.database.createDoc({ email: email, password: password, check: check }, 'Biometric', result.user.uid).then(res => {
+              this.interaction.presentToast('Inicio biométrico activado');
+            }).catch(err => {
+              this.interaction.presentToast('Error al activar inicio biométrico');
+            });
+          } else {
+            console.log('no se activo el inicio de sesión biométrico');
+            this.database.deleteDoc('Biometric', result.user.uid).then(res => {
+              console.log(res);
+              localStorage.removeItem('uid');
+              this.interaction.presentToast('Autenticación Biométrica Desactivada');
+            }).catch(err => {
+              this.interaction.presentToast('Error al desactivar Autenticación Biométrica');
+            });
+          }
+          this.router.navigateByUrl('/pages/home');
+        }
+      } else {
+        this.interaction.presentToast('Ingrese un correo y contraseña válidos');
       }
     } else {
-      this.interaction.presentToast('Ingrese un correo y contraseña válidos');
+      this.interaction.presentToast('Ya se encuentra logeado');
     }
   }
 
   async authenticatebiometric() {
-    const isAvailable = await NativeBiometric.isAvailable();
-    if (isAvailable) {
-      const result = await NativeBiometric.verifyIdentity({
-        title: "Autenticación biométrica",
-        subtitle: "Logearse con huella",
-        description: "Por favor, coloque su huella digital",
-      });
-      this.database.getDoc<credentialsBiometric>(result.userId, 'Biometric').subscribe(res => {
-        if (res) {
-          this.auth.login(res.email, res.password).then(res => {
-            this.interaction.presentToast('Bienvenido ' + res.user.email);
-            this.router.navigateByUrl('/pages/home');
-          }).catch(err => {
-            this.interaction.presentToast('Error al iniciar sesión');
+    if (this.auth.stateAuth()) {
+      const isAvailable = await NativeBiometric.isAvailable();
+      if (isAvailable) {
+        const result = await NativeBiometric.verifyIdentity({
+          title: "Autenticación biométrica",
+          subtitle: "Logearse con huella",
+          description: "Por favor, coloque su huella digital",
+        });
+        if (!result) {
+          this.database.getDoc<credentialsBiometric>('Biometric', localStorage.getItem('uid')).subscribe(res => {
+            if (res) {
+              this.credentials.setValue({
+                email: res.email,
+                password: res.password,
+                check: res.check
+              });
+              this.onSubmit();
+            } else {
+              this.interaction.presentToast('No se encontraron datos biométricos');
+            }
           });
+        } else {
+          this.interaction.presentToast('Error al autenticar');
+        }
+      } else {
+        this.interaction.presentToast('No se encontró sensor biométrico');
+      }
+    } else {
+      this.interaction.presentToast('Ya se encuentra logeado');
+    }
+  }
+
+  scanQR() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.database.getDoc<credentialsBiometric>('Biometric', barcodeData.text).subscribe(res => {
+        if (res) {
+          this.credentials.setValue({
+            email: res.email,
+            password: res.password,
+            check: res.check
+          });
+          this.onSubmit();
         } else {
           this.interaction.presentToast('No se encontraron datos biométricos');
         }
       });
-    } else {
-      this.interaction.presentToast('No se encontró sensor biométrico');
-    }
+      console.log('Barcode data', barcodeData.text);
+    }).catch(err => {
+      console.log('Error', err);
+    });
+  }
+
+  createQR() {
+    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, localStorage.getItem('uid')).then(
+      encodedData => {
+        this.qrimage = encodedData;
+      },
+      err => {
+        console.log("Un error ha ocurrido: " + err);
+      }
+    );
   }
 
 }

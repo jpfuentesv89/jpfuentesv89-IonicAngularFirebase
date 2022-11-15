@@ -13,9 +13,7 @@
     <div>
       <ion-img class="img" src="\assets\img\perroygato.png"> </ion-img>
       <h1 class="title">Veterinaria Chile </h1>
-      <ion-button fill="clear" (click)="authenticatebiometric()" style="margin: 35% 20%; zoom:4.5; color: rgb(11, 89, 235);">
-        <ion-icon slot="icon-only" name="finger-print"></ion-icon>
-      </ion-button>
+      <br><br><br><br><br><br><br><br><br><br>
       <ion-item-group class="cosas">
         <ion-item class="datos">
           <ion-label position="floating">E-mail</ion-label>
@@ -26,11 +24,20 @@
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
         <ion-item class="datos">
-          <ion-label position="start">Guardar Credenciales</ion-label>
+          <ion-label position="start">Inicio de sesión biométrico</ion-label>
           <ion-checkbox color="primary" formControlName="check"></ion-checkbox>
-        </ion-item>        
+        </ion-item>
         <br>
         <ion-button class="main-btn" expand="block" color="danger" type="submit">Iniciar sesión</ion-button>
+        <ion-button class="main-btn" expand="block" color="danger" (click)="authenticatebiometric()">
+          <ion-icon name="finger-print"></ion-icon>inicio Biometrico
+        </ion-button>
+        <ion-button class="main-btn" expand="block" color="danger" (click)="createQR()">
+        Crear QR Auth
+        </ion-button>
+        <ion-button class="main-btn" expand="block" color="danger" (click)="scanQR()">
+          inicio QR
+          </ion-button>
         <ion-button class="main-btn" expand="block" color="primary" routerLink="/auth/registrocliente"
           routerDirection="root" routerLinkActive="selected" color="dark">Registrarse</ion-button>
       </ion-item-group>
