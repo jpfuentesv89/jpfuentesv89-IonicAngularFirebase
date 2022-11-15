@@ -1,0 +1,30 @@
+ion-list >h1{
+    color: blanchedalmond;
+    font-size: 17px;
+    margin-left: 8px;
+    margin-right: 8px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+ion-list >ion-label{
+    color: blanchedalmond;
+    font-size: 15px;
+    width: 100%;
+    margin-top: auto;
+    margin-left: 8px;
+}
+
+ion-list > ion-input{
+    width: 90%;
+    margin-top: auto;
+    margin-left: 8px;
+}
+
+ion-content > ion-list{
+   background-color: rgba(5, 4, 4, 0.248);
+   border-style: double;
+   border-color: rgb(7, 87, 87);
+   padding-bottom: 2px;
+   
+}

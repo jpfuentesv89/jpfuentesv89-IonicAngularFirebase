@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PerfilPageAdmin } from './administrador/perfil/perfil.page';
+import { RegistroPageadminn } from './administrador/registro/registro.page';
+
 import { PerfilPageBodega } from './bodega/perfil/perfil.page';
 import { ComprasPage } from './cliente/compras/compras.page';
 import { ListacomprasPageCliente } from './cliente/listacompras/listacompras.page';
@@ -138,6 +140,15 @@ const routes: Routes = [
     path: 'clientecarrito',
     component: CarritoPageCliente
   },
+  {
+    path: 'registar',
+    component: RegistroPageadminn
+  },
+
+
+  
+  
+
   
   
 

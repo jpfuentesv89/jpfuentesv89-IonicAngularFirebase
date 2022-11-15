@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <h1 class="title">Registrando cuentas</h1>
+  <ion-img class="logo" src="\assets\img\gatoanota.png"></ion-img>
+  <br><br><br>
+
+
+  <ion-button shape="round" color="primary" [routerLink]="['/auth/registroadministrador']" > <h5>Registrar Administrador</h5> </ion-button>
+  <br><br>
+  <ion-button shape="round"  color="primary" [routerLink]="['/auth/registrobodega']" > <h5>Registrar Bodeguero</h5> </ion-button>
+  <br><br>
+  <ion-button shape="round" color="primary" [routerLink]="['/auth/registropeluquero']" > <h5>Registrar Peluquero</h5> </ion-button>
+  <br><br>
+  <ion-button shape="round" color="primary" [routerLink]="['/auth/registrorecepcionista']" > <h5>Registrar Recepcionista</h5> </ion-button>
+  <br><br>
+  <ion-button shape="round" color="primary" [routerLink]="['/auth/registroveterinario']" > <h5>Registrar Veterinario</h5></ion-button>
+  <br><br>
+</ion-content>

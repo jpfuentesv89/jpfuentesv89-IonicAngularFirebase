@@ -33,18 +33,13 @@ export class AppComponent {
 
   public administrador = [
     { label: 'Perfil', url: 'pages/perfiladmin', icon: 'man' },
-    { label: 'Registro Bodeguero', url: '/auth/registrobodega', icon: 'finger-print' },
-    { label: 'Registro Administrador', url: '/auth/registroadministrador', icon: 'finger-print' },
-    { label: 'Registro Recepcionista', url: '/auth/registrorecepcionista', icon: 'finger-print' },
-    { label: 'Registro Veterinario', url: '/auth/registroveterinario', icon: 'finger-print' },
-    { label: 'Registro Peluquero', url: '/auth/registropeluquero', icon: 'finger-print' },
-
-
+    { label: 'Registrar cuentas', url: '/pages/registar', icon: 'finger-print' },
+    { label: 'Agregar Producto', url: 'admin/productoadmin', icon: 'bag' },
   ];
 
   public bodega = [
     { label: 'Perfil', url: 'pages/perfilbodega', icon: 'man' },
-    { label: 'Agregar Producto', url: 'admin/productosbodega', icon: 'bag' },
+    { label: 'Agregar Producto', url: 'admin/productoadmin', icon: 'bag' },
     { label: 'Agregar tipo de producto', url: 'admin/tipoproducto', icon: 'layers' },
     { label: 'Lista de productos', url: 'admin/listadoproductosbodega', icon: 'bag-check' },
     { label: 'Historial de cambios', url: 'admin/historialcambiosproductobodega', icon: 'file-tray' },
@@ -79,10 +74,8 @@ export class AppComponent {
   public veterinario = [
     { label: 'Perfil', url: 'pages/perfilveterinario', icon: 'man' },
     { label: 'Tienda', url: 'pages/tiendaveterinario', icon: 'cart' },
-    { label: 'Atencion', url: 'pages/atencionverterinario', icon: 'paw' },
     { label: 'Pacientes', url: 'pages/datospacienteveterinario', icon: 'paw' },
     { label: 'Historial atenciones', url: 'pages/historialatencionveterinario', icon: 'calendar' },
-
   ];
 
   public appPages = [
