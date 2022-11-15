@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
 
     this.auth.stateAuth().subscribe(res => {
       if (res && res.uid) {
-        this.login = true; 
+        this.login = true;
       } else {
         this.login = false;
       }
@@ -24,7 +24,12 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-
+    if (localStorage.getItem('firstReload') == 'true') {
+      localStorage.setItem('firstReload', 'false');
+      window.location.reload();
+    } else {
+      localStorage.setItem('firstReload', 'true');
+    }
   }
 
   iniciar() {
