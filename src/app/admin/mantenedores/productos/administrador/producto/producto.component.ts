@@ -172,4 +172,9 @@ export class ProductoComponentAdmin implements OnInit {
       console.log(error);
     });
   }}
+
+  selctTipo(event) {
+    this.producto.tipo = event.detail.value;
+  }
+
 }
