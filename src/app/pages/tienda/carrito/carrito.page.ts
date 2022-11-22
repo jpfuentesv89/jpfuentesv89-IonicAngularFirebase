@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/auth/service/authentication.service';
+import { DetalleCompra, Venta } from 'src/app/interfaces/models';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -14,8 +15,15 @@ import { InteractionService } from 'src/app/services/interaction.service';
 export class CarritoPageCliente implements OnInit {
 
   cart: any;
-  totalCart: any;
+
+  totalCart: Venta = {
+    Date: new Date(),
+    Total: 0,
+    uidComprador: '',
+  };
+
   uid: string;
+
   uidComprador: string;
 
   constructor(private carritoService: CarritoService, private modalCtrl: ModalController, private auth: AuthenticationService, private alertCtrl: AlertController, private database: FirestoreService, private interaction: InteractionService,) { }
@@ -55,6 +63,7 @@ export class CarritoPageCliente implements OnInit {
       uidComprador: this.uidComprador,
     };
     this.database.createDoc(this.totalCart, 'ventas', this.uid).then(() => {
+      console.log(this.cart);
       this.database.createDoc(this.cart, 'detalleCompra', this.database.getId()).then(() => {
         this.interaction.presentToast('Venta Generada');
         this.close();
