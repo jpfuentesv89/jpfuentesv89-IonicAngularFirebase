@@ -22,6 +22,7 @@ export interface Productos {
     tipo:           string;
     foto:           string;
     stock:          number;
+    medida:         string;
     cantidad:       number;
 }
 

@@ -43,6 +43,17 @@
       <ion-input type="number" [(ngModel)]="producto.stock" ngDefaultControl></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label>Medida</ion-label>
+      <ion-select interface="action-sheet" placeholder="{{producto.medida}}" (ionChange)="selctMedida($event)">
+        <ion-select-option value="Unid">Unidades</ion-select-option>
+        <ion-select-option value="Gr">Gramos</ion-select-option>
+        <ion-select-option value="Kg">Kilos</ion-select-option>
+        <ion-select-option value="Gr">Gramos</ion-select-option>
+        <ion-select-option value="L">Litros</ion-select-option>
+        <ion-select-option value="Ml">Mililitros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label>Foto Producto:</ion-label>
       <ion-buttons slot="end">
         <ion-button>

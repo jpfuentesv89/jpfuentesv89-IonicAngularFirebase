@@ -21,6 +21,7 @@ export class ProductoComponentAdmin implements OnInit {
     tipo: '',
     foto: '',
     stock: 0,
+    medida: '',
     cantidad: 0
   };
 
@@ -176,5 +177,8 @@ export class ProductoComponentAdmin implements OnInit {
   selctTipo(event) {
     this.producto.tipo = event.detail.value;
   }
-
+  
+  selctMedida(event) {
+    this.producto.medida = event.detail.value;
+  }
 }
