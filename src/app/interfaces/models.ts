@@ -31,3 +31,22 @@ export interface credentialsBiometric {
     password: string;
     check:    boolean;
 }
+
+export interface Venta {
+    Date:         Date;
+    Total:        number;
+    uidComprador: string;
+}
+
+export interface DetalleCompra {
+    id:             string;
+    nombre:         string;
+    precio:         number;
+    descripcion:    string;
+    tipo:           string;
+    foto:           string;
+    stock:          number;
+    medida:         string;
+    cantidad:       number;
+    uidVenta:       string;
+}
