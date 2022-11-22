@@ -38,5 +38,10 @@ export class FirestoreService {
   getId() {
     return this.afs.createId();
   }
+
+  getVenta(uid: string) {
+    const collection = this.afs.collection('ventas', ref => ref.where('uidComprador', '==', uid));
+    return collection.valueChanges();
+  }
   
 }
