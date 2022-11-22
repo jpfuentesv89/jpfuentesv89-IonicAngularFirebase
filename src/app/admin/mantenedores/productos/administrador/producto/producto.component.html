@@ -26,6 +26,17 @@
       <ion-label position="floating">Descripcion</ion-label>
       <ion-input type="text" [(ngModel)]="producto.descripcion" ngDefaultControl></ion-input>
     </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-select interface="action-sheet" placeholder="Producto Tipo" [(ngModel)]="producto.tipo" ngDefaultControl>
+          <ion-select-option value="Alimentos">Alimentos</ion-select-option>
+          <ion-select-option value="Juguetes">Juguetes</ion-select-option>
+          <ion-select-option value="Ropa">Ropa</ion-select-option>
+          <ion-select-option value="Medicamentos">Medicamentos</ion-select-option>
+          <ion-select-option value="Transporte">Transporte</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
     <ion-item>
       <ion-label>Foto Producto:</ion-label>
       <ion-buttons slot="end">

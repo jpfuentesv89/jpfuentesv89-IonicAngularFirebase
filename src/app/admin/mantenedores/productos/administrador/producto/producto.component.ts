@@ -18,6 +18,7 @@ export class ProductoComponentAdmin implements OnInit {
     nombre: '',
     precio: 0,
     descripcion: '',
+    tipo: '',
     foto: '',
     stock: 0,
     cantidad: 0
