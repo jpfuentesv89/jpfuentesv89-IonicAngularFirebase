@@ -16,9 +16,23 @@ export class CarritoPageCliente implements OnInit {
 
   cart: any;
 
+  detalleVenta: DetalleCompra = {
+    id: '',
+    nombre: '',
+    precio: 0,
+    descripcion: '',
+    tipo: '',
+    foto: '',
+    stock: 0,
+    medida: '',
+    cantidad: 0,
+    uidVenta: '',
+  };
+
   totalCart: Venta = {
     Date: new Date(),
     Total: 0,
+    cantidad: 0,
     uidComprador: '',
   };
 
@@ -60,18 +74,34 @@ export class CarritoPageCliente implements OnInit {
     this.totalCart = {
       Date: new Date(),
       Total: this.getTotal(),
+      cantidad: this.cart.length,
       uidComprador: this.uidComprador,
     };
-    this.database.createDoc(this.totalCart, 'ventas', this.uid).then(() => {
-      console.log(this.cart);
-      this.database.createDoc(this.cart, 'detalleCompra', this.database.getId()).then(() => {
-        this.interaction.presentToast('Venta Generada');
-        this.close();
-      }).catch(err => {
-        this.interaction.presentToast('Error al generar detalle venta');
+    this.database.createDoc(this.totalCart, 'ventas', this.uid).then(() => {      
+      this.cart.forEach(element => {
+        this.detalleVenta = {
+          id: element.id,
+          nombre: element.nombre,
+          precio: element.precio,
+          descripcion: element.descripcion,
+          tipo: element.tipo,
+          foto: element.foto,
+          stock: element.stock,
+          medida: element.medida,
+          cantidad: element.cantidad,
+          uidVenta: this.uid,
+        };
+        console.log(this.detalleVenta);
+        this.database.createDoc(this.detalleVenta, 'detalleVenta', this.database.getId()).then(() => {
+          this.interaction.presentToast('Venta realizada con exito');
+          this.carritoService.clearCart();
+          this.close();
+        }).catch(err => {
+          this.interaction.presentToast('Error al realizar la venta');
+        });
       });
     }).catch(err => {
-      this.interaction.presentToast('Error al generar venta');
+      this.interaction.presentToast('Error al realizar la venta');
     });
   }
 

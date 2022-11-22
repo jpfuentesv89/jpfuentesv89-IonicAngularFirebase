@@ -35,6 +35,7 @@ export interface credentialsBiometric {
 export interface Venta {
     Date:         Date;
     Total:        number;
+    cantidad:     number;
     uidComprador: string;
 }
 
