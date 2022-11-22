@@ -31,4 +31,6 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+/e2e
+/android
 /public
