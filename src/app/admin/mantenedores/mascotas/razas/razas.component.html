@@ -1,3 +1,44 @@
-<p>
-  razas works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Raza</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+ <ion-list>
+      <ion-item>
+        <ion-label class="formato" color="dark" position="floating"> Especie</ion-label>
+        <ion-select interface="action-sheet" placeholder="Especie">
+          <ion-select-option value="perro">Perro</ion-select-option>
+          <ion-select-option value="gato">Gato</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-select interface="action-sheet" placeholder="Seleciona Raza" (ionChange)="buscarProductoEvent($event)">
+        <ion-select-option *ngFor="let produc of razas" value= {{raza.id}} >{{raza.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+  <ion-item>
+    <ion-label class="formato" color="dark" position="floating"> Raza</ion-label>
+    <ion-input type="text" required ></ion-input>
+  </ion-item>
+  
+    <ion-button expand="block" color="success" (click)='agregarRaza()'> Agregar </ion-button>
+</ion-content>
+
+
+
+
+
+
+
+

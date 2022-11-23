@@ -35,6 +35,7 @@ export class AppComponent {
     { label: 'Perfil', url: 'pages/perfiladmin', icon: 'man' },
     { label: 'Registrar cuentas', url: '/pages/registar', icon: 'finger-print' },
     { label: 'Agregar Producto', url: 'admin/productoadmin', icon: 'bag' },
+    { label: 'Agregar Razas', url: 'admin/razas', icon: 'paw' },
   ];
 
   public bodega = [

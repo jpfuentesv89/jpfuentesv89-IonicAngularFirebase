@@ -7,6 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponentMascota implements OnInit {
 
+  /*
+  mascota: Mascotas = {
+    id: '',
+    especie: '',
+    nombre: '',
+    sexo: '',
+    edad: '',
+    raza: '',
+    pelaje: '',
+    castrado: '',
+    vacunas: '',
+    extra: '',
+    foto: '',
+
+  };*/
+
   constructor() { }
 
   ngOnInit() {}
