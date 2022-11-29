@@ -51,3 +51,9 @@ export interface DetalleCompra {
     cantidad:       number;
     uidVenta:       string;
 }
+
+export interface Razas {
+    id:             string;
+    nombre:         string;
+    especie:        string;
+}

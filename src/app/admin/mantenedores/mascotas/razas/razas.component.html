@@ -1,3 +1,42 @@
-<p>
-  razas works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Raza</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ 
+  <ion-item>
+    <ion-select interface="action-sheet" placeholder="Seleciona Raza" (ionChange)="buscarRazaEvent($event)">
+      <ion-select-option *ngFor="let produc of razas" value= {{raza.id}} >{{raza.nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Especie</ion-label>
+    <ion-select interface="action-sheet" placeholder="{{raza.especie}}" (ionChange)="selctEspecie($event)">
+      <ion-select-option value="Perro">Perro</ion-select-option>
+      <ion-select-option value="Gato">Gato</ion-select-option>
+   
+    </ion-select>
+  </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="raza.nombre" ngDefaultControl></ion-input>
+    </ion-item>
+  
+  <ion-button expand="block" color="success" (click)='agregarRaza()'> Agregar </ion-button>
+  <ion-button expand="block" color="warning" (click)='actualizarRaza()'> Actualizar </ion-button>
+  <ion-button expand="block" color="danger" (click)='eliminarRaza(raza.id)'> Eliminar </ion-button>
+  <ion-button expand="block" color="primary" (click)='limpiarRaza()'> Limpiar </ion-button>
+</ion-content>
+
+
+
+
+
+
