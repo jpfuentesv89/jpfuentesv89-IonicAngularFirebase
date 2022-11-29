@@ -18,7 +18,7 @@ export class RazasComponent implements OnInit {
     especie: '',
     nombre: '',
   };
- 
+
   razas: any;
 
   constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private datastorage: FirestorageService, private router: Router) {

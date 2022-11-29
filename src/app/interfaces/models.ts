@@ -57,3 +57,19 @@ export interface Razas {
     nombre:         string;
     especie:        string;
 }
+
+
+export interface Mascotas {
+    id: string;
+    especie: string;
+    nombre: string;
+    sexo: string;
+    edad: number;
+    peso: number;
+    raza: string;
+    pelaje: string;
+    castrado: string;
+    vacunas: number;
+    infoextra: string;
+    foto: string;
+}

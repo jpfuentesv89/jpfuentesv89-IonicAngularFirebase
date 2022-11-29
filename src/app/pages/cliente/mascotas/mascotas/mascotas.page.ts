@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-mascotas',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MascotasPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  mascotas: any;
+  
+  constructor(private database: FirestoreService, private interaction: InteractionService,  ) {
   }
 
+  ngOnInit() {
+    const path = 'mascotas';
+    this.database.getdocs(path).subscribe(res => {
+      this.interaction.presentToast('Mascotas listadas');
+      this.mascotas = res;
+    }, err => {
+      this.interaction.presentToast('Error al listar Mascotas');
+      console.log(err);
+    });
+   
+  }
 }

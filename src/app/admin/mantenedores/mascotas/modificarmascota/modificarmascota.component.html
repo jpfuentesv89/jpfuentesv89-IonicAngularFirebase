@@ -4,66 +4,103 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>Modificar datos mascota</ion-title>
+    <ion-title>Modificar mascota</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <h1>Editando datos de mascota</h1>
+<ion-content >
+  
 
-  <ion-list >
+  <ion-list  *ngFor="let mascota of mascotas;">
+    <h1>Modifique los datos de su mascota</h1>
     <ion-avatar >
-      <img src="https://w7.pngwing.com/pngs/1020/59/png-transparent-dog-logo-pet-food-cat-pet-food-food-animals-cat-like-mammal-thumbnail.png" />
+      <img src={{mascota.foto}}> />
     </ion-avatar>
 
+    <ion-list>
+      <ion-item>
+        <ion-label>Especie</ion-label>
+        <ion-select interface="action-sheet" placeholder="{{mascota.especie}}" (ionChange)="selctEspecie($event)">
+          <ion-select-option value="Perro">Perro</ion-select-option>
+          <ion-select-option value="Gato">Gato</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
     <ion-item>
-      <span position="floating">Especie</span>
- 
+      <ion-label position="floating">Nombre mascota</ion-label>
+      <ion-input type="text" [(ngModel)]="mascota.nombre" ngDefaultControl></ion-input>
     </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Sexo Masota</ion-label>
+        <ion-select interface="action-sheet" placeholder="{{mascota.sexo}}" (ionChange)="selctSexo($event)">
+          <ion-select-option value="Macho">Macho</ion-select-option>
+          <ion-select-option value="Hembra">Hembra</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+
     <ion-item>
-      <span position="floating">Nombre de mascota</span>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input type="number"  min="0" max="25" required [(ngModel)]="mascota.edad" ngDefaultControl></ion-input>
     </ion-item>
 
     <ion-item>
-      <span position="floating">Sexo</span>
-    </ion-item>
-
-    <ion-item>
-      <span position="floating">Edad</span>
-    </ion-item>
-
-    <ion-item>
-      <span position="floating">Peso</span>
+      <ion-label position="floating">Peso</ion-label>
+      <ion-input type="number"  [(ngModel)]="mascota.peso" ngDefaultControl></ion-input>
     </ion-item>
 
     <ion-item>
       <span position="floating">Raza</span> 
     </ion-item>
 
+    <ion-list>
+      <ion-item>
+        <ion-label>Tipo de pelaje</ion-label>
+        <ion-select interface="action-sheet" placeholder="{{mascota.pelaje}}" (ionChange)="selctPelaje($event)">
+          <ion-select-option value="Corto">Corto</ion-select-option>
+          <ion-select-option value="Largo">Largo</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>¿Castatrado / Esterilizada?</ion-label>
+        <ion-select interface="action-sheet" placeholder="{{mascota.castrado}}" (ionChange)="selctcastrado($event)">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
     <ion-item>
-      <span position="floating">Pelaje</span>
+      <ion-label position="floating">Vacunas</ion-label>
+      <ion-input type="number"  [(ngModel)]="mascota.vacunas" ngDefaultControl></ion-input>
     </ion-item>
 
     <ion-item>
-      <span position="floating">Esta castrado?</span> 
-    </ion-item>
-
-    <ion-item>
-      <span position="floating">Cantidad de vacunas</span>
-    </ion-item>
-
-    <ion-item>
-      <span >Dato extra</span>
-    </ion-item>
+      <ion-label class="formato" color="dark" position="floating"> Informacion extra</ion-label>
+      <ion-textarea [(ngModel)]="mascota.infoextra" ngDefaultControl name="comentario" rows="5" cols="50"></ion-textarea>
+    </ion-item >
     
     <ion-item>
-      <span position="floating">Foto Mascota</span>
+      <ion-label>Foto Mascota:</ion-label>
+      <ion-buttons slot="end">
+        <ion-button>
+          <label for="file">
+            <ion-icon name="images"></ion-icon>
+          </label>
+          <input id="file" style="display: none;" type="file" accept="image/*" (change)="selectImagen($event)">
+        </ion-button>
+      </ion-buttons>
     </ion-item>
+    <img [src]="nuevaImagen">
   </ion-list>
+  <ion-button expand="full" color="tertiary" (click)='updateUser()'> Actualizar </ion-button>
   
-  <ion-button expand="full" color="primary" href='pages/mascota' > Volver </ion-button>
-  <ion-button expand="full" color="secondary" href='admin/modificarmasacotacliente'> Editar</ion-button>
-
-
 
 
 </ion-content>

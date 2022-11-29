@@ -17,33 +17,23 @@
 
 
 
-<ion-card>
-  <img src="\assets\img\gatoperro2.png"/>
+<ion-card *ngFor="let mascota of mascotas;" >
+  <img src={{mascota.foto}}>
+ 
   <ion-card-header>
-    <ion-card-title>Nombre Mascota</ion-card-title>
+    <ion-card-title>Nombre:  {{mascota.nombre}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <span>Sexo</span> <br>
-    <span>Peso</span> <br>
-    <span>Edad</span> <br>
+    <span>Sexo: {{mascota.sexo}}</span> <br>
+    <span>Peso:  {{mascota.peso}} KG</span> <br>
+    <span>Edad: {{mascota.edad}} años</span> <br>
   </ion-card-content>
-  <ion-button expand="block" color="primary"  [routerLink]="['/admin/modificarmascotacliente']" >Modificar</ion-button>
+  <ion-button expand="block" color="primary"  [routerLink]="['/admin/modificarmascotacliente/:id']" >Modificar</ion-button>
+
 
 </ion-card>
 
 
-<ion-card>
-  <img src="\assets\img\profile.gif"/>
-  <ion-card-header>
-    <ion-card-title>Nombre Mascota</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <span>Sexo</span> <br>
-    <span>Peso</span> <br>
-    <span>Edad</span> <br>
-  </ion-card-content>
-  <ion-button expand="block" color="primary"  [routerLink]="['/admin/modificarmascotacliente']" >Modificar</ion-button>
-</ion-card>
 
 
 </ion-content>
