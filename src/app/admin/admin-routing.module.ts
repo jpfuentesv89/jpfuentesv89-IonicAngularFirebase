@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponentMascota } from './mantenedores/mascotas/cliente/cliente.component';
 import { DiagnosticoComponentMascota } from './mantenedores/mascotas/diagnostico/diagnostico.component';
-import { EspecieComponent } from './mantenedores/mascotas/especie/especie.component';
 import { ModificarmascotaComponent } from './mantenedores/mascotas/modificarmascota/modificarmascota.component';
 import { PelajeComponent } from './mantenedores/mascotas/pelaje/pelaje.component';
 import { RazasComponent } from './mantenedores/mascotas/razas/razas.component';
@@ -35,10 +34,6 @@ const routes: Routes = [
   {
     path: 'mascotadiagnostico',
     component: DiagnosticoComponentMascota
-  },
-  {
-    path: 'especie',
-    component: EspecieComponent
   },
   {
     path: 'pelaje',

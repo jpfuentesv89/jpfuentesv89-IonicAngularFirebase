@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ClienteComponentMascota } from './mantenedores/mascotas/cliente/cliente.component';
 import { DiagnosticoComponentMascota } from './mantenedores/mascotas/diagnostico/diagnostico.component';
-import { EspecieComponent } from './mantenedores/mascotas/especie/especie.component';
 import { PelajeComponent } from './mantenedores/mascotas/pelaje/pelaje.component';
 import { RazasComponent } from './mantenedores/mascotas/razas/razas.component';
 import { RecepcionistaComponentMascota } from './mantenedores/mascotas/recepcionista/recepcionista.component';
@@ -33,7 +32,6 @@ import { RegionComponent } from './mantenedores/usuarios/region/region.component
   declarations: [
     ClienteComponentMascota,
     DiagnosticoComponentMascota,
-    EspecieComponent,
     PelajeComponent,
     RazasComponent,
     RecepcionistaComponentMascota,
