@@ -41,7 +41,8 @@ export class RazasComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
   limpiarRaza() {
     this.router.navigate(['/admin/razas']);
@@ -51,8 +52,9 @@ export class RazasComponent implements OnInit {
   excisteRaza(id: string, nombre: string) {
     let existe = false;
     this.razas.forEach((raza: any) => {
+      console.log(raza.id + ' --> ' + raza.nombre);
       if (raza.id === id || raza.nombre === nombre) {
-        existe = false;
+        existe = true;
       }
     });
     return existe;
@@ -101,24 +103,35 @@ export class RazasComponent implements OnInit {
     });
   }
 
-  buscarRaza(id: string) {
-    this.interaction.openLoading('Buscando producto...');
+  actualizarRaza(id: string) {
     const path = 'razas';
-    this.database.getDoc<Razas>(path, id).subscribe(res => {
-      this.interaction.closeLoading();
-      this.interaction.presentToast('Producto encontrado');
-      this.raza = res;  
+    this.database.updateDoc(this.raza, path, id).then(() => {
+      this.interaction.presentToast('Producto actualizado');
+      console.log('Producto actualizado');
+      this.limpiarRaza();
+    }).catch(error => {
+      this.interaction.presentToast('Error al actualizar producto');
+      console.log(error);
     });
   }
 
-  buscarRazaEvent(event) {
-    const id = event.target.value;
-    this.buscarRaza(id);
+  selctEspecie(event) {
+    this.razas = [];
+    this.raza.especie = event.detail.value;
+    this.database.getdocs<Razas>('razas').subscribe(res => {
+      res.forEach(element => {
+        if (element.especie === this.raza.especie) {
+          this.razas.push(element);
+        }
+      });
+    });
   }
 
-
-  selctEspecie(event) {
-    this.raza.especie = event.detail.value;
+  selectRazaevent(event) {
+    this.raza.id = event.detail.value;
+    this.database.getDoc<Razas>('razas', this.raza.id).subscribe(res => {
+      this.raza = res;
+    });
   }
   
 }
