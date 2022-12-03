@@ -90,15 +90,15 @@ export class RazasComponent implements OnInit {
     const path = 'razas';
     this.datastorage.deleteImage(path, id).subscribe(() => {
       this.database.deleteDoc(path, id).then(() => {      
-        this.interaction.presentToast('Producto eliminado');
-        console.log('Producto eliminado');
+        this.interaction.presentToast('Raaza eliminada');
+        console.log('Raaza eliminada');
         this.limpiarRaza();
       }).catch(error => {
-        this.interaction.presentToast('Error al eliminar producto');
+        this.interaction.presentToast('Error al eliminar raza');
         console.log(error);
       });
     }, error => {
-      this.interaction.presentToast('Producto no eliminado');
+      this.interaction.presentToast('Raza no eliminada');
       console.log(error);
     });
   }
@@ -106,11 +106,11 @@ export class RazasComponent implements OnInit {
   actualizarRaza(id: string) {
     const path = 'razas';
     this.database.updateDoc(this.raza, path, id).then(() => {
-      this.interaction.presentToast('Producto actualizado');
-      console.log('Producto actualizado');
+      this.interaction.presentToast('Raza actualizada');
+      console.log('Raza actualizada');
       this.limpiarRaza();
     }).catch(error => {
-      this.interaction.presentToast('Error al actualizar producto');
+      this.interaction.presentToast('Error al actualizar raza');
       console.log(error);
     });
   }

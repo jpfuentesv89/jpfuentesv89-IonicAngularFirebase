@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/service/authentication.service';
-import { Mascotas } from 'src/app/interfaces/models';
+import { Mascotas, Razas } from 'src/app/interfaces/models';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { FirestorageService } from 'src/app/services/firestorage.service';
@@ -31,6 +31,8 @@ export class ClienteComponentMascota implements OnInit {
   nuevaImagen = '';
   newfile = '';
 
+  raza: any;
+
   mascotas: any;
 
   constructor(private database: FirestoreService, private interaction: InteractionService, private auth: AuthenticationService, private datastorage: FirestorageService, private router: Router) {
@@ -43,6 +45,10 @@ export class ClienteComponentMascota implements OnInit {
         console.log('usuario no logueado');
       }
     });
+
+      this.database.getdocs('razas').subscribe((data: any) => {
+        this.raza = data;
+      });
 
   }
 
@@ -60,10 +66,10 @@ export class ClienteComponentMascota implements OnInit {
 
   async agregarMascota() {
     if (this.excisteMascota(this.mascota.id, this.mascota.nombre)) {
-      this.interaction.presentToast('El producto ya existe');
+      this.interaction.presentToast('La mascota ya existe');
     }
     else {
-      this.interaction.openLoading('Guardando producto...');
+      this.interaction.openLoading('Guardando mascota...');
       const path = 'mascotas';
       const id = this.database.getId();
       this.mascota.id = id;
@@ -72,16 +78,16 @@ export class ClienteComponentMascota implements OnInit {
         console.log('Imagen subida correctamente.');
         this.database.createDoc(this.mascota, path, id).then(() => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Producto agregado');
-          console.log('Producto agregado');
+          this.interaction.presentToast('Mascota guardada correctamente.');
+          console.log('Mascota guardada correctamente.');
         }).catch(error => {
           this.interaction.closeLoading();
-          this.interaction.presentToast('Producto no agregado');
+          this.interaction.presentToast('Mascota no guardada.');
           console.log(error);
         });
       }).catch(error => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('No logeado / producto no agregado');
+        this.interaction.presentToast('No logeado / Mascota no guardada.');
         console.log(error);
       });
     }
@@ -104,7 +110,16 @@ export class ClienteComponentMascota implements OnInit {
 
 
   selctEspecie(event) {
+    this.raza = [];
+    this.raza.especie = event.detail.value;
     this.mascota.especie = event.detail.value;
+    this.database.getdocs<Razas>('razas').subscribe(res => {
+      res.forEach(element => {
+        if (element.especie === this.raza.especie) {
+          this.raza.push(element);
+        }
+      });
+    });
   }
 
   selctSexo(event) {
@@ -118,5 +133,8 @@ export class ClienteComponentMascota implements OnInit {
     this.mascota.castrado = event.detail.value;
   }
 
+  selectRaza(event) {
+    this.mascota.raza = event.detail.value;
+  }
 
 }

@@ -51,9 +51,14 @@
       <ion-input type="number"  [(ngModel)]="mascota.peso" ngDefaultControl></ion-input>
     </ion-item>
 
-    <ion-item>
-      <span position="floating">Raza</span> 
-    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label *ngIf=" mascota.especie == '' ">Nesesario seleccionar especie </ion-label>
+        <ion-select *ngIf=" mascota.especie != '' " interface="action-sheet" placeholder="Seleciona Raza" (ionChange)="selectRaza($event)" >
+          <ion-select-option *ngFor="let res of raza" value={{res.id}}>{{res.nombre}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
     <ion-list>
       <ion-item>

@@ -10,8 +10,8 @@ import { InteractionService } from 'src/app/services/interaction.service';
 export class MascotasPage implements OnInit {
 
   mascotas: any;
-  
-  constructor(private database: FirestoreService, private interaction: InteractionService,  ) {
+
+  constructor(private database: FirestoreService, private interaction: InteractionService,) {
   }
 
   ngOnInit() {
@@ -23,6 +23,6 @@ export class MascotasPage implements OnInit {
       this.interaction.presentToast('Error al listar Mascotas');
       console.log(err);
     });
-   
+
   }
 }
