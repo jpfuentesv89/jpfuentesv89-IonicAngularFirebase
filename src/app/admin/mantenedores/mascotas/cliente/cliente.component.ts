@@ -46,9 +46,15 @@ export class ClienteComponentMascota implements OnInit {
       }
     });
 
-      this.database.getdocs('razas').subscribe((data: any) => {
-        this.raza = data;
-      });
+    const path = 'mascotas';
+    this.database.getdocs(path).subscribe(res => {
+      
+      this.mascotas = res;
+    }, err => {
+     
+      console.log(err);
+    });
+
 
   }
 
